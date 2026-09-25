@@ -1,0 +1,42 @@
+{
+  "title": "250+ Master Prompts for Seekho, Kling 1.5 & Veo 3",
+  "version": "2026.4",
+  "description": "Production-tested prompts for generating photorealistic, cinematic 4k B-Roll and consistent characters for viral shorts.",
+  "prompt_categories": [
+    {
+      "category": "Cinematic Cyberpunk & Tech B-Roll",
+      "prompts": [
+        {
+          "title": "Holographic AI Neural Interface",
+          "prompt": "Cinematic slow motion shot of a young developer interacting with a floating 3D holographic matrix in a dark room, glowing cyan and violet particles, shallow depth of field, anamorphic lens flare, 8k octane render --ar 9:16 --motion 5",
+          "engine_recommended": "Veo 3 / Kling 1.5"
+        },
+        {
+          "title": "Autonomous Server Room Data Stream",
+          "prompt": "Sleek dark server room corridor with pulsing green LED fiber optic cables along the glass floor, camera moving smoothly forward, atmospheric fog, photorealistic, Unreal Engine 5 aesthetic --ar 9:16 --motion 6",
+          "engine_recommended": "Veo 3"
+        }
+      ]
+    },
+    {
+      "category": "Luxury & Wealth Motivation",
+      "prompts": [
+        {
+          "title": "Golden Hour High-Rise Workspace",
+          "prompt": "Extreme wide establishing shot of a modern penthouse office in Tokyo at sunset, skyline glowing gold, silhouette of person working at sleek ultra-wide glass desk, cinematic composition, film grain --ar 9:16",
+          "engine_recommended": "Midjourney v6 / Kling 1.5"
+        }
+      ]
+    },
+    {
+      "category": "Desi / Seekho Course Creator Style",
+      "prompts": [
+        {
+          "title": "Vibrant Indian Tech Startup Studio",
+          "prompt": "Warm ambient modern Indian podcast studio, wooden acoustic panels with neon amber backlight, professional microphone in foreground, 4k ultra-crisp studio lighting, cinematic bokeh --ar 9:16",
+          "engine_recommended": "Veo 3 / Gemini Pro"
+        }
+      ]
+    }
+  ]
+}

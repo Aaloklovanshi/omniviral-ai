@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  omniviral-app:
+    build: .
+    container_name: omniviral_saas
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - POSTIZ_API_URL=${POSTIZ_API_URL:-http://postiz:3000/api/v1}
+      - POSTIZ_API_KEY=${POSTIZ_API_KEY}
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+    restart: unless-stopped

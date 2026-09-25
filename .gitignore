@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+data/*.db-journal
+output/daily_batches/*
+output/thumbnails/*

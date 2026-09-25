@@ -1,0 +1,55 @@
+{
+  "project_name": "OmniViral AI",
+  "tagline": "Turn any idea into viral 9:16 reels with Hormozi subtitles in 10 seconds",
+  "website_url": "https://omniviral.ai",
+  "category": ["AI Video Generator", "Social Media Automation", "Content Creation", "Productivity"],
+  "pricing_model": "Freemium ($0 Free Trial, $29/mo Pro, $79/mo Agency)",
+  "short_description_50_words": "OmniViral AI is the all-in-one AI video engine and 20-agent autonomous content factory. Turn any prompt or topic into viral 9:16 Shorts with retention-tested hooks, Veo 3/Kling prompts, kinetic Hormozi subtitles, and automated multi-platform social scheduling.",
+  "full_description_250_words": "OmniViral AI solves the biggest bottleneck for modern digital creators, agency founders, and faceless channel owners: the hours spent brainstorming hooks, writing scripts, formatting subtitles, and scheduling content. With OmniViral AI, simply enter any topic or niche. In less than 10 seconds, our AI generates 3 psychology-backed viral hooks (94%+ retention score), complete 9:16 visual storyboards with exact prompts for Google Veo 3 and Kling 1.5, and generates dynamic Alex Hormozi-style karaoke subtitles with glowing neon power-word highlights. Furthermore, OmniViral includes a 20-agent autonomous swarm that scouts breakout trends, produces daily video packs, and auto-dispatches posts across YouTube Shorts, Instagram Reels, and TikTok via free Postiz integration.",
+  "keywords": [
+    "ai video generator",
+    "faceless youtube channel",
+    "viral reels maker",
+    "hormozi subtitles ai",
+    "gemini video automation",
+    "seekho ai course maker",
+    "social media auto post"
+  ],
+  "directories_target_list": [
+    {
+      "name": "Toolify.ai",
+      "url": "https://www.toolify.ai/submit",
+      "monthly_visitors": "12.5M",
+      "submission_cost": "Free",
+      "expected_leads_per_week": "250 - 600"
+    },
+    {
+      "name": "Futurepedia.io",
+      "url": "https://www.futurepedia.io/submit-tool",
+      "monthly_visitors": "4.2M",
+      "submission_cost": "Free",
+      "expected_leads_per_week": "150 - 400"
+    },
+    {
+      "name": "Product Hunt",
+      "url": "https://www.producthunt.com",
+      "monthly_visitors": "5.8M",
+      "submission_cost": "Free",
+      "expected_leads_per_week": "500 - 1500"
+    },
+    {
+      "name": "There's An AI For That",
+      "url": "https://theresanaiforthat.com/submit/",
+      "monthly_visitors": "3.1M",
+      "submission_cost": "Free",
+      "expected_leads_per_week": "100 - 300"
+    },
+    {
+      "name": "Microlaunch.net",
+      "url": "https://microlaunch.net",
+      "monthly_visitors": "450k",
+      "submission_cost": "Free",
+      "expected_leads_per_week": "80 - 200"
+    }
+  ]
+}

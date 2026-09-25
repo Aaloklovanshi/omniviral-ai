@@ -1,0 +1,28 @@
+{
+  "outreach_campaigns": [
+    {
+      "target_audience": "Seekho & YouTube Shorts Educators",
+      "channel": "Instagram DM / Email",
+      "step_1_value_pitch": {
+        "subject": "Quick gift for your Shorts channel (3 free viral scripts + animated subs)",
+        "message": "Hey {creator_name}! Love your content on {topic}. I noticed how much effort goes into editing your subtitles and hooks. I built an AI tool called OmniViral that automates the entire script + Hormozi animated subtitle rendering in 10 seconds. I rendered 3 free sample hooks & subtitles specifically for your next video — check this 1-click preview link: {custom_preview_link}. No pitch or strings attached, just thought it'd save you 5+ hours this week!"
+      },
+      "step_2_followup_day3": {
+        "subject": "Did you check the sample reels?",
+        "message": "Hey {creator_name}, just wanted to make sure you got the 3 sample scripts. I also added 50 VIP AI video prompts to your account for free. Let me know if you want me to generate more for your next batch!"
+      },
+      "step_3_beta_offer_day5": {
+        "subject": "50% off lifetime access for beta creators",
+        "message": "Hey {creator_name}, we're launching OmniViral Pro this week to the public at $29/mo, but I'm offering early creator partners lifetime unlimited access at $14/mo. Would love to have your channel on board: {checkout_link}"
+      }
+    },
+    {
+      "target_audience": "Digital Marketing & Short-Form Video Agencies",
+      "channel": "LinkedIn / Cold Email",
+      "step_1_value_pitch": {
+        "subject": "Scaling your agency's short-form video production 10x with autonomous agents",
+        "message": "Hi {founder_name}, running client video campaigns usually means hiring multiple scriptwriters and editors. OmniViral AI runs a 20-agent autonomous swarm that writes retention-engineered scripts, creates Veo 3 storyboards, styles animated subtitles, and auto-dispatches to client social channels automatically. We helped beta agencies cut production cost by 80%. Here's a live 60-second interactive demo: {demo_link}"
+      }
+    }
+  ]
+}

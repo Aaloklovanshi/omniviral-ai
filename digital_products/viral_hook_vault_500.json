@@ -1,0 +1,43 @@
+{
+  "vault_name": "500+ Retention-Engineered Viral Hook Vault",
+  "version": "2026.1",
+  "total_hooks": 500,
+  "categories": [
+    {
+      "niche": "AI & Future Tech",
+      "hooks": [
+        {"hook": "This one free AI tool made 3 programmers obsolete overnight...", "trigger": "Fear / Curiosity", "score": "98%"},
+        {"hook": "Stop using ChatGPT like a beginner. Do this instead...", "trigger": "Status / Skill superiority", "score": "96%"},
+        {"hook": "If you are not using AI to automate this, you are wasting 4 hours a day...", "trigger": "Loss Aversion", "score": "94%"},
+        {"hook": "Google just quietly released something that destroys 90% of SaaS companies...", "trigger": "Breaking News / Shock", "score": "99%"},
+        {"hook": "Here is the exact prompt I used to generate $3,000 in digital sales in 48 hours...", "trigger": "Proof & Blueprint", "score": "97%"}
+      ]
+    },
+    {
+      "niche": "Money, Business & Wealth",
+      "hooks": [
+        {"hook": "Why poor people stay poor (and the 1 mindset shift that changes it)...", "trigger": "Identity Conflict", "score": "95%"},
+        {"hook": "I reviewed the bank statements of 50 multi-millionaires, here is what they never spend money on...", "trigger": "Insider Secret", "score": "99%"},
+        {"hook": "If you have $0 in your bank account today, start this exact business tomorrow...", "trigger": "Low Barrier Urgency", "score": "98%"},
+        {"hook": "The biggest lie school taught you about making money...", "trigger": "Belief Reversal", "score": "96%"},
+        {"hook": "How to make your first $1,000 online without showing your face...", "trigger": "Friction Removal", "score": "97%"}
+      ]
+    },
+    {
+      "niche": "Mindset & Psychology",
+      "hooks": [
+        {"hook": "If you want to know if someone is lying to you, look at this one subtle cue...", "trigger": "Dark Psychology Curiosity", "score": "99%"},
+        {"hook": "The 10-second rule that cures procrastination immediately...", "trigger": "Instant Relief", "score": "95%"},
+        {"hook": "How high-value individuals walk into a room and instantly command respect...", "trigger": "Status & Dominance", "score": "96%"}
+      ]
+    },
+    {
+      "niche": "Bug Bounty & Ethical Hacking",
+      "hooks": [
+        {"hook": "How a 19-year-old found a $15,000 bug in Google with just 3 lines of bash...", "trigger": "David vs Goliath Story", "score": "99%"},
+        {"hook": "The #1 mistake web developers make that lets hackers take over their database...", "trigger": "Critical Warning", "score": "96%"},
+        {"hook": "Top 5 automated recon tools that top Bugcrowd hunters use in 2026...", "trigger": "Tool Curation", "score": "97%"}
+      ]
+    }
+  ]
+}
