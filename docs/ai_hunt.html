@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@ai_hunt Official Automation Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-glow-orb glow-1"></div>
+  <div class="bg-glow-orb glow-2"></div>
+
+  <header class="navbar">
+    <a href="index.html" class="brand">
+      <div class="brand-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">🔥</div>
+      <span>AI Hunt <span style="color: #f59e0b;">Official</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Studio</a>
+      <a href="ai_hunt.html" class="active">🔥 @ai_hunt Hub</a>
+      <a href="social_publisher.html">📡 Auto-Publisher</a>
+      <a href="digital_products.html">Digital Store</a>
+      <a href="analytics.html">📊 Analytics</a>
+      <a href="recon_studio.html">Security Recon</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="badge-credits">
+        <span>👑</span>
+        <span>Channel: @ai_hunt</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container" style="padding-top: 40px; margin-bottom: 80px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div class="hero-pill" style="border-color: rgba(245, 158, 11, 0.4); color: #fde68a;">
+        <span>🔥 Dedicated Automation for @ai_hunt</span>
+      </div>
+      <h1 style="font-size: 2.8rem; font-weight: 800;">Automated AI Hunt Content Engine</h1>
+      <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto;">Generate daily viral Hinglish AI tool reviews, Seekho course formats, Veo 3 / Kling prompts, and Instagram Reels descriptions in 1 click.</p>
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-bottom: 36px;">
+      <button class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b, #d97706); padding: 14px 28px; font-size: 1.05rem;" onclick="loadAIHuntPack()">
+        ⚡ Generate Today's 3 Viral Reels for @ai_hunt
+      </button>
+    </div>
+
+    <div id="ai-hunt-packs-container"></div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadAIHuntPack();
+    });
+
+    async function loadAIHuntPack() {
+      const container = document.getElementById("ai-hunt-packs-container");
+      container.innerHTML = `<div class="glass-card" style="text-align:center; padding: 40px; color:var(--text-muted);">Generating fresh high-retention video packs for @ai_hunt...</div>`;
+
+      try {
+        const res = await fetch("/api/ai-hunt/daily-pack?count=3");
+        const data = await res.json();
+        if (data.status === "success") {
+          container.innerHTML = data.packs.map((p, idx) => `
+            <div class="glass-card" style="margin-bottom: 32px; border-top: 3px solid #f59e0b;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 16px; flex-wrap:wrap; gap:10px;">
+                <div>
+                  <span style="font-size:0.75rem; text-transform:uppercase; color:#f59e0b; font-weight:700;">${p.category}</span>
+                  <h2 style="font-size:1.4rem; margin-top:4px;">${p.title}</h2>
+                </div>
+                <span style="background:rgba(16,185,129,0.15); color:var(--accent-green); padding:4px 12px; border-radius:20px; font-weight:800; font-size:0.85rem;">
+                  Viral Score: ${p.viral_score}
+                </span>
+              </div>
+
+              <!-- Script Body -->
+              <div style="background:rgba(0,0,0,0.3); padding:16px; border-radius:8px; margin-bottom: 18px;">
+                <h4 style="color:#fde68a; margin-bottom: 8px; font-size:0.95rem;">🎙️ Full Hinglish Voiceover & Narration:</h4>
+                <pre style="white-space: pre-wrap; font-family: inherit; font-size: 0.92rem; color: #f8fafc; line-height: 1.7;">${p.full_hinglish_script}</pre>
+              </div>
+
+              <!-- Scenes & AI Prompts -->
+              <h4 style="color:var(--text-muted); margin-bottom: 10px; font-size:0.95rem;">🎬 Scene-by-Scene Veo 3 / Kling Prompts:</h4>
+              <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 18px;">
+                ${p.scenes.map(s => `
+                  <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+                    <div style="font-size:0.8rem; font-weight:700; color:var(--accent-purple); margin-bottom:4px;">Scene ${s.scene} (${s.duration})</div>
+                    <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;"><strong>Visual:</strong> ${s.visual}</div>
+                    <div style="font-size:0.78rem; font-family:monospace; color:#38bdf8; background:rgba(0,0,0,0.4); padding:6px; border-radius:4px;">${s.veo_prompt}</div>
+                  </div>
+                `).join("")}
+              </div>
+
+              <!-- Instagram / YouTube Copy-Paste Box -->
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; padding:14px;">
+                <h4 style="color:var(--accent-cyan); margin-bottom: 6px; font-size:0.9rem;">📱 Ready-to-Copy Instagram / Shorts Caption:</h4>
+                <textarea class="form-control" style="font-size:0.85rem; height:90px; resize:none;" readonly>${p.instagram_caption}</textarea>
+              </div>
+            </div>
+          `).join("");
+        }
+      } catch (err) {
+        container.innerHTML = `<div class="glass-card" style="color:#ef4444;">Error generating pack: ${err.message}</div>`;
+      }
+    }
+  </script>
+</body>
+</html>
