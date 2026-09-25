@@ -86,5 +86,5 @@ class AutonomousCashflowDaemon:
 
 if __name__ == "__main__":
     daemon = AutonomousCashflowDaemon(interval_minutes=60)
-    # Run one single immediate cycle when called from CLI
-    daemon.execute_daily_cycle()
+    # Run continuous 24/7 autonomous loop
+    daemon.run_forever()

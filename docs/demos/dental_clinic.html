@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Dental & Implant Studio | Advanced Painless Dentistry</title>
+  <meta name="description" content="Experience painless laser dentistry, invisible aligners, and smile makeovers at Aura Dental Studio. Book your appointment online today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #0d9488;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --gold: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background: var(--bg); color: var(--text-main); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Top Bar */
+    .topbar { background: #0f172a; color: #94a3b8; font-size: 0.85rem; padding: 8px 0; border-bottom: 1px solid #1e293b; }
+    .topbar-content { display: flex; justify-content: space-between; align-items: center; }
+    
+    /* Navbar */
+    .header { background: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    .nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo span { color: var(--primary); }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(2, 132, 199, 0.4); }
+    
+    /* Hero */
+    .hero { padding: 90px 0 60px; background: radial-gradient(circle at top right, rgba(2,132,199,0.08), transparent 50%); }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.4rem; line-height: 1.15; margin-bottom: 24px; color: #0f172a; }
+    .hero h1 em { font-style: italic; color: var(--primary); }
+    .hero p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(2, 132, 199, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; margin-bottom: 20px; }
+    
+    /* Form Card */
+    .appointment-card { background: var(--card-bg); border-radius: 20px; padding: 36px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); border: 1px solid var(--border); }
+    .appointment-card h3 { font-size: 1.4rem; margin-bottom: 8px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
+    .form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; font-size: 0.95rem; outline: none; transition: border 0.2s; }
+    .form-control:focus { border-color: var(--primary); }
+    
+    /* Features */
+    .features { padding: 80px 0; background: #ffffff; }
+    .section-header { text-align: center; max-width: 650px; margin: 0 auto 50px; }
+    .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.6rem; margin-bottom: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .feature-card { padding: 32px; background: var(--bg); border-radius: 16px; border: 1px solid var(--border); transition: all 0.3s; }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(0,0,0,0.06); border-color: var(--primary); }
+    .feature-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(2,132,199,0.1); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 20px; }
+    
+    /* Floating WhatsApp */
+    .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background: #22c55e; color: #fff; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4); text-decoration: none; z-index: 1000; transition: transform 0.2s; }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div>📍 102, Crystal Heights, Arera Colony, Bhopal | ⏱ Mon-Sat: 10:00 AM - 8:30 PM</div>
+      <div>📞 Emergency Hotline: +91 6265048497</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a href="#" class="logo">
+        🦷 Aura<span>Dental</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Treatments</a></li>
+        <li><a href="#doctors">Specialists</a></li>
+        <li><a href="#results">Smile Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+      <a href="#book" class="btn btn-primary">Book Consultation</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="book">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">✨ Central India's #1 Digital Smile Design Clinic</div>
+        <h1>Painless Dentistry for a <em>Confident, Radiant Smile</em></h1>
+        <p>Experience ultra-modern German laser technology, invisible aligners, and pain-free dental implants in a luxury 5-star studio environment.</p>
+        <div style="display: flex; gap: 20px; align-items: center; margin-top: 24px;">
+          <div style="display: flex; align-items: center; gap: 6px; font-weight: 700;">
+            <span style="color: var(--gold); font-size: 1.2rem;">★★★★★</span> 4.9/5 (480+ Google Reviews)
+          </div>
+        </div>
+      </div>
+
+      <!-- Instant Appointment Box -->
+      <div class="appointment-card">
+        <h3>⚡ Book Your 1-on-1 Consultation</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Free 3D Intraoral Scan included for first 15 bookings this week.</p>
+        <form onsubmit="handleDentalBooking(event)">
+          <div class="form-group">
+            <label>Patient Full Name</label>
+            <input type="text" id="p-name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input type="tel" id="p-phone" class="form-control" placeholder="+91 98765 43210" required>
+          </div>
+          <div class="form-group">
+            <label>Preferred Treatment</label>
+            <select id="p-service" class="form-control">
+              <option>Invisible Teeth Aligners (Clear Braces)</option>
+              <option>Dental Implants & Replacement</option>
+              <option>Painless Root Canal & Crown</option>
+              <option>Laser Teeth Whitening</option>
+              <option>Routine Checkup & Cleaning</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; border-radius: 10px; font-size: 1rem;">
+            Confirm Free Consultation Slot
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="features" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.85rem;">World-Class Care</span>
+        <h2>Precision Dental Solutions</h2>
+        <p style="color: var(--text-muted);">From cosmetic smile redesigns to permanent implants, we use AI-assisted 3D scanning for zero discomfort.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h3 style="margin-bottom: 10px;">Clear Aligners & Braces</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Straighten teeth discreetly in 6-12 months without metal wires using US-FDA approved clear aligners.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔩</div>
+          <h3 style="margin-bottom: 10px;">Same-Day Dental Implants</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Swiss titanium implants with lifetime warranty. Walk out with a natural functional tooth in 1 visit.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 style="margin-bottom: 10px;">Single-Sitting Laser RCT</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">100% painless computerized root canal treatment completed in under 45 minutes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Floating Action Button -->
+  <a href="https://wa.me/916265048497?text=Hi%20Aura%20Dental,%20I%20want%20to%20book%20a%20consultation" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+    💬
+  </a>
+
+  <script>
+    function handleDentalBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById("p-name").value;
+      const phone = document.getElementById("p-phone").value;
+      const service = document.getElementById("p-service").value;
+      
+      const msg = `New Booking Request from Aura Dental Website:%0A👤 Name: ${name}%0A📞 Phone: ${phone}%0A🦷 Treatment: ${service}`;
+      window.open(`https://wa.me/916265048497?text=${msg}`, '_blank');
+    }
+  </script>
+</body>
+</html>

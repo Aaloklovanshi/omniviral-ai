@@ -54,7 +54,10 @@ class ThumbnailEngine:
         draw.text((self.width // 2, self.height - 60), "🔥 @ai_hunt OFFICIAL", fill=(139, 92, 246), anchor="mm")
 
         # Save output
-        out_path = OUTPUT_DIR / filename
+        out_path = Path(filename)
+        if not out_path.is_absolute():
+            out_path = OUTPUT_DIR / filename
+        out_path.parent.mkdir(parents=True, exist_ok=True)
         img.save(out_path, format="JPEG", quality=95)
         return str(out_path)
 
