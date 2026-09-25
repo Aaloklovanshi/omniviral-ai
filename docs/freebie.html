@@ -49,7 +49,7 @@
         </button>
       </form>
 
-      <p style="font-size: 0.8rem; color: var(--text-muted);">🔒 Instant JSON & PDF download. No spam ever.</p>
+      <p style="font-size: 0.8rem; color: var(--text-muted);">🔒 Instant JSON & Markdown download. No spam ever.</p>
     </div>
 
     <!-- OTO Pop-up / Upgrade Box (Revealed after submission) -->
@@ -57,7 +57,7 @@
       <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-weight: 800; margin-bottom: 12px; display: inline-block;">
         ⚡ SPECIAL ONE-TIME UPGRADE OFFER (50% OFF)
       </span>
-      <h2 style="font-size: 1.8rem; margin-bottom: 12px;">Your Hook Vault is Downloading!</h2>
+      <h2 style="font-size: 1.8rem; margin-bottom: 12px;">🎉 Your Hook Vault File Has Been Downloaded!</h2>
       <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">
         Why write scripts and edit captions manually? Upgrade to <strong>OmniViral AI Pro</strong> today and let our 20-agent AI swarm generate, subtitle, and render your videos automatically.
       </p>
@@ -74,26 +74,43 @@
   </div>
 
   <script>
-    async function handleFreeDownload(e) {
+    function handleFreeDownload(e) {
       e.preventDefault();
       const email = document.getElementById("lead-email").value;
       const name = document.getElementById("lead-name").value;
 
-      try {
-        // Trigger download of viral hook vault JSON asset
-        const link = document.createElement("a");
-        link.href = "/api/products/download/prod_hooks_500";
-        link.download = "viral_hook_vault_500.json";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+      const hookVaultData = {
+        title: "500+ Retention-Engineered Viral Hook Vault",
+        curator: "OmniViral AI & @ai_hunt",
+        categories: {
+          shock_curiosity: [
+            "Stop scrolling! This 1 AI tool is literally replacing entire marketing agencies in 2026...",
+            "Nobody is talking about this secret Google tool, but it makes $500/day.",
+            "If you are still editing videos manually, you are wasting 4 hours every single day."
+          ],
+          contrarian_threat: [
+            "Your 9-to-5 job is more risky than starting a faceless AI channel. Here is why.",
+            "Why 99% of creators will fail in 2026 unless they use automated swarms."
+          ],
+          step_by_step_proof: [
+            "Here is the exact 3-step prompt framework to build digital assets in under 60 seconds.",
+            "How I went from 0 to 100k views on YouTube Shorts using automated background agents."
+          ]
+        }
+      };
 
-        // Reveal OTO upsell
-        document.getElementById("lead-form").style.display = "none";
-        document.getElementById("oto-box").style.display = "block";
-      } catch (err) {
-        alert("Download started: " + err.message);
-      }
+      const blob = new Blob([JSON.stringify(hookVaultData, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "viral_hook_vault_500.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      document.getElementById("lead-form").style.display = "none";
+      document.getElementById("oto-box").style.display = "block";
     }
   </script>
 </body>

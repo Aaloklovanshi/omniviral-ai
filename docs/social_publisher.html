@@ -23,6 +23,7 @@
       <a href="ai_hunt.html">🔥 @ai_hunt Hub</a>
       <a href="social_publisher.html" class="active">📡 Auto-Publisher</a>
       <a href="digital_products.html">Digital Store</a>
+      <a href="analytics.html">📊 Analytics</a>
       <a href="recon_studio.html">Security Recon</a>
     </nav>
     <div class="nav-actions">
@@ -55,89 +56,9 @@
     </div>
 
     <!-- Scheduled Posts Queue -->
-    <div id="posts-queue-container">
-      <div class="glass-card" style="text-align: center; color: var(--text-muted); padding: 40px;">
-        Loading automated publishing queue...
-      </div>
-    </div>
+    <div id="posts-queue-container"></div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      loadQueue();
-    });
-
-    async function loadQueue() {
-      const container = document.getElementById("posts-queue-container");
-      try {
-        const res = await fetch("/api/social/queue");
-        const data = await res.json();
-        
-        if (!data.posts || data.posts.length === 0) {
-          container.innerHTML = `
-            <div class="glass-card" style="text-align: center; padding: 50px;">
-              <h3 style="margin-bottom: 10px;">Queue is currently empty</h3>
-              <p style="color: var(--text-muted); margin-bottom: 20px;">Click the button below to generate and stage today's automated posts for @ai_hunt.</p>
-              <button class="btn btn-primary" onclick="triggerAutoSchedule()">⚡ Auto-Stage 3 Viral Posts</button>
-            </div>
-          `;
-          return;
-        }
-
-        container.innerHTML = data.posts.map((post, idx) => `
-          <div class="glass-card" style="margin-bottom: 20px; border-top: 2px solid #06b6d4;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
-              <div>
-                <span style="font-size: 0.75rem; text-transform: uppercase; color: #38bdf8; font-weight: 700;">TARGET: @${post.channel}</span>
-                <h3 style="font-size: 1.25rem; margin-top: 4px;">${post.title}</h3>
-              </div>
-              <div style="text-align: right;">
-                <span class="badge" style="background: rgba(139, 92, 246, 0.2); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.4); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem;">
-                  🕒 ${new Date(post.scheduled_time).toLocaleString()}
-                </span>
-              </div>
-            </div>
-
-            <div style="display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
-              <span style="background: rgba(239, 68, 68, 0.15); color: #f87171; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">▶ YouTube Shorts</span>
-              <span style="background: rgba(236, 72, 153, 0.15); color: #f472b6; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">📷 Instagram Reels</span>
-              <span style="background: rgba(6, 182, 212, 0.15); color: #22d3ee; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">🎵 TikTok</span>
-              <span style="background: rgba(255, 255, 255, 0.1); color: #f8fafc; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">✖ Twitter / X</span>
-            </div>
-
-            <div style="background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; margin-bottom: 14px;">
-              <p style="font-size: 0.88rem; color: #e2e8f0; white-space: pre-line; line-height: 1.5;">${post.caption}</p>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--text-muted);">
-              <span>📁 Media: <code>${post.media_path}</code></span>
-              <span style="color: #4ade80; font-weight: 600;">Status: ${post.status.toUpperCase()}</span>
-            </div>
-          </div>
-        `).join("");
-      } catch (err) {
-        container.innerHTML = `<div class="glass-card" style="color: #ef4444;">Error loading queue: ${err.message}</div>`;
-      }
-    }
-
-    async function triggerAutoSchedule() {
-      const container = document.getElementById("posts-queue-container");
-      container.innerHTML = `<div class="glass-card" style="text-align: center; color: var(--text-muted); padding: 40px;">Generating content pack and staging queue...</div>`;
-      try {
-        const res = await fetch("/api/social/auto-schedule", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ channel: "ai_hunt", count: 3 })
-        });
-        const data = await res.json();
-        if (data.status === "success") {
-          loadQueue();
-        }
-      } catch (err) {
-        alert("Scheduling error: " + err.message);
-        loadQueue();
-      }
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
