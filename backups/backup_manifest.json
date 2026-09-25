@@ -1,11 +1,11 @@
 {
-  "last_backup_timestamp": "2026-09-25T15:26:22.144687",
+  "last_backup_timestamp": "2026-09-25T17:09:37.400287",
   "account": "freeediting35@gmail.com",
   "backup_type": "Hermes Agent + OmniViral Full Master Backup",
-  "total_files_packaged": 8460,
-  "compressed_size_mb": 33.73,
+  "total_files_packaged": 8490,
+  "compressed_size_mb": 37.42,
   "drive_master_folder": "G:\\My Drive\\Hermes_OmniViral_Master_Backup",
-  "drive_archive_file": "G:\\My Drive\\Hermes_OmniViral_Master_Backup\\Archives\\master_backup_20260925_152408.zip",
+  "drive_archive_file": "G:\\My Drive\\Hermes_OmniViral_Master_Backup\\Archives\\master_backup_20260925_170654.zip",
   "drive_live_mirror": "G:\\My Drive\\Hermes_OmniViral_Master_Backup\\Live_Sync",
   "included_components": {
     "omniviral_ai": {
