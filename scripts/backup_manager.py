@@ -1,5 +1,9 @@
 import os
 import sys
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
 import json
 import shutil
 import zipfile
@@ -254,7 +258,10 @@ def sync_to_google_drive(local_zip_path, drive_target_dir):
             src = HERMES_DIR / folder
             dst = hermes_live / folder
             if src.exists():
-                shutil.copytree(src, dst, dirs_exist_ok=True, ignore=shutil.ignore_patterns("*.pyc", "__pycache__", "*.lock", "*.tmp", "node_modules"))
+                try:
+                    shutil.copytree(src, dst, dirs_exist_ok=True, ignore=shutil.ignore_patterns("*.pyc", "__pycache__", "*.lock", "*.tmp", "node_modules", "state-snapshots"))
+                except Exception as e:
+                    print(f"⚠️ Live sync copy warning for {src}: {e}")
 
         for f in HERMES_INCLUDE_FILES:
             src = HERMES_DIR / f

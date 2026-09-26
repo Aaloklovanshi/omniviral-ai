@@ -3,90 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniViral AI | Next-Gen AI Web App & Automation Platform</title>
-  <!-- Google Fonts: Inter & Geist Mono -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>OmniViral AI | 100-Year Master Web Application Studio</title>
+  <!-- Google Fonts: Inter, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
+    /* ── Apple + Stripe + Linear Design Tokens ── */
     :root {
-      --bg-dark: #030712;
-      --panel-dark: rgba(15, 23, 42, 0.6);
-      --card-bg: rgba(30, 41, 59, 0.4);
-      --card-border: rgba(255, 255, 255, 0.1);
+      --bg-obsidian: #050608;
+      --surface-panel: rgba(13, 17, 26, 0.75);
+      --surface-card: rgba(22, 28, 42, 0.5);
+      --surface-card-hover: rgba(30, 39, 58, 0.7);
+      --border-slate: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.15);
       --accent-violet: #8b5cf6;
-      --accent-indigo: #6366f1;
       --accent-cyan: #06b6d4;
+      --accent-amber: #f59e0b;
+      --accent-green: #10b981;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --text-dim: #64748b;
       --radius-sm: 8px;
-      --radius-md: 16px;
+      --radius-md: 14px;
       --radius-lg: 24px;
+      --radius-pill: 9999px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg-dark);
+      background-color: var(--bg-obsidian);
       color: var(--text-main);
-      line-height: 1.6;
-      font-feature-settings: "cv01", "ss03";
+      font-size: 17px; /* Apple Discrete Body Standard */
+      line-height: 1.65;
+      letter-spacing: -0.01em;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      background-image: 
-        radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120, 119, 198, 0.18), rgba(255, 255, 255, 0));
+      position: relative;
+    }
+
+    /* Stripe Ambient Gradient Mesh Background */
+    .ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .mesh-glow-1 {
+      position: absolute;
+      top: -15%;
+      left: 30%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 70%);
+      filter: blur(100px);
+      animation: meshPulse 12s ease-in-out infinite alternate;
+    }
+
+    .mesh-glow-2 {
+      position: absolute;
+      bottom: -20%;
+      right: 15%;
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 70%);
+      filter: blur(120px);
+      animation: meshPulse 16s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes meshPulse {
+      0% { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.15) translateY(30px); }
     }
 
     .container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 28px;
+    }
+
+    /* Navigation Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(5, 6, 8, 0.7);
+      border-bottom: 1px solid var(--border-slate);
     }
 
     nav {
-      height: 88px;
+      height: 80px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--card-border);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.6px;
+      gap: 14px;
+      text-decoration: none;
+      color: #fff;
     }
 
-    .brand-badge {
-      width: 38px;
-      height: 38px;
-      border-radius: var(--radius-sm);
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
       background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .brand-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 36px;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
-      transition: all 0.2s;
+      transition: color 0.2s var(--ease-out);
     }
 
     .nav-links a:hover {
-      color: var(--text-main);
+      color: #fff;
     }
 
     .btn {
@@ -95,90 +160,112 @@
       justify-content: center;
       gap: 10px;
       padding: 12px 24px;
-      border-radius: 999px;
-      font-size: 14px;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.25s ease;
+      transition: all 0.3s var(--ease-out);
       border: 1px solid transparent;
+      white-space: nowrap;
     }
 
-    .btn-violet {
-      background: linear-gradient(135deg, var(--accent-violet), var(--accent-indigo));
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-violet), #6366f1);
       color: #fff;
-      box-shadow: 0 0 30px rgba(139, 92, 246, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .btn-violet:hover {
+    .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+      box-shadow: 0 0 45px rgba(139, 92, 246, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
-    /* Lovable Style Hero */
+    /* Hero Section (Apple Fluid Display Typography) */
     .hero {
-      padding: 110px 0 70px;
+      padding: 100px 0 60px;
       text-align: center;
-      max-width: 900px;
+      max-width: 980px;
       margin: 0 auto;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      border-radius: 999px;
-      background: rgba(139, 92, 246, 0.1);
-      border: 1px solid rgba(139, 92, 246, 0.3);
+      gap: 10px;
+      padding: 8px 20px;
+      border-radius: var(--radius-pill);
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.25);
       color: #c084fc;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       backdrop-filter: blur(12px);
     }
 
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 12px var(--accent-green);
+      animation: blink 1.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
     .hero h1 {
-      font-size: 64px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(3.2rem, 5vw, 5.2rem);
       line-height: 1.05;
       letter-spacing: -2px;
-      margin-bottom: 24px;
-      font-weight: 900;
+      font-weight: 800;
+      margin-bottom: 28px;
     }
 
     .hero h1 span {
-      background: linear-gradient(135deg, #ffffff 30%, #c084fc 70%, #06b6d4 100%);
+      background: linear-gradient(135deg, #ffffff 20%, #c084fc 65%, #06b6d4 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: 19px;
       color: var(--text-muted);
-      margin-bottom: 44px;
+      max-width: 760px;
+      margin: 0 auto 48px;
     }
 
-    /* Lovable Prompt Input Bar */
-    .prompt-container {
-      background: var(--panel-dark);
-      border: 1px solid var(--card-border);
+    /* Prompt-Enhancer Studio Bar */
+    .prompt-studio {
+      background: var(--surface-panel);
+      border: 1px solid var(--border-slate);
       border-radius: var(--radius-lg);
-      padding: 12px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(139, 92, 246, 0.15);
-      backdrop-filter: blur(20px);
-      margin-bottom: 60px;
+      padding: 16px;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 var(--border-highlight);
+      backdrop-filter: blur(24px);
+      margin-bottom: 80px;
       text-align: left;
     }
 
-    .prompt-input-wrapper {
+    .prompt-bar {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 12px 18px;
-      background: rgba(15, 23, 42, 0.8);
+      gap: 16px;
+      padding: 14px 22px;
+      background: rgba(5, 6, 8, 0.7);
       border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid var(--border-slate);
+    }
+
+    .prompt-icon {
+      color: #c084fc;
+      font-size: 22px;
     }
 
     .prompt-input {
@@ -193,185 +280,406 @@
 
     .prompt-chips {
       display: flex;
-      gap: 10px;
-      margin-top: 14px;
-      padding: 0 8px;
+      gap: 12px;
+      margin-top: 16px;
+      padding: 0 6px;
       flex-wrap: wrap;
     }
 
     .chip {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--card-border);
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 13px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-slate);
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
       color: var(--text-muted);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.25s var(--ease-out);
     }
 
-    .chip:hover {
+    .chip:hover, .chip.active {
       border-color: var(--accent-violet);
       color: #fff;
-      background: rgba(139, 92, 246, 0.15);
+      background: rgba(139, 92, 246, 0.12);
+      transform: translateY(-1px);
     }
 
-    /* Interactive Showcase Frame (Replit / Lovable Style) */
-    .showcase-frame {
-      background: #090d16;
-      border: 1px solid var(--card-border);
+    /* Interactive Showcase Frame (Studio Canvas) */
+    .studio-frame {
+      background: #090c15;
+      border: 1px solid var(--border-slate);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
-      margin-bottom: 100px;
+      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9), inset 0 1px 0 var(--border-highlight);
+      margin-bottom: 120px;
     }
 
-    .frame-titlebar {
-      height: 48px;
-      background: rgba(15, 23, 42, 0.9);
-      border-bottom: 1px solid var(--card-border);
+    .titlebar {
+      height: 54px;
+      background: rgba(13, 17, 26, 0.95);
+      border-bottom: 1px solid var(--border-slate);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 24px;
     }
 
-    .dots {
+    .window-controls {
       display: flex;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .dot {
-      width: 12px;
-      height: 12px;
+    .control-dot {
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
     }
 
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
+    .dot-close { background: #ef4444; }
+    .dot-min { background: #f59e0b; }
+    .dot-max { background: #10b981; }
 
-    .tabs {
+    .view-tabs {
       display: flex;
       gap: 8px;
+      background: rgba(5, 6, 8, 0.6);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-slate);
     }
 
-    .tab {
+    .tab-btn {
       padding: 6px 16px;
-      border-radius: var(--radius-sm);
+      border-radius: 6px;
       font-size: 13px;
+      font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
+      border: none;
+      background: transparent;
       transition: all 0.2s;
     }
 
-    .tab.active {
-      background: rgba(255,255,255,0.08);
+    .tab-btn.active {
+      background: var(--accent-violet);
       color: #fff;
-      font-weight: 600;
     }
 
-    .grid-2 {
+    .telemetry-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .demo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 32px;
-      padding: 40px;
+      padding: 44px;
     }
 
-    .showcase-card {
-      background: var(--panel-dark);
-      border: 1px solid var(--card-border);
+    .app-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-slate);
       border-radius: var(--radius-md);
-      padding: 32px;
+      padding: 36px;
       text-align: left;
-      transition: all 0.3s;
+      transition: all 0.35s var(--ease-out);
+      position: relative;
+      overflow: hidden;
     }
 
-    .showcase-card:hover {
+    .app-card:hover {
+      background: var(--surface-card-hover);
       border-color: var(--accent-violet);
       transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.15);
+    }
+
+    .app-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 16px;
+    }
+
+    .tag-medical { background: rgba(139, 92, 246, 0.12); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.3); }
+    .tag-interior { background: rgba(6, 182, 212, 0.12); color: #67e8f9; border: 1px solid rgba(6, 182, 212, 0.3); }
+
+    .app-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .app-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    /* Architectural Value Matrix */
+    .specs-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-slate);
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 18px;
+      max-width: 680px;
+      margin: 0 auto 60px;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .spec-box {
+      background: var(--surface-card);
+      border: 1px solid var(--border-slate);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .spec-box:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-2px);
+    }
+
+    .spec-icon {
+      font-size: 32px;
+      margin-bottom: 18px;
+    }
+
+    .spec-box h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .spec-box p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-slate);
+      padding: 48px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 14px;
     }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 40px; }
-      .grid-2 { grid-template-columns: 1fr; }
+      .demo-grid, .specs-grid { grid-template-columns: 1fr; }
+      .hero { padding: 60px 0 40px; }
+      .hero h1 { font-size: 2.8rem; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <nav>
-      <div class="brand">
-        <div class="brand-badge">✦</div>
-        OmniViral AI Studio
-      </div>
-      <ul class="nav-links">
-        <li><a href="#showcase">Live Demos</a></li>
-        <li><a href="#features">Architecture</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-      </ul>
-      <a href="https://wa.me/916265048497?text=Hi%20Alok,%20I%20want%20the%20Lovable%20style%20website" class="btn btn-violet">Launch Project 🚀</a>
-    </nav>
+  <!-- Ambient Stripe Mesh Canvas -->
+  <div class="ambient-canvas">
+    <div class="mesh-glow-1"></div>
+    <div class="mesh-glow-2"></div>
+  </div>
 
-    <!-- Hero -->
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="brand">
+          <div class="brand-icon">✦</div>
+          <span class="brand-text">OmniViral AI Studio</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#studio">Live Applications</a></li>
+          <li><a href="#specs">100-Year Architecture</a></li>
+          <li><a href="#guarantee">Value Matrix</a></li>
+        </ul>
+
+        <a href="https://wa.me/916265048497?text=Hi%20Alok,%20I%20want%20to%20build%20a%20100-Year%20Master%20Web%20Application" class="btn btn-primary">
+          <span>Launch Project 🚀</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-badge">✨ Lovable & Replit Architectural Standard</div>
-      <h1>Build High-Ticket Web Apps <span>In Seconds</span></h1>
-      <p>Autonomous AI web application studio generating 24/7 appointment portals, 3D cost calculators, and instant WhatsApp CRM systems.</p>
+      <div class="hero-badge">
+        <div class="pulse-dot"></div>
+        <span>Apple & Stripe 100-Year Architectural Standard</span>
+      </div>
 
-      <!-- Lovable Style Prompt Input Bar -->
-      <div class="prompt-container">
-        <div class="prompt-input-wrapper">
-          <span style="color: #c084fc; font-size: 20px;">✦</span>
-          <input type="text" id="userPrompt" class="prompt-input" value="Create a high-converting 24/7 appointment booking web app for Dr. Shrivastava Dental Clinic in Bhopal..." readonly>
-          <a href="demo_clinic.html" target="_blank" class="btn btn-violet" style="padding: 10px 20px; font-size: 13px;">Generate App ⚡</a>
+      <h1>Architecting High-Ticket Web Apps <span>With 10x Value</span></h1>
+      <p>Autonomous AI web studio generating 24/7 interactive booking engines, turnkey 3D budget calculators, and automated WhatsApp CRM portals for luxury local businesses.</p>
+
+      <!-- Prompt-Enhancer Interactive Studio Bar -->
+      <div class="prompt-studio">
+        <div class="prompt-bar">
+          <span class="prompt-icon">✦</span>
+          <input type="text" id="studioPrompt" class="prompt-input" value="Build a high-converting 24/7 appointment & treatment estimator portal for Dr. Shrivastava Dental Clinic..." readonly>
+          <a href="demo_clinic.html" id="launchBtn" target="_blank" class="btn btn-primary" style="padding: 10px 22px; font-size: 14px;">Launch App ⚡</a>
         </div>
+
         <div class="prompt-chips">
-          <div class="chip" onclick="setPrompt('Dental & Doctor Clinic Portal with WhatsApp Slot Booker')">✦ Dental Clinic Booker</div>
-          <div class="chip" onclick="setPrompt('Luxury Interior Architecture 3D Budget Estimator')">✦ 3D Interior Calculator</div>
-          <div class="chip" onclick="setPrompt('Luxury Salon VIP Package Booking Studio')">✦ Salon Package Studio</div>
+          <div class="chip active" onclick="updatePrompt('Dental & Healthcare Clinic 24/7 Slot Booker', 'demo_clinic.html', this)">✦ Dental Clinic Booker</div>
+          <div class="chip" onclick="updatePrompt('Luxury Interior Architecture 3D Turnkey Budget Estimator', 'demo_interior.html', this)">✦ 3D Interior Calculator</div>
+          <div class="chip" onclick="updatePrompt('Vanguard VIP Salon Booking & Treatment Portal', 'demo_clinic.html', this)">✦ VIP Salon Studio</div>
         </div>
       </div>
     </section>
 
-    <!-- Showcase Frame -->
-    <div class="showcase-frame" id="showcase">
-      <div class="frame-titlebar">
-        <div class="dots">
-          <div class="dot dot-red"></div>
-          <div class="dot dot-yellow"></div>
-          <div class="dot dot-green"></div>
-        </div>
-        <div class="tabs">
-          <div class="tab active">Interactive Canvas</div>
-          <div class="tab">Prompt Specs</div>
-          <div class="tab">WhatsApp API</div>
-        </div>
-        <span style="font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">https://omniviral-ai.app</span>
-      </div>
-
-      <div class="grid-2">
-        <div class="showcase-card">
-          <div style="font-size: 12px; font-weight: 700; color: #c084fc; text-transform: uppercase; margin-bottom: 8px;">Healthcare & Medical</div>
-          <h3 style="font-size: 24px; margin-bottom: 12px;">Shrivastava Dental Care & Implant Portal</h3>
-          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Features 24/7 instant slot booking with automated WhatsApp confirmation and interactive treatment price calculator.</p>
-          <a href="demo_clinic.html" target="_blank" class="btn btn-violet" style="width: 100%;">Open Full Application Canvas 🚀</a>
+    <!-- Studio Application Showcase Frame -->
+    <section class="studio-frame" id="studio">
+      <div class="titlebar">
+        <div class="window-controls">
+          <div class="control-dot dot-close"></div>
+          <div class="control-dot dot-min"></div>
+          <div class="control-dot dot-max"></div>
         </div>
 
-        <div class="showcase-card">
-          <div style="font-size: 12px; font-weight: 700; color: #06b6d4; text-transform: uppercase; margin-bottom: 8px;">Architecture & Turnkey</div>
-          <h3 style="font-size: 24px; margin-bottom: 12px;">Art Link Luxury Interior Architecture Studio</h3>
-          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Features an interactive 2BHK/3BHK/Villa 3D home interior budget calculator and automated VR consultation scheduler.</p>
-          <a href="demo_interior.html" target="_blank" class="btn btn-violet" style="width: 100%;">Open Full Application Canvas 🚀</a>
+        <div class="view-tabs">
+          <button class="tab-btn active" onclick="switchView('canvas')">✨ Live Render Canvas</button>
+          <button class="tab-btn" onclick="switchView('code')">⚡ Design Tokens & Code</button>
+        </div>
+
+        <div class="telemetry-tag">
+          <span class="pulse-dot"></span>
+          <span>Engine Speed: 12ms | Google 4.9★ Verified</span>
         </div>
       </div>
+
+      <!-- Live Canvas Mode -->
+      <div id="canvasView" class="demo-grid">
+        <div class="app-card">
+          <div class="app-tag tag-medical">Healthcare & Medical</div>
+          <h3>Dr. Shrivastava Dental Clinic & Implant Portal</h3>
+          <p>Features 24/7 instant slot booking with automated WhatsApp confirmation, interactive treatment price breakdown, and before/after smile transformation slider.</p>
+          <a href="demo_clinic.html" target="_blank" class="btn btn-primary" style="width: 100%;">Open Full Application Canvas 🚀</a>
+        </div>
+
+        <div class="app-card">
+          <div class="app-tag tag-interior">Architecture & Turnkey</div>
+          <h3>Art Link Luxury Interior Architecture Studio</h3>
+          <p>Features an interactive 2BHK / 3BHK / Villa 3D home interior budget calculator, modular style selector (Italian Luxury vs Modern Glass), and instant quote generator.</p>
+          <a href="demo_interior.html" target="_blank" class="btn btn-primary" style="width: 100%;">Open Full Application Canvas 🚀</a>
+        </div>
+      </div>
+
+      <!-- Code Inspector Mode (Hidden by default) -->
+      <div id="codeView" style="display: none; padding: 40px; background: #050608;">
+        <pre style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #a7f3d0; line-height: 1.7; overflow-x: auto;">
+/* ── Apple & Stripe 100-Year Architectural Design Tokens ── */
+:root {
+  --bg-obsidian: #050608;
+  --surface-panel: rgba(13, 17, 26, 0.75);
+  --border-slate: rgba(255, 255, 255, 0.08);
+  --accent-violet: #8b5cf6;
+  --accent-cyan: #06b6d4;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --body-size-discrete: 17px; /* Apple Non-Fluid Body Standard */
+}
+
+/* 1-Click WhatsApp CRM Trigger Handler */
+function dispatchWhatsAppBooking(clientName, service, estimate) {
+  const payload = `Hi Dr. Shrivastava, I want to book ${service} (Est: ₹${estimate})...`;
+  window.open(`https://wa.me/916265048497?text=${encodeURIComponent(payload)}`, '_blank');
+}
+        </pre>
+      </div>
+    </section>
+
+    <!-- Specs Section -->
+    <section class="specs-section" id="specs">
+      <h2 class="section-title">The 100-Year Architectural Matrix</h2>
+      <p class="section-sub">Why these web applications deliver ₹15,000+ perceived value for local businesses at competitive pricing.</p>
+
+      <div class="specs-grid">
+        <div class="spec-box">
+          <div class="spec-icon">🍏</div>
+          <h4>Apple Typography Scale</h4>
+          <p>Fluid display headings paired with fixed 17px discrete body scale to ensure zero visual fatigue and extreme readability across all devices.</p>
+        </div>
+
+        <div class="spec-box">
+          <div class="spec-icon">💳</div>
+          <h4>Stripe WebGL Glows</h4>
+          <p>Ambient dual-radial gradient mesh canvas layers with translucent glassmorphic borders and inset highlight reflections.</p>
+        </div>
+
+        <div class="spec-box">
+          <div class="spec-icon">💬</div>
+          <h4>WhatsApp 1-Click CRM</h4>
+          <p>Eliminates slow email contact forms by routing customer booking leads straight to business WhatsApp with pre-filled quotes.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 OmniViral AI Studio — Built to 100-Year Apple & Stripe Luxury Architectural Standards.</p>
     </div>
-  </div>
+  </footer>
 
   <script>
-    function setPrompt(txt) {
-      document.getElementById('userPrompt').value = 'Create a high-converting web app for ' + txt + '...';
+    function updatePrompt(txt, url, el) {
+      document.getElementById('studioPrompt').value = 'Build a high-converting web app for ' + txt + '...';
+      document.getElementById('launchBtn').href = url;
+      
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      el.classList.classList ? el.classList.add('active') : el.className += ' active';
+    }
+
+    function switchView(view) {
+      const canvasView = document.getElementById('canvasView');
+      const codeView = document.getElementById('codeView');
+      const tabBtns = document.querySelectorAll('.tab-btn');
+
+      if (view === 'canvas') {
+        canvasView.style.display = 'grid';
+        codeView.style.display = 'none';
+        tabBtns[0].classList.add('active');
+        tabBtns[1].classList.remove('active');
+      } else {
+        canvasView.style.display = 'none';
+        codeView.style.display = 'block';
+        tabBtns[0].classList.remove('active');
+        tabBtns[1].classList.add('active');
+      }
     }
   </script>
 </body>

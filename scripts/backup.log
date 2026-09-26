@@ -1,0 +1,17 @@
+The system cannot find the path specified.
+======================================================================
+Traceback (most recent call last):
+  File "C:\Users\aalok\omniviral-ai\scripts\backup_manager.py", line 403, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\aalok\omniviral-ai\scripts\backup_manager.py", line 391, in main
+    local_zip, file_count, zip_mb = create_master_archive(drive_target)
+                                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\aalok\omniviral-ai\scripts\backup_manager.py", line 117, in create_master_archive
+    print(f"\U0001f4e6 CREATING COMPREHENSIVE MASTER ARCHIVE: {zip_filename}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aalok\AppData\Local\hermes\tools\python-3.14.7+20260901-win32-x64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e6' in position 0: character maps to <undefined>
+^C
