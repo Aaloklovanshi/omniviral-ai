@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shrivastava Dental Care & Implant Center | Medical Portal</title>
+  <title>Shrivastava Dental Care & Implant Center | Ultra-Luxury Medical Studio</title>
   <!-- Google Fonts: Inter & JetBrains Mono -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #070809;
-      --panel-dark: rgba(15, 16, 20, 0.85);
-      --card-bg: rgba(255, 255, 255, 0.03);
+      --bg-dark: #090a0f;
+      --surface-dark: #0f111a;
+      --card-bg: rgba(255, 255, 255, 0.025);
       --card-border: rgba(255, 255, 255, 0.08);
-      --accent-cyan: #00f2fe;
-      --accent-blue: #4facfe;
-      --accent-indigo: #6366f1;
+      --card-border-glow: rgba(59, 130, 246, 0.4);
+      --accent-cyan: #38bdf8;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --accent-emerald: #10b981;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --radius-sm: 8px;
@@ -33,48 +35,82 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 65%, rgba(99, 102, 241, 0.08) 0%, transparent 40%);
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent),
+        radial-gradient(ellipse 60% 50% at 100% 80%, rgba(139, 92, 246, 0.1), transparent);
     }
 
-    .announcement-bar {
-      background: linear-gradient(90deg, rgba(0, 242, 254, 0.12), rgba(99, 102, 241, 0.12));
+    .studio-bar {
+      background: rgba(15, 17, 26, 0.85);
       border-bottom: 1px solid var(--card-border);
-      text-align: center;
-      padding: 10px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--accent-cyan);
+      padding: 10px 24px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      backdrop-filter: blur(10px);
+      font-size: 13px;
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .pulse-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-cyan);
+      font-weight: 600;
     }
 
     .pulse-dot {
       width: 8px;
       height: 8px;
-      background-color: #10b981;
+      background-color: var(--accent-emerald);
       border-radius: 50%;
-      box-shadow: 0 0 10px #10b981;
-      animation: pulse 2s infinite;
+      box-shadow: 0 0 12px var(--accent-emerald);
+      animation: pulse 1.8s infinite;
     }
 
     @keyframes pulse {
       0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
+      50% { opacity: 0.3; transform: scale(1.4); }
       100% { opacity: 1; transform: scale(1); }
     }
 
+    .view-toggle {
+      display: flex;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 4px;
+    }
+
+    .view-toggle button {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .view-toggle button.active {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+    }
+
     .container {
-      max-width: 1240px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
     nav {
-      height: 84px;
+      height: 88px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -84,27 +120,27 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 20px;
+      gap: 14px;
+      font-size: 22px;
       font-weight: 800;
-      letter-spacing: -0.6px;
+      letter-spacing: -0.8px;
     }
 
-    .brand-logo {
-      width: 42px;
-      height: 42px;
+    .brand-icon {
+      width: 44px;
+      height: 44px;
       border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+      font-size: 24px;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 32px;
       list-style: none;
     }
 
@@ -113,19 +149,17 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
-      transition: all 0.2s;
+      transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--text-main);
-    }
+    .nav-links a:hover { color: var(--text-main); }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 12px 24px;
+      padding: 12px 26px;
       border-radius: var(--radius-sm);
       font-size: 14px;
       font-weight: 600;
@@ -135,22 +169,23 @@
       border: 1px solid transparent;
     }
 
-    .btn-cyan {
+    .btn-gradient {
       background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-      color: #070809;
-      box-shadow: 0 4px 25px rgba(0, 242, 254, 0.3);
+      color: #000;
+      font-weight: 700;
+      box-shadow: 0 4px 25px rgba(56, 189, 248, 0.35);
     }
 
-    .btn-cyan:hover {
+    .btn-gradient:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 35px rgba(0, 242, 254, 0.5);
+      box-shadow: 0 8px 35px rgba(56, 189, 248, 0.55);
     }
 
     .hero {
       padding: 90px 0 70px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
       align-items: center;
     }
 
@@ -160,8 +195,8 @@
       gap: 8px;
       padding: 6px 16px;
       border-radius: 999px;
-      background: rgba(0, 242, 254, 0.08);
-      border: 1px solid rgba(0, 242, 254, 0.25);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
       color: var(--accent-cyan);
       font-size: 13px;
       font-weight: 600;
@@ -169,45 +204,50 @@
     }
 
     .hero h1 {
-      font-size: 52px;
+      font-size: 56px;
       line-height: 1.08;
-      letter-spacing: -1.8px;
+      letter-spacing: -2px;
       margin-bottom: 24px;
+      font-weight: 900;
     }
 
     .hero h1 span {
-      background: linear-gradient(90deg, #00f2fe, #6366f1);
+      background: linear-gradient(90deg, #38bdf8, #8b5cf6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      font-size: 19px;
+      font-size: 20px;
       color: var(--text-muted);
       margin-bottom: 36px;
     }
 
-    .booking-card {
-      background: var(--panel-dark);
+    /* Studio Card */
+    .studio-card {
+      background: var(--surface-dark);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
       padding: 36px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.7);
       position: relative;
+      transition: border-color 0.3s;
     }
 
-    .booking-card::before {
+    .studio-card:hover {
+      border-color: var(--card-border-glow);
+    }
+
+    .studio-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo));
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
 
-    .form-group {
-      margin-bottom: 18px;
-    }
+    .form-group { margin-bottom: 18px; }
 
     .form-group label {
       display: block;
@@ -222,7 +262,7 @@
     .form-control {
       width: 100%;
       padding: 14px 16px;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.035);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-sm);
       color: var(--text-main);
@@ -234,7 +274,7 @@
     .form-control:focus {
       outline: none;
       border-color: var(--accent-cyan);
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
     }
 
     .form-row {
@@ -243,72 +283,66 @@
       gap: 16px;
     }
 
-    .transformation-box {
-      background: var(--panel-dark);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      margin: 80px 0;
-    }
-
-    .transformation-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .slider-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-md);
-      padding: 24px;
+    /* Interactive Comparison & Calculator */
+    .section-title {
       text-align: center;
+      margin: 90px 0 50px;
     }
 
-    .before-after-display {
-      height: 180px;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, rgba(0,242,254,0.1), rgba(99,102,241,0.1));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 56px;
-      margin-bottom: 16px;
-      border: 1px dashed var(--card-border);
+    .section-title h2 {
+      font-size: 40px;
+      letter-spacing: -1.2px;
+      margin-bottom: 12px;
     }
 
-    .calc-box {
-      background: var(--panel-dark);
+    .section-title p { color: var(--text-muted); font-size: 18px; }
+
+    .calc-container {
+      background: var(--surface-dark);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 40px;
+      padding: 44px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
     }
 
-    .calc-item {
+    .calc-option {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      padding: 20px;
+      padding: 22px;
       border-radius: var(--radius-md);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.2s;
+      transition: all 0.25s ease;
     }
 
-    .calc-item.active {
+    .calc-option.selected {
       border-color: var(--accent-cyan);
-      background: rgba(0, 242, 254, 0.08);
+      background: rgba(56, 189, 248, 0.08);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
     }
 
-    .total-price {
-      font-size: 48px;
-      font-weight: 700;
+    .calc-option:hover { border-color: rgba(255,255,255,0.2); }
+
+    .total-box {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .total-amount {
+      font-size: 52px;
+      font-weight: 800;
       color: var(--accent-cyan);
       font-family: 'JetBrains Mono', monospace;
       margin: 16px 0;
@@ -319,67 +353,74 @@
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
     }
 
     .modal-box {
-      background: var(--panel-dark);
+      background: var(--surface-dark);
       border: 1px solid var(--accent-cyan);
       border-radius: var(--radius-lg);
-      padding: 40px;
-      max-width: 500px;
+      padding: 44px;
+      max-width: 520px;
       width: 90%;
       text-align: center;
-      box-shadow: 0 0 60px rgba(0, 242, 254, 0.3);
+      box-shadow: 0 0 70px rgba(56, 189, 248, 0.35);
     }
 
     @media (max-width: 768px) {
-      .hero, .transformation-grid, .calc-box { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 38px; }
+      .hero, .calc-container { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 40px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="announcement-bar">
-    <div class="pulse-dot"></div>
-    <span><strong>Dr. Shrivastava is LIVE</strong> — 3 Slots Remaining For Today in Arera Colony Clinic</span>
+  <!-- Studio Header -->
+  <div class="studio-bar">
+    <div class="pulse-indicator">
+      <div class="pulse-dot"></div>
+      <span>Lovable AI Studio Engine v4.2 • Live Preview</span>
+    </div>
+    <div class="view-toggle">
+      <button class="active" onclick="switchView('patient')">✨ Patient Portal</button>
+      <button onclick="switchView('code')">⚡ AI Code View</button>
+    </div>
   </div>
 
   <div class="container">
     <nav>
       <div class="brand">
-        <div class="brand-logo">🦷</div>
+        <div class="brand-icon">🦷</div>
         Shrivastava Dental Care
       </div>
       <ul class="nav-links">
-        <li><a href="#transformations">Transformations</a></li>
-        <li><a href="#calculator">Price Calculator</a></li>
+        <li><a href="#transformations">Before & After</a></li>
+        <li><a href="#calculator">Price Estimator</a></li>
         <li><a href="#booking">Book Slot</a></li>
       </ul>
-      <a href="#booking" class="btn btn-cyan">Book Appointment ⚡</a>
+      <a href="#booking" class="btn btn-gradient">Book Appointment ⚡</a>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
       <div>
-        <div class="hero-badge">✨ Rated 4.9/5.0 Stars (65+ Verified Google Reviews)</div>
-        <h1>Painless Dentistry <span>Engineered for Perfection</span></h1>
-        <p>Bhopal's #1 rated dental clinic for Swiss titanium implants, 3D laser teeth whitening, and invisible clear aligners.</p>
+        <div class="hero-badge">⭐ 4.9/5.0 Rating (65+ Verified Google Reviews) • Bhopal</div>
+        <h1>World-Class Dental Care <span>Pain-Free & Precision</span></h1>
+        <p>Experience Bhopal's highest-rated medical clinic for Swiss titanium implants, 3D laser teeth whitening, and invisible clear aligners.</p>
 
-        <div style="display: flex; gap: 24px; align-items: center;">
-          <div style="display: flex; gap: 4px; color: #ffb800; font-size: 22px;">★★★★★</div>
-          <span style="color: var(--text-muted); font-size: 14px;"><strong>2,500+</strong> Happy Patients in Bhopal</span>
+        <div style="display: flex; gap: 16px; align-items: center; background: rgba(255,255,255,0.03); padding: 14px 20px; border-radius: var(--radius-md); border: 1px solid var(--card-border); max-width: fit-content;">
+          <div style="color: #ffb800; font-size: 20px;">★★★★★</div>
+          <span style="font-size: 14px; color: var(--text-muted);">Trusted by <strong>2,500+</strong> Patients in Arera Colony & MP Nagar</span>
         </div>
       </div>
 
-      <!-- Booking Card -->
-      <div class="booking-card" id="booking">
+      <!-- Studio Booking Card -->
+      <div class="studio-card" id="booking">
         <div style="margin-bottom: 24px;">
-          <h3 style="font-size: 22px; margin-bottom: 4px;">⚡ Instant 24/7 Slot Booker</h3>
+          <h3 style="font-size: 24px; margin-bottom: 4px;">⚡ Instant 24/7 Slot Booker</h3>
           <p style="font-size: 13px; color: var(--text-muted);">Direct confirmation dispatched straight to your WhatsApp</p>
         </div>
 
@@ -398,8 +439,8 @@
               <select id="treatmentType" class="form-control" required>
                 <option value="General Consultation">General Checkup (₹500)</option>
                 <option value="Laser Whitening">Laser Whitening (₹1,500)</option>
-                <option value="Swiss Implant">Dental Implant (₹18,000)</option>
-                <option value="Clear Aligners">Teeth Aligners (₹25,000)</option>
+                <option value="Swiss Implant">Swiss Titanium Implant (₹18,000)</option>
+                <option value="Clear Aligners">Invisible Aligners (₹25,000)</option>
               </select>
             </div>
           </div>
@@ -418,77 +459,50 @@
               </select>
             </div>
           </div>
-          <button type="submit" class="btn btn-cyan" style="width: 100%; padding: 16px; margin-top: 8px;">Lock In Instant Appointment 🚀</button>
+          <button type="submit" class="btn btn-gradient" style="width: 100%; padding: 16px; margin-top: 10px;">Lock In Instant Slot 🚀</button>
         </form>
       </div>
     </section>
 
-    <!-- Transformations -->
-    <section class="transformation-box" id="transformations">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="font-size: 36px; letter-spacing: -1px;">Smile Transformations</h2>
-        <p style="color: var(--text-muted);">Real patient results at our Arera Colony center</p>
-      </div>
-
-      <div class="transformation-grid">
-        <div class="slider-card">
-          <div class="before-after-display" id="smileDisplay">😁</div>
-          <strong style="font-size: 18px; display: block; margin-bottom: 8px;" id="smileTitle">Laser Teeth Whitening</strong>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">1-Session 6-Shade Brightening</p>
-          <button class="btn btn-cyan" onclick="toggleSmilePreview()" style="font-size: 12px; padding: 8px 16px;">Toggle Before / After Result 🔄</button>
-        </div>
-
-        <div>
-          <h3 style="font-size: 24px; margin-bottom: 16px;">Why Patients Choose Us:</h3>
-          <ul style="list-style: none; line-height: 2.2;">
-            <li>✨ <strong>100% Painless Micro-Laser Technology</strong></li>
-            <li>💎 <strong>Swiss-Grade Titanium Dental Implants</strong></li>
-            <li>📲 <strong>Instant WhatsApp Appointment Reminders</strong></li>
-            <li>📍 <strong>Prime Location: E8 Arera Colony, Bhopal</strong></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Calculator -->
+    <!-- Price Estimator -->
     <section id="calculator">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="font-size: 36px;">Treatment Cost Calculator</h2>
-        <p style="color: var(--text-muted);">Select procedures to calculate total investment</p>
+      <div class="section-title">
+        <h2>Transparent Treatment Estimator</h2>
+        <p>Select your required procedures to calculate estimated investment</p>
       </div>
 
-      <div class="calc-box">
+      <div class="calc-container">
         <div>
-          <div class="calc-item active" onclick="togglePrice(this, 1500)">
+          <div class="calc-option selected" onclick="toggleTreatment(this, 1500)">
             <div>
-              <strong>Laser Teeth Whitening</strong>
-              <div style="font-size: 12px; color: var(--text-muted);">Single Sitting Procedure</div>
+              <strong style="font-size: 16px;">Laser Teeth Whitening</strong>
+              <div style="font-size: 13px; color: var(--text-muted);">1-Session 6-Shade Instant Brightening</div>
             </div>
-            <span style="color: var(--accent-cyan); font-weight: 700;">₹1,500</span>
+            <span style="color: var(--accent-cyan); font-weight: 700; font-size: 18px;">₹1,500</span>
           </div>
 
-          <div class="calc-item" onclick="togglePrice(this, 4500)">
+          <div class="calc-option" onclick="toggleTreatment(this, 4500)">
             <div>
-              <strong>Single Sitting Root Canal (RCT)</strong>
-              <div style="font-size: 12px; color: var(--text-muted);">Micro-Endodontic Therapy</div>
+              <strong style="font-size: 16px;">Painless Root Canal (RCT)</strong>
+              <div style="font-size: 13px; color: var(--text-muted);">Single Sitting Micro-Endodontics</div>
             </div>
-            <span style="color: var(--accent-cyan); font-weight: 700;">₹4,500</span>
+            <span style="color: var(--accent-cyan); font-weight: 700; font-size: 18px;">₹4,500</span>
           </div>
 
-          <div class="calc-item" onclick="togglePrice(this, 18000)">
+          <div class="calc-option" onclick="toggleTreatment(this, 18000)">
             <div>
-              <strong>Swiss Titanium Implant</strong>
-              <div style="font-size: 12px; color: var(--text-muted);">Lifetime Warranty</div>
+              <strong style="font-size: 16px;">Swiss Titanium Implant</strong>
+              <div style="font-size: 13px; color: var(--text-muted);">Lifetime Warranty Swiss Precision</div>
             </div>
-            <span style="color: var(--accent-cyan); font-weight: 700;">₹18,000</span>
+            <span style="color: var(--accent-cyan); font-weight: 700; font-size: 18px;">₹18,000</span>
           </div>
         </div>
 
-        <div style="text-align: center; display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02); padding: 32px; border-radius: var(--radius-md); border: 1px solid var(--card-border);">
-          <span style="font-size: 13px; color: var(--text-muted); text-transform: uppercase;">Total Estimated Cost</span>
-          <div class="total-price" id="calcTotal">₹1,500</div>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">Includes Free 3D Scan & Digital Consultation</p>
-          <a href="#booking" class="btn btn-cyan">Lock In Estimate & Book Slot</a>
+        <div class="total-box">
+          <span style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Total Calculated Investment</span>
+          <div class="total-amount" id="calcTotal">₹1,500</div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">Includes 1 Year Free Follow-up & 3D Digital Scan</p>
+          <a href="#booking" class="btn btn-gradient">Lock In Estimate & Book Slot</a>
         </div>
       </div>
     </section>
@@ -497,40 +511,22 @@
   <!-- Modal -->
   <div class="modal-overlay" id="confirmModal">
     <div class="modal-box">
-      <div style="font-size: 56px; margin-bottom: 16px;">🎉</div>
-      <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">Appointment Confirmed!</h3>
-      <p id="modalMsg" style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;"></p>
-      <div style="background: rgba(0, 242, 254, 0.1); border: 1px solid var(--accent-cyan); padding: 14px; border-radius: 8px; font-size: 13px; color: var(--accent-cyan); margin-bottom: 24px;">
-        📲 Confirmation details dispatched to your WhatsApp number!
+      <div style="font-size: 60px; margin-bottom: 16px;">🎉</div>
+      <h3 style="color: var(--accent-cyan); font-size: 26px; margin-bottom: 12px;">Appointment Locked!</h3>
+      <p id="modalMsg" style="color: var(--text-muted); font-size: 15px; margin-bottom: 24px;"></p>
+      <div style="background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent-cyan); padding: 16px; border-radius: var(--radius-sm); font-size: 14px; color: var(--accent-cyan); margin-bottom: 24px;">
+        📲 Instant confirmation dispatched to your WhatsApp number!
       </div>
-      <button class="btn btn-cyan" onclick="closeModal()" style="width: 100%;">Return to Portal</button>
+      <button class="btn btn-gradient" onclick="closeModal()" style="width: 100%;">Return to Studio</button>
     </div>
   </div>
 
   <script>
-    let isAfter = true;
-    function toggleSmilePreview() {
-      const display = document.getElementById('smileDisplay');
-      const title = document.getElementById('smileTitle');
-      if(isAfter) {
-        display.innerText = '😬';
-        title.innerText = 'Before Treatment (Stained / Misaligned)';
-        isAfter = false;
-      } else {
-        display.innerText = '😁';
-        title.innerText = 'After Treatment (3D Whitened & Aligned)';
-        isAfter = true;
-      }
-    }
-
     let calcTotal = 1500;
-    function togglePrice(el, price) {
-      el.classList.toggle('active');
-      if(el.classList.contains('active')) {
-        calcTotal += price;
-      } else {
-        calcTotal -= price;
-      }
+    function toggleTreatment(el, price) {
+      el.classList.toggle('selected');
+      if(el.classList.contains('selected')) calcTotal += price;
+      else calcTotal -= price;
       if(calcTotal < 0) calcTotal = 0;
       document.getElementById('calcTotal').innerText = '₹' + calcTotal.toLocaleString('en-IN');
     }
@@ -542,12 +538,16 @@
       const date = document.getElementById('bookDate').value;
       const time = document.getElementById('bookTime').value;
 
-      document.getElementById('modalMsg').innerText = `Thank you ${name}! Your slot for ${treatment} is confirmed on ${date} at ${time}.`;
+      document.getElementById('modalMsg').innerText = `Thank you ${name}! Your slot for ${treatment} is scheduled on ${date} at ${time}.`;
       document.getElementById('confirmModal').style.display = 'flex';
     }
 
-    function closeModal() {
-      document.getElementById('confirmModal').style.display = 'none';
+    function closeModal() { document.getElementById('confirmModal').style.display = 'none'; }
+
+    function switchView(mode) {
+      if(mode === 'code') {
+        alert('Lovable AI Code Engine: Replit React Component view active (HTML5/Tailwind v3.4 compiled)');
+      }
     }
 
     const tomorrow = new Date();
