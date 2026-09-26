@@ -3,30 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniViral AI | High-Converting Business Web Application & Automation Studio</title>
-  <!-- Google Fonts: Inter & JetBrains Mono -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>OmniViral AI | Next-Gen AI Web App & Automation Platform</title>
+  <!-- Google Fonts: Inter & Geist Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #08090a;
-      --panel-dark: #0f1011;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --accent-indigo: #5e6ad2;
-      --accent-violet: #7170ff;
-      --accent-cyan: #00f2fe;
-      --text-main: #f7f8f8;
-      --text-muted: #8a8f98;
-      --radius-sm: 6px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
+      --bg-dark: #030712;
+      --panel-dark: rgba(15, 23, 42, 0.6);
+      --card-bg: rgba(30, 41, 59, 0.4);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --accent-violet: #8b5cf6;
+      --accent-indigo: #6366f1;
+      --accent-cyan: #06b6d4;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -35,17 +31,19 @@
       line-height: 1.6;
       font-feature-settings: "cv01", "ss03";
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120, 119, 198, 0.18), rgba(255, 255, 255, 0));
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* Navbar */
     nav {
-      height: 80px;
+      height: 88px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -53,28 +51,29 @@
     }
 
     .brand {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
     }
 
-    .brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 20px;
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
     }
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 32px;
       list-style: none;
     }
 
@@ -83,7 +82,7 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
-      transition: color 0.2s;
+      transition: all 0.2s;
     }
 
     .nav-links a:hover {
@@ -94,43 +93,34 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: var(--radius-sm);
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 999px;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       border: 1px solid transparent;
     }
 
-    .btn-primary {
-      background: var(--accent-indigo);
+    .btn-violet {
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-indigo));
       color: #fff;
-      box-shadow: 0 4px 20px rgba(94, 106, 210, 0.3);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .btn-primary:hover {
-      background: var(--accent-violet);
-      transform: translateY(-1px);
+    .btn-violet:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
     }
 
-    .btn-ghost {
-      background: var(--card-bg);
-      border-color: var(--card-border);
-      color: var(--text-main);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.06);
-    }
-
-    /* Hero */
+    /* Lovable Style Hero */
     .hero {
-      padding: 100px 0 60px;
+      padding: 110px 0 70px;
       text-align: center;
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
@@ -138,25 +128,27 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
+      padding: 8px 18px;
       border-radius: 999px;
-      background: rgba(113, 112, 255, 0.1);
-      border: 1px solid rgba(113, 112, 255, 0.3);
-      color: var(--accent-violet);
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: #c084fc;
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      backdrop-filter: blur(12px);
     }
 
     .hero h1 {
-      font-size: 56px;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
+      font-size: 64px;
+      line-height: 1.05;
+      letter-spacing: -2px;
       margin-bottom: 24px;
+      font-weight: 900;
     }
 
     .hero h1 span {
-      background: linear-gradient(90deg, #7170ff, #00f2fe);
+      background: linear-gradient(135deg, #ffffff 30%, #c084fc 70%, #06b6d4 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -164,114 +156,145 @@
     .hero p {
       font-size: 20px;
       color: var(--text-muted);
-      margin-bottom: 40px;
+      margin-bottom: 44px;
     }
 
-    /* Showcase Demos Section */
-    .section-title {
-      text-align: center;
-      margin: 80px 0 40px;
-    }
-
-    .section-title h2 {
-      font-size: 36px;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 16px;
-    }
-
-    .demo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-bottom: 80px;
-    }
-
-    .demo-card {
+    /* Lovable Prompt Input Bar */
+    .prompt-container {
       background: var(--panel-dark);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 32px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      padding: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(139, 92, 246, 0.15);
+      backdrop-filter: blur(20px);
+      margin-bottom: 60px;
+      text-align: left;
     }
 
-    .demo-card:hover {
-      border-color: var(--accent-violet);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
-
-    .demo-tag {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent-cyan);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-
-    .demo-card h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-
-    .demo-card p {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 24px;
-    }
-
-    .feature-list {
-      list-style: none;
-      margin-bottom: 24px;
-    }
-
-    .feature-list li {
-      font-size: 13px;
-      color: var(--text-main);
-      margin-bottom: 8px;
+    .prompt-input-wrapper {
       display: flex;
       align-items: center;
+      gap: 14px;
+      padding: 12px 18px;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .prompt-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 16px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .prompt-chips {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 0 8px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .chip:hover {
+      border-color: var(--accent-violet);
+      color: #fff;
+      background: rgba(139, 92, 246, 0.15);
+    }
+
+    /* Interactive Showcase Frame (Replit / Lovable Style) */
+    .showcase-frame {
+      background: #090d16;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+      margin-bottom: 100px;
+    }
+
+    .frame-titlebar {
+      height: 48px;
+      background: rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .dots {
+      display: flex;
       gap: 8px;
     }
 
-    .feature-list li::before {
-      content: '✓';
-      color: var(--accent-cyan);
-      font-weight: bold;
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
     }
 
-    /* Pricing & Value Box */
-    .pricing-box {
-      background: linear-gradient(135deg, rgba(94, 106, 210, 0.1), rgba(0, 242, 254, 0.05));
-      border: 1px solid rgba(94, 106, 210, 0.3);
-      border-radius: var(--radius-lg);
-      padding: 48px;
-      text-align: center;
-      margin-bottom: 80px;
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
     }
 
-    .price-tag {
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      font-family: 'JetBrains Mono', monospace;
-      margin: 16px 0;
+    .tab {
+      padding: 6px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab.active {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 40px;
+    }
+
+    .showcase-card {
+      background: var(--panel-dark);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      text-align: left;
+      transition: all 0.3s;
+    }
+
+    .showcase-card:hover {
+      border-color: var(--accent-violet);
+      transform: translateY(-4px);
     }
 
     @media (max-width: 768px) {
-      .demo-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 {
-        font-size: 38px;
-      }
+      .hero h1 { font-size: 40px; }
+      .grid-2 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -280,80 +303,76 @@
   <div class="container">
     <nav>
       <div class="brand">
-        <div class="brand-icon">⚡</div>
+        <div class="brand-badge">✦</div>
         OmniViral AI Studio
       </div>
       <ul class="nav-links">
-        <li><a href="#demos">Interactive Demos</a></li>
-        <li><a href="#value">Value Calculator</a></li>
+        <li><a href="#showcase">Live Demos</a></li>
+        <li><a href="#features">Architecture</a></li>
         <li><a href="#pricing">Pricing</a></li>
       </ul>
-      <a href="https://wa.me/916265048497?text=Hi%20Alok,%20I%20want%20to%20order%20a%20website" class="btn btn-primary">Connect on WhatsApp 📲</a>
+      <a href="https://wa.me/916265048497?text=Hi%20Alok,%20I%20want%20the%20Lovable%20style%20website" class="btn btn-violet">Launch Project 🚀</a>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
-      <div class="hero-badge">🚀 High-Converting Business Web Applications</div>
-      <h1>We Build Websites That <span>Automate & Scale</span> Your Revenue</h1>
-      <p>Not just static pages — we engineer high-performance web applications equipped with 24/7 instant slot booking, live price calculators, and direct WhatsApp CRM integration.</p>
+      <div class="hero-badge">✨ Lovable & Replit Architectural Standard</div>
+      <h1>Build High-Ticket Web Apps <span>In Seconds</span></h1>
+      <p>Autonomous AI web application studio generating 24/7 appointment portals, 3D cost calculators, and instant WhatsApp CRM systems.</p>
 
-      <div style="display: flex; gap: 16px; justify-content: center;">
-        <a href="#demos" class="btn btn-primary" style="padding: 14px 28px;">Explore Live Interactive Demos ⚡</a>
-        <a href="freebie.html" class="btn btn-ghost" style="padding: 14px 28px;">Download Free Hook Vault 🎁</a>
-      </div>
-    </section>
-
-    <!-- Demos -->
-    <section id="demos">
-      <div class="section-title">
-        <h2>Live Interactive Business Demos</h2>
-        <p>Test real working interactive features built for high-ticket local businesses</p>
-      </div>
-
-      <div class="demo-grid">
-        <!-- Demo 1: Doctor / Dental Clinic -->
-        <div class="demo-card">
-          <div class="demo-tag">Healthcare & Dental Clinics</div>
-          <h3>Shrivastava Dental Care & Implant Portal</h3>
-          <p>Equipped with 24/7 instant appointment slot booking and an interactive patient treatment cost estimator.</p>
-
-          <ul class="feature-list">
-            <li>Instant Patient Appointment Slot Booking (Direct WhatsApp Alert)</li>
-            <li>Interactive Treatment & Surgery Cost Estimator Tool</li>
-            <li>4.9★ Google Review Telemetry Showcase</li>
-          </ul>
-
-          <a href="demo_clinic.html" target="_blank" class="btn btn-primary" style="width: 100%;">Launch Interactive Clinic Demo 🚀</a>
+      <!-- Lovable Style Prompt Input Bar -->
+      <div class="prompt-container">
+        <div class="prompt-input-wrapper">
+          <span style="color: #c084fc; font-size: 20px;">✦</span>
+          <input type="text" id="userPrompt" class="prompt-input" value="Create a high-converting 24/7 appointment booking web app for Dr. Shrivastava Dental Clinic in Bhopal..." readonly>
+          <a href="demo_clinic.html" target="_blank" class="btn btn-violet" style="padding: 10px 20px; font-size: 13px;">Generate App ⚡</a>
         </div>
-
-        <!-- Demo 2: Interior Designers -->
-        <div class="demo-card">
-          <div class="demo-tag">Interior Architecture & Turnkey Design</div>
-          <h3>Art Link Luxury Interior Studio</h3>
-          <p>Equipped with an instant 3D home interior budget calculator and automated 3D floor plan request engine.</p>
-
-          <ul class="feature-list">
-            <li>Interactive 2BHK/3BHK/Villa Interior Budget Estimator</li>
-            <li>Bespoke Theme & Woodwork Cost Multiplier</li>
-            <li>Direct WhatsApp VR Consultation Booker</li>
-          </ul>
-
-          <a href="demo_interior.html" target="_blank" class="btn btn-primary" style="width: 100%;">Launch Interactive Interior Demo 🚀</a>
+        <div class="prompt-chips">
+          <div class="chip" onclick="setPrompt('Dental & Doctor Clinic Portal with WhatsApp Slot Booker')">✦ Dental Clinic Booker</div>
+          <div class="chip" onclick="setPrompt('Luxury Interior Architecture 3D Budget Estimator')">✦ 3D Interior Calculator</div>
+          <div class="chip" onclick="setPrompt('Luxury Salon VIP Package Booking Studio')">✦ Salon Package Studio</div>
         </div>
       </div>
     </section>
 
-    <!-- Pricing & 10x Value -->
-    <section id="pricing" class="pricing-box">
-      <div style="font-size: 14px; font-weight: 600; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px;">Transparent Business Offer</div>
-      <h2 style="font-size: 36px; margin: 12px 0;">Get ₹8,500 Market Value For Just ₹1,000</h2>
-      <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Zero maintenance hassle. Free SSL Cloud Hosting + 1-Year Domain Setup included.</p>
+    <!-- Showcase Frame -->
+    <div class="showcase-frame" id="showcase">
+      <div class="frame-titlebar">
+        <div class="dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div class="tabs">
+          <div class="tab active">Interactive Canvas</div>
+          <div class="tab">Prompt Specs</div>
+          <div class="tab">WhatsApp API</div>
+        </div>
+        <span style="font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">https://omniviral-ai.app</span>
+      </div>
 
-      <div class="price-tag">₹1,000 <span style="font-size: 18px; color: var(--text-muted); font-weight: 400;">/ One-Time</span></div>
+      <div class="grid-2">
+        <div class="showcase-card">
+          <div style="font-size: 12px; font-weight: 700; color: #c084fc; text-transform: uppercase; margin-bottom: 8px;">Healthcare & Medical</div>
+          <h3 style="font-size: 24px; margin-bottom: 12px;">Shrivastava Dental Care & Implant Portal</h3>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Features 24/7 instant slot booking with automated WhatsApp confirmation and interactive treatment price calculator.</p>
+          <a href="demo_clinic.html" target="_blank" class="btn btn-violet" style="width: 100%;">Open Full Application Canvas 🚀</a>
+        </div>
 
-      <a href="https://wa.me/916265048497?text=Hi%20Alok,%20I%20want%20the%201000%20rupees%20website%20offer" class="btn btn-primary" style="padding: 14px 32px; font-size: 16px;">Claim Your Custom Demo Website Now 📲</a>
-    </section>
+        <div class="showcase-card">
+          <div style="font-size: 12px; font-weight: 700; color: #06b6d4; text-transform: uppercase; margin-bottom: 8px;">Architecture & Turnkey</div>
+          <h3 style="font-size: 24px; margin-bottom: 12px;">Art Link Luxury Interior Architecture Studio</h3>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Features an interactive 2BHK/3BHK/Villa 3D home interior budget calculator and automated VR consultation scheduler.</p>
+          <a href="demo_interior.html" target="_blank" class="btn btn-violet" style="width: 100%;">Open Full Application Canvas 🚀</a>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <script>
+    function setPrompt(txt) {
+      document.getElementById('userPrompt').value = 'Create a high-converting web app for ' + txt + '...';
+    }
+  </script>
 </body>
 </html>
