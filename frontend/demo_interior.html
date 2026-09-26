@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Link Interiors | Luxury Interior Architecture & Turnkey Design Bhopal</title>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07080a;
+      --panel-dark: #0f1115;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-gold: #e5b968;
+      --accent-amber: #d4a340;
+      --text-main: #f7f8f8;
+      --text-muted: #8a8f98;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      font-feature-settings: "cv01", "ss03";
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .top-bar {
+      background: linear-gradient(90deg, rgba(229, 185, 104, 0.15), rgba(212, 163, 64, 0.15));
+      border-bottom: 1px solid var(--card-border);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-gold);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    nav {
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand span {
+      color: var(--accent-gold);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--accent-gold), var(--accent-amber));
+      color: #000;
+      box-shadow: 0 4px 20px rgba(229, 185, 104, 0.25);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(229, 185, 104, 0.4);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(229, 185, 104, 0.1);
+      border: 1px solid rgba(229, 185, 104, 0.3);
+      color: var(--accent-gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, #e5b968, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    /* Calculator Box */
+    .calc-box {
+      background: var(--panel-dark);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      margin-bottom: 80px;
+    }
+
+    .calc-title {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .calc-title h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .calc-title p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .calc-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .step-card label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .select-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      text-align: center;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .chip.active {
+      border-color: var(--accent-gold);
+      background: rgba(229, 185, 104, 0.1);
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .result-bar {
+      background: linear-gradient(135deg, rgba(229, 185, 104, 0.1), rgba(0,0,0,0.4));
+      border: 1px solid rgba(229, 185, 104, 0.3);
+      border-radius: var(--radius-md);
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-display {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-box {
+      background: var(--panel-dark);
+      border: 1px solid var(--accent-gold);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(229, 185, 104, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .calc-steps {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 36px;
+      }
+      .result-bar {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    🏆 Rated 4.9/5.0 Stars on Google Maps (38+ Verified Villa & Apartment Projects in Bhopal)
+  </div>
+
+  <div class="container">
+    <nav>
+      <div class="brand">
+        ART LINK <span>INTERIORS</span>
+      </div>
+      <a href="#quote" class="btn btn-gold">Get Instant 3D Quote</a>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-badge">Architectural Elegance & Luxury Living</div>
+      <h1>Transform Your Home Into A <span>Bespoke Masterpiece</span></h1>
+      <p>Bhopal's premier interior design firm specializing in turnkey 3D home interiors, modular kitchens, and luxury penthouse renovations.</p>
+    </section>
+
+    <!-- Interactive Cost Estimator -->
+    <section class="calc-box" id="quote">
+      <div class="calc-title">
+        <h3>💡 Instant Home Interior Quotation Calculator</h3>
+        <p>Configure your space details below to receive an immediate turnkey budget estimate</p>
+      </div>
+
+      <div class="calc-steps">
+        <!-- Step 1: BHK Size -->
+        <div class="step-card">
+          <label>1. Property Size</label>
+          <div class="select-grid">
+            <div class="chip active" onclick="setBHK(this, 350000)">2 BHK</div>
+            <div class="chip" onclick="setBHK(this, 550000)">3 BHK</div>
+            <div class="chip" onclick="setBHK(this, 850000)">4 BHK</div>
+            <div class="chip" onclick="setBHK(this, 1400000)">Luxury Villa</div>
+          </div>
+        </div>
+
+        <!-- Step 2: Interior Style -->
+        <div class="step-card">
+          <label>2. Design Theme</label>
+          <div class="select-grid">
+            <div class="chip active" onclick="setStyle(this, 1.0)">Minimalist</div>
+            <div class="chip" onclick="setStyle(this, 1.25)">Modern Glass</div>
+            <div class="chip" onclick="setStyle(this, 1.5)">Royal Classic</div>
+            <div class="chip" onclick="setStyle(this, 1.8)">Italian Luxury</div>
+          </div>
+        </div>
+
+        <!-- Step 3: Scope -->
+        <div class="step-card">
+          <label>3. Project Scope</label>
+          <div class="select-grid">
+            <div class="chip active" onclick="setScope(this, 1.0)">Full Turnkey</div>
+            <div class="chip" onclick="setScope(this, 0.4)">Kitchen & Living</div>
+            <div class="chip" onclick="setScope(this, 0.6)">Bedrooms Only</div>
+            <div class="chip" onclick="setScope(this, 0.8)">Woodwork Only</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-bar">
+        <div>
+          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase;">Estimated Project Budget</div>
+          <div class="price-display" id="finalBudget">₹3,50,000</div>
+          <div style="font-size: 12px; color: var(--accent-gold);">Includes 3D VR Walkthrough + 10 Year Material Warranty</div>
+        </div>
+        <button class="btn btn-gold" onclick="openModal()">Book 3D Design Consultation 🚀</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="leadModal">
+    <div class="modal-box">
+      <div style="font-size: 40px; margin-bottom: 12px;">🏡</div>
+      <h3 style="color: var(--accent-gold); margin-bottom: 8px;">Claim Your Free 3D Design Consultation</h3>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Our lead architect will connect with you on WhatsApp with 3D floor plan concepts.</p>
+      
+      <form onsubmit="submitForm(event)">
+        <input type="text" id="clientName" placeholder="Your Name" style="width: 100%; padding: 12px; margin-bottom: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); border-radius: 6px; color: #fff;" required>
+        <input type="tel" id="clientPhone" placeholder="WhatsApp Phone Number" style="width: 100%; padding: 12px; margin-bottom: 20px; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); border-radius: 6px; color: #fff;" required>
+        <button type="submit" class="btn btn-gold" style="width: 100%;">Get Instant 3D Plan on WhatsApp 📲</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let basePrice = 350000;
+    let styleMultiplier = 1.0;
+    let scopeMultiplier = 1.0;
+
+    function recalculate() {
+      let total = Math.round(basePrice * styleMultiplier * scopeMultiplier);
+      document.getElementById('finalBudget').innerText = '₹' + total.toLocaleString('en-IN');
+    }
+
+    function setBHK(el, price) {
+      el.parentNode.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      basePrice = price;
+      recalculate();
+    }
+
+    function setStyle(el, mult) {
+      el.parentNode.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      styleMultiplier = mult;
+      recalculate();
+    }
+
+    function setScope(el, mult) {
+      el.parentNode.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      scopeMultiplier = mult;
+      recalculate();
+    }
+
+    function openModal() {
+      document.getElementById('leadModal').style.display = 'flex';
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      alert('Thank you! Our senior designer will share 3D plan options on your WhatsApp shortly.');
+      document.getElementById('leadModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
