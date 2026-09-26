@@ -7,7 +7,7 @@ import json
 import urllib.request
 import urllib.parse
 
-WHATSAPP_BRIDGE_URL = "http://localhost:3000/send"
+WHATSAPP_BRIDGE_URLS = ["http://localhost:3001/send", "http://localhost:3000/send"]
 
 def send_whatsapp_message(phone_number: str, message: str):
     """
@@ -22,28 +22,27 @@ def send_whatsapp_message(phone_number: str, message: str):
     print(f"📱 Sending WhatsApp message to: {chat_id}")
     print(f"💬 Message: {message}")
     
-    try:
-        payload = json.dumps({
-            "chatId": chat_id,
-            "message": message
-        }).encode('utf-8')
-        
-        req = urllib.request.Request(
-            WHATSAPP_BRIDGE_URL,
-            data=payload,
-            headers={"Content-Type": "application/json"}
-        )
-        with urllib.request.urlopen(req, timeout=10) as response:
-            res_data = json.loads(response.read().decode('utf-8'))
-            if res_data.get("success"):
-                print(f"✅ WhatsApp message delivered successfully to {chat_id}! MessageID: {res_data.get('messageId')}")
-                return True
-            else:
-                print(f"⚠️ WhatsApp bridge response: {res_data}")
-                return False
-    except Exception as e:
-        print(f"❌ Error sending WhatsApp message: {e}")
-        return False
+    payload = json.dumps({
+        "chatId": chat_id,
+        "message": message
+    }).encode('utf-8')
+    
+    for bridge_url in WHATSAPP_BRIDGE_URLS:
+        try:
+            req = urllib.request.Request(
+                bridge_url,
+                data=payload,
+                headers={"Content-Type": "application/json"}
+            )
+            with urllib.request.urlopen(req, timeout=15) as response:
+                res_data = json.loads(response.read().decode('utf-8'))
+                if res_data.get("success"):
+                    print(f"✅ WhatsApp message delivered successfully via {bridge_url} to {chat_id}! MessageID: {res_data.get('messageId')}")
+                    return True
+                else:
+                    print(f"⚠️ WhatsApp bridge response from {bridge_url}: {res_data}")
+        except Exception as e:
+            continue
 
 if __name__ == "__main__":
     target = sys.argv[1] if len(sys.argv) > 1 else "8878707615"
