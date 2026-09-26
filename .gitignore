@@ -5,3 +5,5 @@ __pycache__/
 data/*.db-journal
 output/daily_batches/*
 output/thumbnails/*
+
+backups/

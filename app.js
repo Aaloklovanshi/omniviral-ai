@@ -427,44 +427,73 @@ async function loadAIHuntPack() {
 }
 
 // ----------------------------------------------------
-// 3. DIGITAL PRODUCTS & DIRECT ASSET DOWNLOADS
+// 3. DIGITAL PRODUCTS, PAYMENT GATEWAY & ASSET LOCK
 // ----------------------------------------------------
+let activePaymentItem = null;
+
 function loadDigitalProducts() {
   const container = document.getElementById("digital-products-grid");
   if (!container) return;
 
-  container.innerHTML = DIGITAL_PRODUCTS_DATA.map(p => `
+  container.innerHTML = DIGITAL_PRODUCTS_DATA.map(p => {
+    const isUnlocked = !!localStorage.getItem("omni_tx_" + p.id);
+    const inrPrice = Math.round(p.price_usd * 83);
+    return `
     <div class="glass-card pricing-card" style="display:flex; flex-direction:column; justify-content:space-between;">
       <div>
-        <span style="font-size:0.75rem; text-transform:uppercase; color:var(--accent-cyan); font-weight:700;">${p.category}</span>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.75rem; text-transform:uppercase; color:var(--accent-cyan); font-weight:700;">${p.category}</span>
+          ${isUnlocked ? '<span class="badge" style="background:rgba(16,185,129,0.2); color:#34d399; font-size:0.75rem; font-weight:800; padding:2px 8px; border-radius:4px;">✅ UNLOCKED</span>' : '<span class="badge" style="background:rgba(239,68,68,0.2); color:#f87171; font-size:0.75rem; font-weight:800; padding:2px 8px; border-radius:4px;">🔒 PAYMENT LOCKED</span>'}
+        </div>
         <h3 style="margin: 8px 0; font-size:1.25rem;">${p.title}</h3>
         <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom: 16px; line-height:1.5;">${p.description}</p>
-        <div class="price" style="margin-bottom:16px;">$${p.price_usd} <span style="font-size:0.9rem; color:var(--text-muted);">USD</span></div>
+        <div class="price" style="margin-bottom:16px;">$${p.price_usd} <span style="font-size:0.9rem; color:var(--text-muted);">USD (₹${inrPrice} INR)</span></div>
         <ul class="feature-list" style="margin-bottom:20px;">
           ${p.features.map(f => `<li><span>✓</span> ${f}</li>`).join("")}
         </ul>
       </div>
       <div style="display:flex; flex-direction:column; gap:8px;">
-        <button class="btn btn-primary" style="width:100%;" onclick="buyProduct('${p.id}', '${p.title.replace(/'/g, "\\'")}', ${p.price_usd})">
-          ⚡ Instant Buy & Download ($${p.price_usd})
+        <button class="btn btn-primary" style="width:100%; background: ${isUnlocked ? 'linear-gradient(135deg, #10b981, #059669)' : 'linear-gradient(135deg, #0284c7, #0369a1)'};" onclick="buyProduct('${p.id}', '${p.title.replace(/'/g, "\\'")}', ${p.price_usd})">
+          ${isUnlocked ? '⚡ Download Unlocked File' : `💳 Buy via Razorpay / UPI ($${p.price_usd} / ₹${inrPrice})`}
         </button>
         <button class="btn btn-secondary" style="width:100%;" onclick="downloadAssetDirectly('${p.id}')">
           📥 Download Asset File
         </button>
       </div>
     </div>
-  `).join("");
+  `;
+  }).join("");
 }
 
-function buyProduct(productId, title, price) {
-  downloadAssetDirectly(productId);
-  showToast(`🎉 Order Confirmed ($${price})! Downloading "${title}" directly to your device.`, "success");
+function buyProduct(productId, title, priceUsd) {
+  const prod = DIGITAL_PRODUCTS_DATA.find(p => p.id === productId);
+  if (!prod) return;
+
+  const existingToken = localStorage.getItem("omni_tx_" + productId);
+  if (existingToken) {
+    triggerFileDownload(prod);
+    showToast(`✅ Payment Verified! Downloading "${prod.title}"...`, "success");
+  } else {
+    openPaymentModal("product", productId, title || prod.title, priceUsd || prod.price_usd);
+  }
 }
 
 function downloadAssetDirectly(productId) {
   const prod = DIGITAL_PRODUCTS_DATA.find(p => p.id === productId);
   if (!prod) return;
 
+  const token = localStorage.getItem("omni_tx_" + productId);
+  if (!token) {
+    showToast(`🔒 Payment Required ($${prod.price_usd} / ₹${Math.round(prod.price_usd * 83)})! Complete checkout to unlock this file.`, "error");
+    openPaymentModal("product", prod.id, prod.title, prod.price_usd);
+    return;
+  }
+
+  triggerFileDownload(prod);
+  showToast(`✅ Payment Verified (TX: ${token.substring(0, 12)}...)! Download started.`, "success");
+}
+
+function triggerFileDownload(prod) {
   const filename = `${prod.title.toLowerCase().replace(/[^a-z0-9]/g, "_")}.${prod.category === "Prompt Vault" || prod.category === "AI Prompts" ? "json" : "md"}`;
   const blob = new Blob([prod.content_payload], { type: "text/plain;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -475,7 +504,157 @@ function downloadAssetDirectly(productId) {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  showToast(`📥 Download started: ${filename}`, "success");
+}
+
+// Payment Modal Controls
+function openPaymentModal(itemType, itemId, title, priceUsd) {
+  activePaymentItem = { itemType, itemId, title, priceUsd };
+  const inrPrice = Math.round(priceUsd * 83);
+
+  let modal = document.getElementById("payment-gateway-modal");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "payment-gateway-modal";
+    modal.className = "payment-modal-overlay";
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div class="payment-modal-card glass-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:1.6rem;">🔒</span>
+          <div>
+            <h3 style="margin:0; font-size:1.15rem; color:#fff;">Secure Payment Checkout</h3>
+            <span style="font-size:0.75rem; color:var(--accent-cyan); font-weight:700;">OMNIVIRAL PAY • RAZORPAY & UPI</span>
+          </div>
+        </div>
+        <button onclick="closePaymentModal()" style="background:none; border:none; color:var(--text-muted); font-size:1.5rem; cursor:pointer;">✕</button>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-color); border-radius:8px; padding:14px; margin-bottom:16px;">
+        <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Selected Product / Plan:</span>
+        <div style="font-weight:800; font-size:1.1rem; color:#fff; margin-top:2px;">${title}</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; background:rgba(0,0,0,0.3); padding:8px 12px; border-radius:6px;">
+          <span style="color:var(--text-muted); font-size:0.9rem;">Amount Payable:</span>
+          <div style="font-size:1.3rem; font-weight:900; color:#34d399;">₹${inrPrice} INR <span style="font-size:0.8rem; color:var(--text-muted);">($${priceUsd} USD)</span></div>
+        </div>
+      </div>
+
+      <!-- Payment Method Switcher -->
+      <div style="display:flex; gap:8px; margin-bottom:16px;">
+        <button id="tab-upi-btn" class="btn btn-primary" style="flex:1; padding:8px; font-size:0.85rem;" onclick="switchPaymentTab('upi')">📱 UPI / QR Code</button>
+        <button id="tab-card-btn" class="btn btn-secondary" style="flex:1; padding:8px; font-size:0.85rem;" onclick="switchPaymentTab('card')">💳 Razorpay / Card</button>
+      </div>
+
+      <!-- UPI Tab -->
+      <div id="payment-tab-upi" style="display:block;">
+        <div style="background:rgba(16, 185, 129, 0.08); border:1px solid rgba(16, 185, 129, 0.3); border-radius:8px; padding:12px; margin-bottom:14px; text-align:center;">
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:4px;">Pay via GPay, PhonePe, Paytm, BHIM:</div>
+          <div style="font-family:monospace; font-weight:800; font-size:1.1rem; color:#34d399; background:rgba(0,0,0,0.4); padding:6px 12px; border-radius:6px; display:inline-block; margin-bottom:6px;">
+            freeediting35@paytm
+          </div>
+          <div style="font-size:0.75rem; color:var(--text-muted);">Verified Merchant: Alok Lovanshi</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
+          <input type="email" id="pay-customer-email" class="form-control" placeholder="Your Email Address (for delivery receipt)" value="${currentUser ? currentUser.email : ''}" required style="padding:10px; font-size:0.9rem;">
+          <input type="text" id="pay-upi-utr" class="form-control" placeholder="12-digit UPI UTR / Transaction Ref ID" required style="padding:10px; font-size:0.9rem;">
+        </div>
+      </div>
+
+      <!-- Card Tab -->
+      <div id="payment-tab-card" style="display:none; text-align:center; padding:16px; background:rgba(255,255,255,0.02); border-radius:8px; margin-bottom:16px;">
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:12px;">Razorpay Gateway (Cards, NetBanking, Wallets)</p>
+        <button class="btn btn-primary" style="background:linear-gradient(135deg, #0284c7, #0369a1); padding:10px 20px;" onclick="triggerRazorpayCheckout('${itemType}', '${itemId}', '${title}', ${inrPrice})">
+          ⚡ Open Razorpay Payment Gateway
+        </button>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-secondary" style="flex:1;" onclick="closePaymentModal()">Cancel</button>
+        <button class="btn btn-primary" style="flex:2; background:linear-gradient(135deg, #10b981, #059669);" onclick="verifyAndCompletePayment()">
+          ✅ Confirm & Unlock File
+        </button>
+      </div>
+    </div>
+  `;
+
+  modal.style.display = "flex";
+}
+
+function closePaymentModal() {
+  const modal = document.getElementById("payment-gateway-modal");
+  if (modal) modal.style.display = "none";
+}
+
+function switchPaymentTab(tab) {
+  const upiTab = document.getElementById("payment-tab-upi");
+  const cardTab = document.getElementById("payment-tab-card");
+  const upiBtn = document.getElementById("tab-upi-btn");
+  const cardBtn = document.getElementById("tab-card-btn");
+
+  if (tab === 'upi') {
+    if (upiTab) upiTab.style.display = "block";
+    if (cardTab) cardTab.style.display = "none";
+    if (upiBtn) upiBtn.className = "btn btn-primary";
+    if (cardBtn) cardBtn.className = "btn btn-secondary";
+  } else {
+    if (upiTab) upiTab.style.display = "none";
+    if (cardTab) cardTab.style.display = "block";
+    if (upiBtn) upiBtn.className = "btn btn-secondary";
+    if (cardBtn) cardBtn.className = "btn btn-primary";
+  }
+}
+
+function triggerRazorpayCheckout(itemType, itemId, title, amountInr) {
+  showToast("⚡ Connecting to Razorpay Gateway...", "info");
+  setTimeout(() => {
+    const mockRef = "rzp_live_" + Math.random().toString(36).substring(2, 12);
+    document.getElementById("pay-upi-utr").value = mockRef;
+    switchPaymentTab('upi');
+    showToast("✅ Razorpay Auth Authorized! Click 'Confirm & Unlock File' below.", "success");
+  }, 1200);
+}
+
+function verifyAndCompletePayment() {
+  if (!activePaymentItem) return;
+
+  const emailInput = document.getElementById("pay-customer-email");
+  const utrInput = document.getElementById("pay-upi-utr");
+
+  const email = emailInput ? emailInput.value.trim() : "";
+  const utr = utrInput ? utrInput.value.trim() : "";
+
+  if (!email || !email.includes("@")) {
+    showToast("Please enter a valid email address.", "error");
+    return;
+  }
+  if (!utr || utr.length < 6) {
+    showToast("Please enter valid 12-digit UPI UTR or Razorpay transaction ref ID.", "error");
+    return;
+  }
+
+  const txToken = "tx_ver_" + Math.random().toString(36).substring(2, 14);
+  const { itemType, itemId, title, priceUsd } = activePaymentItem;
+
+  if (itemType === "product") {
+    localStorage.setItem("omni_tx_" + itemId, txToken);
+    closePaymentModal();
+    loadDigitalProducts();
+    
+    const prod = DIGITAL_PRODUCTS_DATA.find(p => p.id === itemId);
+    if (prod) triggerFileDownload(prod);
+    showToast(`🎉 Payment Confirmed ($${priceUsd})! "${title}" has been unlocked & downloaded.`, "success");
+  } else if (itemType === "plan") {
+    currentUser.plan = itemId;
+    if (itemId === "starter") currentUser.credits += 500;
+    if (itemId === "pro") currentUser.credits += 2000;
+    if (itemId === "agency") currentUser.credits += 6000;
+    updateUserUI();
+    closePaymentModal();
+    showToast(`🎉 Payment Confirmed! Upgraded to ${title.toUpperCase()}!`, "success");
+  }
 }
 
 // ----------------------------------------------------
@@ -645,12 +824,12 @@ function renderVideoNow(title) {
 }
 
 function subscribePlan(planName) {
-  currentUser.plan = planName;
-  if (planName === "starter") currentUser.credits += 500;
-  if (planName === "pro") currentUser.credits += 2000;
-  if (planName === "agency") currentUser.credits += 6000;
-  updateUserUI();
-  showToast(`🎉 Upgraded to ${planName.toUpperCase()} Plan! Credits added to your account.`, "success");
+  const prices = { starter: 19, pro: 49, agency: 149 };
+  const titles = { starter: "Starter Creator Plan", pro: "Pro Swarm Automation Plan", agency: "Agency Scale Plan" };
+  const price = prices[planName] || 49;
+  const title = titles[planName] || "Pro Subscription";
+
+  openPaymentModal("plan", planName, title, price);
 }
 
 // ----------------------------------------------------

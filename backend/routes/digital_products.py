@@ -12,7 +12,8 @@ router = APIRouter(prefix="/api/products", tags=["digital_products"])
 class PurchaseRequest(BaseModel):
     product_slug: str
     customer_email: str
-    payment_provider: str = "stripe"
+    payment_provider: str = "upi_razorpay"
+    payment_ref: str = ""
 
 @router.get("/list")
 def list_products():
@@ -61,22 +62,34 @@ def simulate_or_record_purchase(payload: PurchaseRequest):
     
     return {
         "status": "success",
-        "message": f"Successfully purchased {prod['title']}!",
+        "message": f"Payment Verified! Purchased {prod['title']}.",
         "transaction_id": tx_id,
         "amount": prod["price_usd"],
-        "download_url": download_link
+        "download_url": download_link,
+        "token": tx_id
     }
 
 @router.get("/download/{slug}")
 def download_digital_product(slug: str, token: str = ""):
+    if not token:
+        raise HTTPException(status_code=403, detail="🔒 Security Lock: Payment token required to download paid digital products.")
+        
     conn = get_connection()
     cursor = conn.cursor()
+    
+    # Verify transaction token exists and is completed
+    cursor.execute("SELECT * FROM transactions WHERE id = ? AND status = 'completed'", (token,))
+    tx = cursor.fetchone()
+    
     cursor.execute("SELECT * FROM digital_products WHERE slug = ?", (slug,))
     prod = cursor.fetchone()
     conn.close()
     
     if not prod:
         raise HTTPException(status_code=404, detail="Product not found")
+        
+    if not tx:
+        raise HTTPException(status_code=403, detail="🔒 Payment Error: Invalid or unverified payment token. Please complete checkout.")
         
     file_path = BASE_DIR / prod["file_path"]
     if not file_path.exists():
