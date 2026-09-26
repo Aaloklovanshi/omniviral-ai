@@ -3,30 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shrivastava Dental Care & Implant Center | Official Portal</title>
+  <title>Shrivastava Dental Care & Implant Center | Medical Portal</title>
   <!-- Google Fonts: Inter & JetBrains Mono -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #08090a;
-      --panel-dark: #0f1011;
+      --bg-dark: #070809;
+      --panel-dark: rgba(15, 16, 20, 0.85);
       --card-bg: rgba(255, 255, 255, 0.03);
       --card-border: rgba(255, 255, 255, 0.08);
-      --accent-blue: #00f2fe;
-      --accent-indigo: #5e6ad2;
-      --text-main: #f7f8f8;
-      --text-muted: #8a8f98;
-      --text-subtle: #62666d;
-      --radius-sm: 6px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-indigo: #6366f1;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -35,32 +31,50 @@
       line-height: 1.6;
       font-feature-settings: "cv01", "ss03";
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(99, 102, 241, 0.08) 0%, transparent 40%);
     }
 
-    /* Top Rating Banner */
-    .top-banner {
-      background: linear-gradient(90deg, rgba(0, 242, 254, 0.15), rgba(94, 106, 210, 0.15));
+    .announcement-bar {
+      background: linear-gradient(90deg, rgba(0, 242, 254, 0.12), rgba(99, 102, 241, 0.12));
       border-bottom: 1px solid var(--card-border);
       text-align: center;
-      padding: 8px 16px;
+      padding: 10px 16px;
       font-size: 13px;
       font-weight: 500;
-      color: var(--accent-blue);
+      color: var(--accent-cyan);
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* Navbar */
     nav {
-      height: 72px;
+      height: 84px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -71,25 +85,26 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
     }
 
-    .brand-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 22px;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
     }
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       list-style: none;
     }
 
@@ -98,7 +113,7 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
-      transition: color 0.2s;
+      transition: all 0.2s;
     }
 
     .nav-links a:hover {
@@ -109,144 +124,117 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 10px 20px;
+      gap: 10px;
+      padding: 12px 24px;
       border-radius: var(--radius-sm);
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       border: 1px solid transparent;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
-      color: #000;
-      box-shadow: 0 4px 20px rgba(0, 242, 254, 0.25);
+    .btn-cyan {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #070809;
+      box-shadow: 0 4px 25px rgba(0, 242, 254, 0.3);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 25px rgba(0, 242, 254, 0.4);
+    .btn-cyan:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 35px rgba(0, 242, 254, 0.5);
     }
 
-    .btn-secondary {
-      background: var(--card-bg);
-      border-color: var(--card-border);
-      color: var(--text-main);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    /* Hero Section */
     .hero {
-      padding: 80px 0 60px;
+      padding: 90px 0 70px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 56px;
       align-items: center;
     }
 
-    .hero-tag {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 4px 12px;
+      gap: 8px;
+      padding: 6px 16px;
       border-radius: 999px;
       background: rgba(0, 242, 254, 0.08);
-      border: 1px solid rgba(0, 242, 254, 0.2);
-      color: var(--accent-blue);
-      font-size: 12px;
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      color: var(--accent-cyan);
+      font-size: 13px;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .hero h1 {
-      font-size: 48px;
-      line-height: 1.1;
-      letter-spacing: -1.2px;
-      margin-bottom: 20px;
+      font-size: 52px;
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+      margin-bottom: 24px;
     }
 
     .hero h1 span {
-      background: linear-gradient(90deg, #00f2fe, #4facfe);
+      background: linear-gradient(90deg, #00f2fe, #6366f1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      font-size: 18px;
+      font-size: 19px;
       color: var(--text-muted);
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
 
-    /* Interactive Appointment Booking Card */
     .booking-card {
       background: var(--panel-dark);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      padding: 36px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
       position: relative;
     }
 
     .booking-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-indigo));
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo));
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
 
-    .booking-header {
-      margin-bottom: 24px;
-    }
-
-    .booking-header h3 {
-      font-size: 20px;
-      margin-bottom: 4px;
-    }
-
-    .booking-header p {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .form-group label {
       display: block;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
     }
 
     .form-control {
       width: 100%;
-      padding: 12px 14px;
-      background: rgba(255,255,255,0.04);
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-sm);
       color: var(--text-main);
       font-family: inherit;
       font-size: 14px;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
 
     .form-control:focus {
       outline: none;
-      border-color: var(--accent-blue);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
     }
 
     .form-row {
@@ -255,38 +243,57 @@
       gap: 16px;
     }
 
-    /* Interactive Cost Estimator Tool */
-    .section-title {
-      text-align: center;
-      margin: 80px 0 40px;
-    }
-
-    .section-title h2 {
-      font-size: 32px;
-      letter-spacing: -0.8px;
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
-      color: var(--text-muted);
-    }
-
-    .calculator-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
+    .transformation-box {
       background: var(--panel-dark);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 32px;
+      padding: 40px;
+      margin: 80px 0;
     }
 
-    .calc-option {
+    .transformation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .slider-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .before-after-display {
+      height: 180px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, rgba(0,242,254,0.1), rgba(99,102,241,0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      margin-bottom: 16px;
+      border: 1px dashed var(--card-border);
+    }
+
+    .calc-box {
+      background: var(--panel-dark);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .calc-item {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      padding: 16px;
+      padding: 20px;
       border-radius: var(--radius-md);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -294,62 +301,25 @@
       transition: all 0.2s;
     }
 
-    .calc-option.selected {
-      border-color: var(--accent-blue);
-      background: rgba(0, 242, 254, 0.05);
-    }
-
-    .calc-option:hover {
-      border-color: rgba(255,255,255,0.2);
-    }
-
-    .calc-result {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-md);
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    .calc-item.active {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 242, 254, 0.08);
     }
 
     .total-price {
-      font-size: 42px;
+      font-size: 48px;
       font-weight: 700;
-      color: var(--accent-blue);
-      margin: 12px 0;
+      color: var(--accent-cyan);
       font-family: 'JetBrains Mono', monospace;
+      margin: 16px 0;
     }
 
-    /* Ratings & Badges */
-    .rating-box {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 16px 24px;
-      border-radius: var(--radius-md);
-      margin-top: 24px;
-    }
-
-    .stars {
-      color: #ffb800;
-      font-size: 20px;
-    }
-
-    /* Modal */
     .modal-overlay {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
@@ -357,91 +327,79 @@
 
     .modal-box {
       background: var(--panel-dark);
-      border: 1px solid var(--accent-blue);
+      border: 1px solid var(--accent-cyan);
       border-radius: var(--radius-lg);
-      padding: 32px;
-      max-width: 480px;
+      padding: 40px;
+      max-width: 500px;
       width: 90%;
       text-align: center;
-      box-shadow: 0 0 50px rgba(0, 242, 254, 0.3);
-    }
-
-    .modal-box h3 {
-      font-size: 24px;
-      color: var(--accent-blue);
-      margin-bottom: 12px;
+      box-shadow: 0 0 60px rgba(0, 242, 254, 0.3);
     }
 
     @media (max-width: 768px) {
-      .hero, .calculator-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 {
-        font-size: 36px;
-      }
+      .hero, .transformation-grid, .calc-box { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 38px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="top-banner">
-    <span>⭐ Rated 4.9/5.0 Stars on Google (65+ Verified Reviews)</span> — <span>📍 E8 Arera Colony / Hoshangabad Rd, Bhopal</span>
+  <div class="announcement-bar">
+    <div class="pulse-dot"></div>
+    <span><strong>Dr. Shrivastava is LIVE</strong> — 3 Slots Remaining For Today in Arera Colony Clinic</span>
   </div>
 
   <div class="container">
     <nav>
       <div class="brand">
-        <div class="brand-icon">🦷</div>
-        <div>Shrivastava Dental Care</div>
+        <div class="brand-logo">🦷</div>
+        Shrivastava Dental Care
       </div>
       <ul class="nav-links">
-        <li><a href="#services">Treatments</a></li>
-        <li><a href="#calculator">Price Estimator</a></li>
-        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#transformations">Transformations</a></li>
+        <li><a href="#calculator">Price Calculator</a></li>
+        <li><a href="#booking">Book Slot</a></li>
       </ul>
-      <a href="#booking" class="btn btn-primary">Book Appointment</a>
+      <a href="#booking" class="btn btn-cyan">Book Appointment ⚡</a>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
       <div>
-        <div class="hero-tag">✨ Advanced Laser & Implant Dentistry in Bhopal</div>
-        <h1>World-Class Dental Care <span>Pain-Free & Precision</span></h1>
-        <p>Experience Bhopal's highest-rated dental clinic. From invisible teeth aligners to laser whitening and painless implants — scheduled seamlessly online.</p>
-        
-        <div class="rating-box">
-          <div class="stars">★★★★★</div>
-          <div>
-            <strong style="display:block; font-size: 16px;">4.9 / 5.0 Google Rating</strong>
-            <span style="font-size: 13px; color: var(--text-muted);">Trusted by 2,500+ happy patients in Bhopal</span>
-          </div>
+        <div class="hero-badge">✨ Rated 4.9/5.0 Stars (65+ Verified Google Reviews)</div>
+        <h1>Painless Dentistry <span>Engineered for Perfection</span></h1>
+        <p>Bhopal's #1 rated dental clinic for Swiss titanium implants, 3D laser teeth whitening, and invisible clear aligners.</p>
+
+        <div style="display: flex; gap: 24px; align-items: center;">
+          <div style="display: flex; gap: 4px; color: #ffb800; font-size: 22px;">★★★★★</div>
+          <span style="color: var(--text-muted); font-size: 14px;"><strong>2,500+</strong> Happy Patients in Bhopal</span>
         </div>
       </div>
 
-      <!-- Booking Card Widget -->
+      <!-- Booking Card -->
       <div class="booking-card" id="booking">
-        <div class="booking-header">
-          <h3>⚡ Instant Appointment Booking</h3>
-          <p>Select your preferred slot — direct confirmation on WhatsApp</p>
+        <div style="margin-bottom: 24px;">
+          <h3 style="font-size: 22px; margin-bottom: 4px;">⚡ Instant 24/7 Slot Booker</h3>
+          <p style="font-size: 13px; color: var(--text-muted);">Direct confirmation dispatched straight to your WhatsApp</p>
         </div>
-        <form id="appointmentForm" onsubmit="handleBooking(event)">
+
+        <form onsubmit="handleBooking(event)">
           <div class="form-group">
             <label>Patient Full Name</label>
-            <input type="text" id="patientName" class="form-control" placeholder="e.g. Rahul Sharma" required>
+            <input type="text" id="patientName" class="form-control" placeholder="e.g. Alok Lovanshi" required>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label>Phone Number (WhatsApp)</label>
+              <label>WhatsApp Phone</label>
               <input type="tel" id="patientPhone" class="form-control" placeholder="+91 9876543210" required>
             </div>
             <div class="form-group">
-              <label>Treatment Type</label>
+              <label>Treatment</label>
               <select id="treatmentType" class="form-control" required>
-                <option value="General Consultation">General Checkup</option>
-                <option value="Teeth Whitening">Teeth Whitening</option>
-                <option value="Dental Implants">Dental Implant</option>
-                <option value="Invisible Aligners">Teeth Aligners</option>
-                <option value="Root Canal Treatment">Root Canal (RCT)</option>
+                <option value="General Consultation">General Checkup (₹500)</option>
+                <option value="Laser Whitening">Laser Whitening (₹1,500)</option>
+                <option value="Swiss Implant">Dental Implant (₹18,000)</option>
+                <option value="Clear Aligners">Teeth Aligners (₹25,000)</option>
               </select>
             </div>
           </div>
@@ -453,106 +411,138 @@
             <div class="form-group">
               <label>Time Slot</label>
               <select id="bookTime" class="form-control" required>
-                <option value="10:00 AM">10:00 AM - Morning</option>
-                <option value="12:30 PM">12:30 PM - Afternoon</option>
-                <option value="05:00 PM">05:00 PM - Evening</option>
-                <option value="07:30 PM">07:30 PM - Night</option>
+                <option value="10:30 AM">10:30 AM - Morning</option>
+                <option value="01:00 PM">01:00 PM - Afternoon</option>
+                <option value="05:30 PM">05:30 PM - Evening</option>
+                <option value="08:00 PM">08:00 PM - Night</option>
               </select>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px; padding: 14px;">Confirm Instant Appointment 🚀</button>
+          <button type="submit" class="btn btn-cyan" style="width: 100%; padding: 16px; margin-top: 8px;">Lock In Instant Appointment 🚀</button>
         </form>
       </div>
     </section>
 
-    <!-- Interactive Cost Calculator -->
-    <section id="calculator">
-      <div class="section-title">
-        <h2>Transparent Treatment Cost Estimator</h2>
-        <p>Select your required procedures to calculate estimated investment</p>
+    <!-- Transformations -->
+    <section class="transformation-box" id="transformations">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 36px; letter-spacing: -1px;">Smile Transformations</h2>
+        <p style="color: var(--text-muted);">Real patient results at our Arera Colony center</p>
       </div>
 
-      <div class="calculator-grid">
+      <div class="transformation-grid">
+        <div class="slider-card">
+          <div class="before-after-display" id="smileDisplay">😁</div>
+          <strong style="font-size: 18px; display: block; margin-bottom: 8px;" id="smileTitle">Laser Teeth Whitening</strong>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">1-Session 6-Shade Brightening</p>
+          <button class="btn btn-cyan" onclick="toggleSmilePreview()" style="font-size: 12px; padding: 8px 16px;">Toggle Before / After Result 🔄</button>
+        </div>
+
         <div>
-          <div class="calc-option selected" onclick="toggleTreatment(this, 1500)">
+          <h3 style="font-size: 24px; margin-bottom: 16px;">Why Patients Choose Us:</h3>
+          <ul style="list-style: none; line-height: 2.2;">
+            <li>✨ <strong>100% Painless Micro-Laser Technology</strong></li>
+            <li>💎 <strong>Swiss-Grade Titanium Dental Implants</strong></li>
+            <li>📲 <strong>Instant WhatsApp Appointment Reminders</strong></li>
+            <li>📍 <strong>Prime Location: E8 Arera Colony, Bhopal</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculator -->
+    <section id="calculator">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 36px;">Treatment Cost Calculator</h2>
+        <p style="color: var(--text-muted);">Select procedures to calculate total investment</p>
+      </div>
+
+      <div class="calc-box">
+        <div>
+          <div class="calc-item active" onclick="togglePrice(this, 1500)">
             <div>
               <strong>Laser Teeth Whitening</strong>
-              <div style="font-size: 12px; color: var(--text-muted);">1-Session Instant Brightening</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Single Sitting Procedure</div>
             </div>
-            <span style="color: var(--accent-blue); font-weight: 600;">₹1,500</span>
+            <span style="color: var(--accent-cyan); font-weight: 700;">₹1,500</span>
           </div>
 
-          <div class="calc-option" onclick="toggleTreatment(this, 4500)">
+          <div class="calc-item" onclick="togglePrice(this, 4500)">
             <div>
-              <strong>Painless Root Canal (RCT)</strong>
-              <div style="font-size: 12px; color: var(--text-muted);">Single Sitting Micro-Endodontics</div>
+              <strong>Single Sitting Root Canal (RCT)</strong>
+              <div style="font-size: 12px; color: var(--text-muted);">Micro-Endodontic Therapy</div>
             </div>
-            <span style="color: var(--accent-blue); font-weight: 600;">₹4,500</span>
+            <span style="color: var(--accent-cyan); font-weight: 700;">₹4,500</span>
           </div>
 
-          <div class="calc-option" onclick="toggleTreatment(this, 18000)">
+          <div class="calc-item" onclick="togglePrice(this, 18000)">
             <div>
-              <strong>Titanium Dental Implant</strong>
-              <div style="font-size: 12px; color: var(--text-muted);">Lifetime Warranty Swiss Implant</div>
+              <strong>Swiss Titanium Implant</strong>
+              <div style="font-size: 12px; color: var(--text-muted);">Lifetime Warranty</div>
             </div>
-            <span style="color: var(--accent-blue); font-weight: 600;">₹18,000</span>
-          </div>
-
-          <div class="calc-option" onclick="toggleTreatment(this, 25000)">
-            <div>
-              <strong>Clear Invisible Aligners</strong>
-              <div style="font-size: 12px; color: var(--text-muted);">3D Scanned Invisible Braces</div>
-            </div>
-            <span style="color: var(--accent-blue); font-weight: 600;">₹25,000</span>
+            <span style="color: var(--accent-cyan); font-weight: 700;">₹18,000</span>
           </div>
         </div>
 
-        <div class="calc-result">
-          <div style="font-size: 14px; color: var(--text-muted); text-transform: uppercase;">Estimated Total Investment</div>
+        <div style="text-align: center; display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02); padding: 32px; border-radius: var(--radius-md); border: 1px solid var(--card-border);">
+          <span style="font-size: 13px; color: var(--text-muted); text-transform: uppercase;">Total Estimated Cost</span>
           <div class="total-price" id="calcTotal">₹1,500</div>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Includes 1 Year Free Follow-up & Digital 3D Scan</p>
-          <a href="#booking" class="btn btn-secondary">Lock In Estimate & Book Slot</a>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">Includes Free 3D Scan & Digital Consultation</p>
+          <a href="#booking" class="btn btn-cyan">Lock In Estimate & Book Slot</a>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- Success Confirmation Modal -->
+  <!-- Modal -->
   <div class="modal-overlay" id="confirmModal">
     <div class="modal-box">
-      <div style="font-size: 48px; margin-bottom: 12px;">✅</div>
-      <h3>Appointment Slot Locked!</h3>
-      <p id="modalMsg" style="color: var(--text-muted); margin-bottom: 20px; font-size: 14px;"></p>
-      <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; font-size: 13px; color: var(--accent-blue); margin-bottom: 20px;">
-        📲 A confirmation message has been dispatched to your WhatsApp number!
+      <div style="font-size: 56px; margin-bottom: 16px;">🎉</div>
+      <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">Appointment Confirmed!</h3>
+      <p id="modalMsg" style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;"></p>
+      <div style="background: rgba(0, 242, 254, 0.1); border: 1px solid var(--accent-cyan); padding: 14px; border-radius: 8px; font-size: 13px; color: var(--accent-cyan); margin-bottom: 24px;">
+        📲 Confirmation details dispatched to your WhatsApp number!
       </div>
-      <button class="btn btn-primary" onclick="closeModal()" style="width: 100%;">Close & Return</button>
+      <button class="btn btn-cyan" onclick="closeModal()" style="width: 100%;">Return to Portal</button>
     </div>
   </div>
 
   <script>
-    let total = 1500;
-
-    function toggleTreatment(el, price) {
-      el.classList.toggle('selected');
-      if(el.classList.contains('selected')) {
-        total += price;
+    let isAfter = true;
+    function toggleSmilePreview() {
+      const display = document.getElementById('smileDisplay');
+      const title = document.getElementById('smileTitle');
+      if(isAfter) {
+        display.innerText = '😬';
+        title.innerText = 'Before Treatment (Stained / Misaligned)';
+        isAfter = false;
       } else {
-        total -= price;
+        display.innerText = '😁';
+        title.innerText = 'After Treatment (3D Whitened & Aligned)';
+        isAfter = true;
       }
-      if(total < 0) total = 0;
-      document.getElementById('calcTotal').innerText = '₹' + total.toLocaleString('en-IN');
+    }
+
+    let calcTotal = 1500;
+    function togglePrice(el, price) {
+      el.classList.toggle('active');
+      if(el.classList.contains('active')) {
+        calcTotal += price;
+      } else {
+        calcTotal -= price;
+      }
+      if(calcTotal < 0) calcTotal = 0;
+      document.getElementById('calcTotal').innerText = '₹' + calcTotal.toLocaleString('en-IN');
     }
 
     function handleBooking(e) {
       e.preventDefault();
       const name = document.getElementById('patientName').value;
-      const phone = document.getElementById('patientPhone').value;
       const treatment = document.getElementById('treatmentType').value;
       const date = document.getElementById('bookDate').value;
       const time = document.getElementById('bookTime').value;
 
-      document.getElementById('modalMsg').innerText = `Thank you, ${name}! Your appointment for ${treatment} is scheduled on ${date} at ${time}.`;
+      document.getElementById('modalMsg').innerText = `Thank you ${name}! Your slot for ${treatment} is confirmed on ${date} at ${time}.`;
       document.getElementById('confirmModal').style.display = 'flex';
     }
 
@@ -560,7 +550,6 @@
       document.getElementById('confirmModal').style.display = 'none';
     }
 
-    // Set default date to tomorrow
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     document.getElementById('bookDate').value = tomorrow.toISOString().split('T')[0];
