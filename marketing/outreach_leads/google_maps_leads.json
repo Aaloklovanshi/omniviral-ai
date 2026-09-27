@@ -87,6 +87,27 @@
     "phone": "+91 8265953583",
     "contact_person": "Dr. Inder Rajani",
     "website_status": "Basic listing, needs high-converting aesthetic portal",
-    "outreach_status": "Identified"
+    "outreach_status": "Delivered (Clean)",
+    "delivered_at": "2026-09-27T20:19:33.843188",
+    "delivered_url": "https://dr-shrivastava-dental.lovable.app",
+    "whatsapp_message_id": "3EB03A830588F6E1C136C1",
+    "service_pitched": "Website + Google Maps 5★ Review QR System"
+  },
+  {
+    "id": "lead_006",
+    "business_name": "Dr. Ajay Singh Raghuwanshi Clinic",
+    "category": "Dermatology & Hair Restoration",
+    "avg_ticket_size": "₹10,000 - ₹80,000",
+    "location": "E-7, Arera Colony, Bhopal",
+    "rating": 4.9,
+    "review_count": 786,
+    "phone": "+91 6262968686",
+    "contact_person": "Dr. Ajay Singh Raghuwanshi",
+    "website_status": "No dedicated web utility",
+    "outreach_status": "Delivered (Clean)",
+    "delivered_at": "2026-09-27T20:19:33.843215",
+    "delivered_url": "https://dr-shrivastava-dental.lovable.app",
+    "whatsapp_message_id": "3EB0C3AEC6B70C17B93F20",
+    "service_pitched": "Website + Google Maps 5★ Review QR System"
   }
 ]
