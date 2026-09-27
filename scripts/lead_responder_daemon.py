@@ -80,38 +80,41 @@ OmniViral Digital Studio, Bhopal
             return """Namaste Sir/Ma'am 🙏
 
 Custom Google Maps 5★ Review Acrylic Counter Standee ka one-time setup cost sirf ₹1,499 hai.
-Isme koi monthly charge ya subscription nahi hai. Client reception par scan karke 5 second me 5-star review de sakta hai.
+• Lifetime Validity: Isme koi monthly charge ya subscription nahi hai.
+• Direct 5★ Reviews: Client counter par phone tap/scan karke 5 second me Google par 5★ review de sakta hai.
 
-Kya main aapke brand ke sath sample standee design share karoon? 🚀"""
+Aap mujhe apna clinic/salon ka exact Google Maps link bhej dijiye, main sample proof ready kar dunga! 🚀"""
         else:
             return f"""Namaste Sir/Ma'am 🙏
 
-Hamare Interactive Luxury Web Portal ka setup fee bohot hi minimal hai — ek normal client consultation se bhi kam!
-• One-time Setup & Customization: Sirf ₹4,999 se ₹6,999 (complete working portal).
-• Hosting & Server: LIFETIME FREE (Zero recurring monthly bills).
+Hamare Interactive Luxury Web Portal ka setup fee bohot hi minimal hai:
+• One-time Customization & Setup: Sirf ₹4,999 (complete luxury working portal).
+• Hosting & Server: LIFETIME FREE (Global Enterprise CDN architecture par hosted hai — Zero recurring monthly/annual bills, 100% free SSL security, aur unlimited visits).
 
-Aap live demo check kijiye:
-{DEMO_SALON}
-
-Aapko kab suitable rahega 2 minute call par discuss karne ke liye? 🚀"""
+Aap mujhe yahan WhatsApp par hi apni services/rate card aur 4-5 photos bhej dijiye, main 24 ghante me aapka customized preview bana kar live link bhej dunga. Preview pasand aane par hi aap aage proceed kar sakte hain! 🚀"""
 
     # Demo feedback / Customization inquiry
-    if any(k in lower for k in ["accha", "achha", "good", "nice", "photo", "timing", "change", "hamari", "customize"]):
-        return """Namaste Sir 🙏
+    if any(k in lower for k in ["accha", "achha", "good", "nice", "photo", "timing", "change", "hamari", "customize", "kab", "karna hai"]):
+        return """Namaste Sir/Ma'am 🙏
 
 Ji bilkul! Yeh live demo sirf ek reference blueprint tha.
-Aapka exact service rate card, clinic/salon ki original photos, staff details, aur counter timing sab kuch 24 ghante ke andar accurately customize ho jayega.
+Aapka exact rate card, clinic/salon ki original photos, staff details, WhatsApp number aur timing sab kuch 24 ghante ke andar accurately customize ho jayega.
 
-Aap bataiye sir, kab call par confirm karein? Main abhi call kar sakta hoon. 🚀"""
+Aap mujhe yahan WhatsApp par hi details bhej dijiye:
+1. Clinic/Salon ka Full Name & Timing
+2. Top Services & unka approximate rate
+3. 3-4 interior/exterior photos
+
+Main kal tak aapka customized live portal ready karke link share kar dunga! 🚀"""
 
     # Call / Meeting request
     if any(k in lower for k in ["call", "baat", "phone", "milna", "batao", "bataiye"]):
-        return """Namaste Sir 🙏
+        return """Namaste Sir/Ma'am 🙏
 
-Ji bilkul, main aapko abhi 5 minute me call connect karta hoon, ya aap mujhe direct is number par call kar sakte hain:
-📱 +91 6265048497 (Alok Lovanshi)
+Aapki poori requirements main yahan WhatsApp par directly handle kar raha hoon. 
+Aapko kisi physical meeting ya lamba form bharne ki zaroorat nahi hai — aap mujhe yahan WhatsApp par details/photos bhej dijiye, main 24 ghante ke andar preview portal bana kar bhej dunga.
 
-Main Bhopal me hi available hoon! 🚀"""
+Agar koi specific urgent query hai toh aap mujhe direct WhatsApp text ya audio note bhej sakte hain, main turant answer kar dunga! 🚀"""
 
     # General greeting / fallback
     return f"""Namaste Sir/Ma'am 🙏
