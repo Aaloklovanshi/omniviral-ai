@@ -1,257 +1,240 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniViral AI | Autonomous Viral Video & Faceless Channel Engine</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="image" href="https://omniviral-ai.lovable.app/assets/omniviral-void-Dw3A2WgG.jpg"/><link rel="stylesheet" href="https://omniviral-ai.lovable.app/assets/styles-BicUNnme.css" data-precedence="default"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" data-precedence="default"/><title>OmniViral AI — Autonomous AI Content &amp; Luxury Web Systems</title><meta name="author" content="OmniViral AI"/><meta name="description" content="OmniViral AI builds autonomous content pipelines, luxury web applications, WhatsApp CRM engines, and high-ticket digital product systems."/><meta property="og:title" content="OmniViral AI — Engineer Viral Attention"/><meta property="og:description" content="Elite autonomous AI content and 100-year luxury web systems, founded by Alok Lovanshi in Bhopal."/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><link rel="modulepreload" href="https://omniviral-ai.lovable.app/assets/index-BY_kYR_c.js"/><link rel="modulepreload" href="https://omniviral-ai.lovable.app/assets/routes-DbqWxMA-.js"/><link rel="icon" href="https://omniviral-ai.lovable.app/favicon.ico" type="image/x-icon"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+<style>
+	@font-face {
+		font-family: 'CameraPlainVariable';
+		src: url('https://cdn.gpteng.co/mcp-widgets/v1/fonts/CameraPlainVariable.woff2') format('woff2');
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
 
-  <!-- Ambient Glow Effects -->
-  <div class="bg-glow-orb glow-1"></div>
-  <div class="bg-glow-orb glow-2"></div>
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: CameraPlainVariable, "CameraPlainVariable Fallback", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+	}
 
-  <!-- Navigation Bar -->
-  <header class="navbar">
-    <a href="index.html" class="brand">
-      <div class="brand-icon">⚡</div>
-      <span>OmniViral <span style="color: var(--accent-purple);">AI</span></span>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html" class="active">Studio</a>
-      <a href="ai_hunt.html" style="color: #f59e0b; font-weight: 700;">🔥 @ai_hunt Hub</a>
-      <a href="social_publisher.html">📡 Auto-Publisher</a>
-      <a href="digital_products.html">Digital Store</a>
-      <a href="analytics.html">📊 Analytics</a>
-      <a href="recon_studio.html">Security Recon</a>
-      <a href="#pricing">Pricing</a>
-    </nav>
-    <div class="nav-actions">
-      <div class="badge-credits">
-        <span>💎</span>
-        <span id="user-credits">10,000 Credits</span>
-      </div>
-      <a href="#studio" class="btn btn-primary btn-sm">Launch Studio</a>
-    </div>
-  </header>
+	#lovable-badge-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--badge-gap);
+		padding: 0 var(--badge-padding);
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
 
-  <div class="container">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-pill">
-        <span>✨ Next-Gen 2026 Autonomous AI Video Factory</span>
-      </div>
-      <h1>Generate <span class="gradient-text">10x Viral Videos</span> & Scale Faceless Cashflow</h1>
-      <p>Turn any idea into high-retention short videos with Gemini Pro scripts, Veo 3 / Kling prompts, and animated Hormozi subtitles in 10 seconds.</p>
-      
-      <div style="display:flex; justify-content:center; gap:16px;">
-        <a href="#studio" class="btn btn-primary">⚡ Start Generating Now</a>
-        <a href="digital_products.html" class="btn btn-secondary">📚 Browse Digital Products</a>
-      </div>
-    </section>
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
 
-    <!-- Real-Time Metrics Banner -->
-    <div class="glass-card" style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align:center; padding: 24px; margin-bottom: 48px;">
-      <div>
-        <div style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Projected MRR</div>
-        <div id="stat-mrr" style="font-size: 2rem; font-weight: 800; color: var(--accent-green);">$4,730</div>
-      </div>
-      <div>
-        <div style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Active Creators</div>
-        <div id="stat-users" style="font-size: 2rem; font-weight: 800; color: var(--text-main);">124</div>
-      </div>
-      <div>
-        <div style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Autonomous Workers</div>
-        <div style="font-size: 2rem; font-weight: 800; color: var(--accent-purple);">20 Swarm</div>
-      </div>
-      <div>
-        <div style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Average Retention</div>
-        <div style="font-size: 2rem; font-weight: 800; color: var(--accent-cyan);">96.8%</div>
-      </div>
-    </div>
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
 
-    <!-- Live Interactive Studio Section -->
-    <section id="studio" style="margin-bottom: 80px;">
-      <div style="text-align: center; margin-bottom: 30px;">
-        <h2 style="font-size: 2.2rem; font-weight: 800;">⚡ OmniViral Interactive Studio</h2>
-        <p style="color: var(--text-muted);">Enter a topic below to generate a multi-hook script, scene-by-scene AI prompts, and karaoke captions.</p>
-      </div>
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
 
-      <div class="studio-grid">
-        <!-- Input Controls -->
-        <div class="glass-card">
-          <h3 style="margin-bottom: 20px; font-size: 1.25rem;">🎬 Video Specifications</h3>
-          
-          <form id="video-gen-form">
-            <div class="form-group">
-              <label for="gen-topic">Video Topic / Niche Idea</label>
-              <input type="text" id="gen-topic" class="form-control" placeholder="e.g. How to make $500/day using AI and Gemini Pro" value="How to make $500/day using AI and Gemini Pro">
-            </div>
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
 
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-              <div class="form-group">
-                <label for="gen-niche">Category / Niche</label>
-                <select id="gen-niche" class="form-control">
-                  <option value="AI & Tech" selected>AI & Tech Automation</option>
-                  <option value="Finance & Wealth">Finance & Wealth</option>
-                  <option value="Cybersecurity">Cybersecurity & Bug Bounty</option>
-                  <option value="Mindset & Motivation">Mindset & Motivation</option>
-                  <option value="Seekho / Hindi Tech">Seekho / Desi Creator</option>
-                </select>
-              </div>
+	#lovable-badge-text {
+		line-height: 1;
+	}
 
-              <div class="form-group">
-                <label for="gen-duration">Target Length</label>
-                <select id="gen-duration" class="form-control">
-                  <option value="30">30 Seconds (High Viral Velocity)</option>
-                  <option value="45" selected>45 Seconds (Balanced Story)</option>
-                  <option value="60">60 Seconds (Deep Value Short)</option>
-                </select>
-              </div>
-            </div>
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
 
-            <div class="form-group">
-              <label for="gen-sub-style">Subtitle Animation Presets</label>
-              <select id="gen-sub-style" class="form-control">
-                <option value="hormozi_bold" selected>Alex Hormozi Viral Bold (Neon Lime Highlights)</option>
-                <option value="beast_pop">MrBeast Dynamic Pop (Orange & Purple Glow)</option>
-                <option value="minimal_clean">Minimalist Cyberpunk Clean (Electric Cyan)</option>
-              </select>
-            </div>
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
 
-            <button type="submit" id="btn-generate" class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 14px;">
-              ⚡ Generate Viral Storyboard & Prompts (25 Credits)
-            </button>
-          </form>
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
 
-          <!-- Hook Retention Analyzer -->
-          <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border-color);">
-            <h4 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-purple);">🎯 3-Second Hook Retention Scorer</h4>
-            <form id="hook-analyzer-form">
-              <input type="text" id="hook-text-input" class="form-control" placeholder="Test any custom hook..." value="Stop using AI like a beginner before you lose your job...">
-              <button type="submit" class="btn btn-secondary btn-sm" style="margin-top: 8px;">Evaluate Hook Power</button>
-            </form>
-            <div id="analysis-output"></div>
-          </div>
-        </div>
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
 
-        <!-- Real-Time Phone Preview -->
-        <div class="glass-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-          <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted); margin-bottom: 16px;">
-            📱 Live 9:16 Feed Preview
-          </div>
-          
-          <div class="preview-phone">
-            <div class="phone-video-bg">
-              <div style="color: rgba(255,255,255,0.15); font-weight: 900; font-size: 2.5rem; text-align:center;">
-                OMNIVIRAL<br>9:16
-              </div>
-            </div>
-            <div class="phone-overlay">
-              <div id="mockup-caption" class="hormozi-caption">
-                <span class="highlight">STOP!</span> THIS AI TOOL MAKES $500/DAY
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+	#lovable-badge-close:focus {
+		outline: none;
+	}
 
-      <!-- Generated Results Section -->
-      <div id="generation-results" style="display: none; margin-top: 40px;">
-        <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 20px;">✨ Generated Production Bundle</h3>
-        
-        <h4 style="color: var(--text-muted); margin-bottom: 12px;">1. High-Probability Scroll-Stopping Hooks</h4>
-        <div id="hook-variations"></div>
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
 
-        <h4 style="color: var(--text-muted); margin: 24px 0 12px;">2. Scene-by-Scene Storyboard & Veo 3 / Kling Prompts</h4>
-        <div id="storyboard-scenes"></div>
-      </div>
-    </section>
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
 
-    <!-- Digital Products Store Preview -->
-    <section style="margin-bottom: 80px;">
-      <div style="text-align: center; margin-bottom: 36px;">
-        <h2 style="font-size: 2.2rem; font-weight: 800;">📚 Ready-to-Sell High-Value Digital Products</h2>
-        <p style="color: var(--text-muted);">Instant access to pre-built blueprints, prompt vaults, and security recon packs.</p>
-      </div>
-      <div id="digital-products-grid" class="pricing-grid"></div>
-    </section>
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
 
-    <!-- Pricing Section -->
-    <section id="pricing" style="margin-bottom: 80px;">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="font-size: 2.2rem; font-weight: 800;">Simple, Transparent Pricing</h2>
-        <p style="color: var(--text-muted);">Everything you need to automate your content creation and hit $1,000+/month.</p>
-      </div>
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
 
-      <div class="pricing-grid">
-        <!-- Starter -->
-        <div class="glass-card pricing-card">
-          <div>
-            <h3>Starter Creator</h3>
-            <div class="price">$19 <span>/month</span></div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Ideal for single creator accounts starting their faceless channel journey.</p>
-            <ul class="feature-list">
-              <li>50 AI Video Scripts / month</li>
-              <li>Auto Hormozi Animated Captions</li>
-              <li>Veo 3 & Kling 1.5 Video Prompts</li>
-              <li>720p / 1080p Export Presets</li>
-              <li>500 Monthly Credits</li>
-            </ul>
-          </div>
-          <button class="btn btn-secondary" onclick="subscribePlan('starter')">Upgrade to Starter</button>
-        </div>
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+</style>
+<script defer src="https://omniviral-ai.lovable.app/~flock.js" data-proxy-url="/~api/analytics"></script><meta name="twitter:title" content="OmniViral AI — Engineer Viral Attention"><meta name="twitter:description" content="Elite autonomous AI content and 100-year luxury web systems, founded by Alok Lovanshi in Bhopal."><meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7g9pt4wqd99jk9d9h55vz11h8j/38c48db576e54f57a7ad080db289d215_1790502727132.png"><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7g9pt4wqd99jk9d9h55vz11h8j/38c48db576e54f57a7ad080db289d215_1790502727132.png"></head><body><!--$--><main class="min-h-screen overflow-hidden bg-background text-foreground selection:bg-primary/30"><div class="telemetry-bar"><div class="mx-auto flex h-full max-w-7xl items-center justify-center gap-3 px-4 text-center text-[10px] font-semibold uppercase text-muted-foreground sm:text-xs"><span class="inline-flex items-center gap-2 text-success"><span class="status-dot"></span> OmniViral 24/7 Multi-Agent Swarm Active</span><span class="hidden text-border sm:inline">|</span><span class="hidden sm:inline">520+ Viral Hooks</span><span class="hidden text-border md:inline">|</span><span class="hidden items-center gap-1 md:inline-flex">4.9 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star size-3 fill-current text-gold" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg> Client Rating</span></div></div><header class="site-nav"><div class="mx-auto grid h-18 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center px-5 sm:px-8 lg:px-10"><a href="#top" class="flex min-w-0 items-center gap-3" aria-label="OmniViral AI home"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles size-4" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg></span><span class="truncate text-sm font-bold uppercase">OmniViral <span class="text-primary">AI</span></span></a><nav class="hidden items-center gap-8 lg:flex" aria-label="Primary navigation"><a class="nav-link" href="#work">Work</a><a class="nav-link" href="#estimator">Estimator</a><a class="nav-link" href="#vault">Vault</a><a class="nav-link" href="#pricing">Pricing</a><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow-glow hover:-translate-y-0.5 hover:bg-primary-bright hover:shadow-glow-strong h-8 rounded-md px-3 text-xs">Book VIP Call <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></nav><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9 lg:hidden" aria-label="Toggle navigation"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><section id="top" class="hero-section"><img src="https://omniviral-ai.lovable.app/assets/omniviral-void-Dw3A2WgG.jpg" alt="Luminous AI data architecture in a deep digital space" width="1920" height="1080" class="hero-image"/><div class="hero-shade"></div><div class="hero-grid"></div><div class="relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] max-w-7xl flex-col justify-center px-5 pb-20 pt-24 sm:px-8 lg:px-10"><div class="max-w-5xl animate-fade-in"><div class="eyebrow"><span class="eyebrow-line"></span> Autonomous AI Content Studio · Bhopal to the World</div><h1 class="mt-7 max-w-5xl text-5xl font-semibold leading-[0.97] sm:text-7xl lg:text-[5.8rem]">We Engineer <span class="text-gradient">Viral Attention</span> &amp; 100-Year Luxury Web Systems.</h1><p class="mt-7 max-w-2xl text-base leading-7 text-muted-foreground sm:text-xl sm:leading-8">High-converting applications, autonomous AI video pipelines, and high-ticket digital product systems—built to compound authority for decades.</p><div class="mt-9 flex flex-col gap-3 sm:flex-row"><a href="#work" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow-glow hover:-translate-y-0.5 hover:bg-primary-bright hover:shadow-glow-strong h-13 px-6 text-sm sm:px-8">Explore Live Client Demos <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-border bg-surface/70 text-foreground shadow-inset hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent h-13 px-6 text-sm sm:px-8"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg> Book VIP Agency Consultation</button></div></div><div class="mt-16 grid max-w-3xl grid-cols-3 border-y border-border/60 py-5"><div class="border-l border-border/60 px-4 first:border-0 first:pl-0 sm:px-8"><div class="text-xl font-semibold sm:text-2xl">24/7</div><div class="mt-1 text-[9px] uppercase text-muted-foreground sm:text-[11px]">Agent operations</div></div><div class="border-l border-border/60 px-4 first:border-0 first:pl-0 sm:px-8"><div class="text-xl font-semibold sm:text-2xl">100yr</div><div class="mt-1 text-[9px] uppercase text-muted-foreground sm:text-[11px]">Design horizon</div></div><div class="border-l border-border/60 px-4 first:border-0 first:pl-0 sm:px-8"><div class="text-xl font-semibold sm:text-2xl">Global</div><div class="mt-1 text-[9px] uppercase text-muted-foreground sm:text-[11px]">Delivery standard</div></div></div></div><a href="#work" class="scroll-cue" aria-label="Scroll to client work"><span>Selected systems</span><span class="scroll-line"></span></a></section><section id="work" class="section-shell"><div class="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end"><div><div class="eyebrow">Live client infrastructure</div><h2 class="mt-5 text-4xl font-semibold leading-tight sm:text-6xl">Proof, not promises.</h2></div><p class="max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">Enter the systems we have engineered. Switch between the experience and the intelligence layer behind it.</p></div><div class="mt-12 grid gap-6 lg:grid-cols-[300px_minmax(0,1fr)]"><div class="space-y-2"><button class="inline-flex items-center gap-2 rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-transparent bg-transparent text-muted-foreground hover:bg-accent data-[active=true]:border-border data-[active=true]:bg-surface data-[active=true]:text-foreground h-auto w-full justify-start whitespace-normal p-4 text-left" data-active="true"><span class="demo-index">0<!-- -->1</span><span class="min-w-0"><span class="block text-sm font-semibold text-foreground">Dr. Shrivastava</span><span class="mt-1 block text-xs text-muted-foreground">Healthcare conversion system</span></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-auto" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button><button class="inline-flex items-center gap-2 rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-transparent bg-transparent text-muted-foreground hover:bg-accent data-[active=true]:border-border data-[active=true]:bg-surface data-[active=true]:text-foreground h-auto w-full justify-start whitespace-normal p-4 text-left" data-active="false"><span class="demo-index">0<!-- -->2</span><span class="min-w-0"><span class="block text-sm font-semibold text-foreground">Art Link</span><span class="mt-1 block text-xs text-muted-foreground">Immersive sales application</span></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-auto" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button><button class="inline-flex items-center gap-2 rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-transparent bg-transparent text-muted-foreground hover:bg-accent data-[active=true]:border-border data-[active=true]:bg-surface data-[active=true]:text-foreground h-auto w-full justify-start whitespace-normal p-4 text-left" data-active="false"><span class="demo-index">0<!-- -->3</span><span class="min-w-0"><span class="block text-sm font-semibold text-foreground">@ai_hunt</span><span class="mt-1 block text-xs text-muted-foreground">Autonomous media pipeline</span></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-auto" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button></div><div class="console-frame"><div class="console-topbar"><div class="flex items-center gap-2"><span class="console-dot"></span><span class="console-dot"></span><span class="console-dot"></span></div><div class="mode-switch"><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-accent text-foreground shadow-inset h-8 rounded-md px-3 text-xs"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg> Preview</button><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-muted-foreground hover:text-foreground h-8 rounded-md px-3 text-xs"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-xml" aria-hidden="true"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg> System</button></div><span class="hidden text-[10px] text-success sm:block">● <!-- -->LIVE / BHOPAL</span></div><div class="min-h-[490px] p-4 sm:p-7"><div class="demo-screen dental-screen"><div class="demo-screen-nav"><span class="text-sm font-semibold">Shrivastava Dental</span><span class="live-pill">Open today · 9am–8pm</span></div><div class="grid flex-1 gap-5 p-5 md:grid-cols-[1.1fr_0.9fr]"><div class="flex flex-col justify-center"><span class="mini-label">Confident smiles, precisely planned.</span><h4 class="mt-3 text-3xl font-semibold sm:text-4xl">Advanced implant care with zero uncertainty.</h4><p class="mt-4 text-sm text-muted-foreground">Get a guided cost range and reserve your consultation in under 60 seconds.</p><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-border bg-surface text-foreground hover:border-primary/50 hover:bg-accent h-9 px-4 py-2 mt-6 w-fit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg> Book on WhatsApp</button></div><div class="mini-panel"><div class="text-xs font-semibold">Treatment estimate</div><div class="mt-5 flex justify-between text-xs text-muted-foreground"><span>Dental implants</span><span>2 units</span></div><div class="my-4 h-1.5 overflow-hidden rounded-full bg-muted"><div class="h-full w-3/5 bg-primary"></div></div><div class="mt-auto"><div class="text-[10px] uppercase text-muted-foreground">Estimated range</div><div class="mt-2 text-2xl font-semibold">₹48,000 – ₹72,000</div></div></div></div></div></div><div class="grid gap-5 border-t border-border/60 p-5 sm:grid-cols-[1fr_auto] sm:items-end sm:p-7"><div><div class="text-xs uppercase text-primary">Dr. Shrivastava</div><h3 class="mt-2 text-2xl font-semibold sm:text-3xl">Dental Clinic &amp; Implant Portal</h3></div><div class="sm:text-right"><div class="text-3xl font-semibold text-gradient">63%</div><div class="text-xs text-muted-foreground">more qualified bookings</div></div></div></div></div></section><section id="estimator" class="section-shell border-y border-border/50"><div class="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end"><div><div class="eyebrow">Investment intelligence</div><h2 class="mt-5 text-4xl font-semibold leading-tight sm:text-6xl">Model the upside.</h2></div><p class="max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">Choose your growth system and operating scale to see a strategic investment range and 12-month revenue potential.</p></div><div class="mt-12 grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-stretch"><div class="space-y-3"><button class="inline-flex items-center gap-2 rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-border bg-surface/60 text-muted-foreground hover:border-primary/40 data-[active=true]:border-primary/50 data-[active=true]:bg-accent data-[active=true]:text-foreground h-auto w-full justify-start whitespace-normal p-5 text-left" data-active="true"><span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg></span><span class="min-w-0"><span class="block text-base font-semibold text-foreground">Luxury Web Application</span><span class="mt-1 block text-xs text-muted-foreground">Starting at <!-- -->₹3,50,000</span></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check ml-auto opacity-0 data-[active=true]:opacity-100" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></button><button class="inline-flex items-center gap-2 rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-border bg-surface/60 text-muted-foreground hover:border-primary/40 data-[active=true]:border-primary/50 data-[active=true]:bg-accent data-[active=true]:text-foreground h-auto w-full justify-start whitespace-normal p-5 text-left" data-active="false"><span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video" aria-hidden="true"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"></path><rect x="2" y="6" width="14" height="12" rx="2"></rect></svg></span><span class="min-w-0"><span class="block text-base font-semibold text-foreground">AI Video Pipeline</span><span class="mt-1 block text-xs text-muted-foreground">Starting at <!-- -->₹2,25,000</span></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check ml-auto opacity-0 data-[active=true]:opacity-100" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></button><button class="inline-flex items-center gap-2 rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-border bg-surface/60 text-muted-foreground hover:border-primary/40 data-[active=true]:border-primary/50 data-[active=true]:bg-accent data-[active=true]:text-foreground h-auto w-full justify-start whitespace-normal p-5 text-left" data-active="false"><span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up" aria-hidden="true"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg></span><span class="min-w-0"><span class="block text-base font-semibold text-foreground">OmniViral Growth Retainer</span><span class="mt-1 block text-xs text-muted-foreground">Starting at <!-- -->₹5,00,000</span></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check ml-auto opacity-0 data-[active=true]:opacity-100" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></button><div class="glass-panel mt-5 p-6"><div class="flex items-center justify-between text-sm"><span>Operating scale</span><span class="text-primary">Level <!-- -->2<!-- --> / 5</span></div><span dir="ltr" data-orientation="horizontal" aria-disabled="false" class="relative flex w-full touch-none select-none items-center my-7" aria-label="Operating scale" style="--radix-slider-thumb-transform:translateX(-50%)"><span data-orientation="horizontal" class="relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20"><span data-orientation="horizontal" class="absolute h-full bg-primary" style="left:0%;right:75%"></span></span><span style="transform:var(--radix-slider-thumb-transform);position:absolute;left:calc(0% + 0px)"><span role="slider" aria-valuemin="1" aria-valuemax="5" aria-orientation="horizontal" data-orientation="horizontal" tabindex="0" class="block h-4 w-4 rounded-full border border-primary/50 bg-background shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" style="display:none" data-radix-collection-item=""></span></span><input style="display:none"/></span><div class="flex justify-between text-[10px] uppercase text-muted-foreground"><span>Focused launch</span><span>Category dominance</span></div></div></div><div class="roi-panel"><div class="absolute right-6 top-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity size-5 text-primary" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg></div><div class="text-xs uppercase text-muted-foreground">Indicative project investment</div><div class="mt-3 text-4xl font-semibold sm:text-5xl">₹4,72,500</div><div class="my-8 h-px bg-border"></div><div class="text-xs uppercase text-muted-foreground">Projected 12-month value</div><div class="mt-3 text-5xl font-semibold text-gradient sm:text-6xl">₹16,06,500</div><div class="mt-3 flex items-center gap-2 text-sm text-success"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up size-4" aria-hidden="true"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg> <!-- -->3.4<!-- -->× target return multiple</div><div class="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-md bg-border"><div class="bg-surface p-4"><div class="text-lg font-semibold">90 days</div><div class="mt-1 text-[10px] uppercase text-muted-foreground">activation horizon</div></div><div class="bg-surface p-4"><div class="text-lg font-semibold">Always on</div><div class="mt-1 text-[10px] uppercase text-muted-foreground">optimization</div></div></div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow-glow hover:-translate-y-0.5 hover:bg-primary-bright hover:shadow-glow-strong h-10 rounded-md px-8 mt-8 w-full">Build My Growth System <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button><p class="mt-4 text-center text-[10px] leading-4 text-muted-foreground">Strategic estimate only. Final scope follows a private discovery session.</p></div></div></section><section id="vault" class="section-shell"><div class="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end"><div><div class="eyebrow">Digital product vault</div><h2 class="mt-5 text-4xl font-semibold leading-tight sm:text-6xl">Proprietary intelligence, unlocked.</h2></div><p class="max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">The exact playbooks, prompts, and production systems behind high-retention content operations.</p></div><div class="mt-12 grid gap-4 md:grid-cols-3"><article class="vault-card group"><div class="flex items-start justify-between"><span class="vault-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></span><span class="text-xs text-muted-foreground">0<!-- -->1</span></div><div class="mt-16 text-[10px] uppercase text-primary">Attention OS</div><h3 class="mt-3 text-2xl font-semibold">520+ Viral Hook Vault</h3><p class="mt-4 text-sm leading-6 text-muted-foreground">A battle-tested library of pattern interrupts, curiosity gaps, and high-retention openers engineered for Indian and global audiences.</p><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-foreground hover:text-primary h-9 py-2 mt-8 px-0">Open preview <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></article><article class="vault-card group"><div class="flex items-start justify-between"><span class="vault-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video" aria-hidden="true"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"></path><rect x="2" y="6" width="14" height="12" rx="2"></rect></svg></span><span class="text-xs text-muted-foreground">0<!-- -->2</span></div><div class="mt-16 text-[10px] uppercase text-primary">Production System</div><h3 class="mt-3 text-2xl font-semibold">Faceless Video Bible</h3><p class="mt-4 text-sm leading-6 text-muted-foreground">The complete operating system for scripting, visual pacing, voice direction, editing rhythms, and autonomous distribution.</p><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-foreground hover:text-primary h-9 py-2 mt-8 px-0">Open preview <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></article><article class="vault-card group"><div class="flex items-start justify-between"><span class="vault-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"></path></svg></span><span class="text-xs text-muted-foreground">0<!-- -->3</span></div><div class="mt-16 text-[10px] uppercase text-primary">Agent Intelligence</div><h3 class="mt-3 text-2xl font-semibold">AI Prompt Packs</h3><p class="mt-4 text-sm leading-6 text-muted-foreground">Studio-grade prompt systems for research, offers, scripts, visual direction, conversion copy, and automated quality control.</p><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-foreground hover:text-primary h-9 py-2 mt-8 px-0">Open preview <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></article></div></section><section id="pricing" class="section-shell border-y border-border/50"><div class="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end"><div><div class="eyebrow">Transparent engagement</div><h2 class="mt-5 text-4xl font-semibold leading-tight sm:text-6xl">An investment in permanence.</h2></div><p class="max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">Every engagement is deliberately limited, founder-led, and engineered around measurable commercial outcomes.</p></div><div class="mt-12 grid gap-4 lg:grid-cols-3"><article class="price-card"><div class="text-xs uppercase text-muted-foreground">Starter</div><div class="mt-5 text-4xl font-semibold">₹1.5L+</div><p class="mt-3 min-h-10 text-sm text-muted-foreground">For a high-authority digital launch</p><div class="my-7 h-px bg-border"></div><ul class="space-y-4"><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Conversion-first flagship site</li><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Premium motion system</li><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>WhatsApp lead routing</li><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>30-day launch support</li></ul><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-border bg-surface/70 text-foreground shadow-inset hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent h-9 px-4 py-2 mt-9 w-full">Request private proposal</button></article><article class="price-card price-card-featured"><span class="featured-label">Most selected</span><div class="text-xs uppercase text-muted-foreground">Growth Retainer</div><div class="mt-5 text-4xl font-semibold">₹3.5L/mo</div><p class="mt-3 min-h-10 text-sm text-muted-foreground">For category leaders scaling attention</p><div class="my-7 h-px bg-border"></div><ul class="space-y-4"><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Everything in Starter</li><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Autonomous content pipeline</li><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Conversion experiments</li><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Priority strategy access</li></ul><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow-glow hover:-translate-y-0.5 hover:bg-primary-bright hover:shadow-glow-strong h-9 px-4 py-2 mt-9 w-full">Request private proposal</button></article><article class="price-card"><div class="text-xs uppercase text-muted-foreground">Enterprise Swarm</div><div class="mt-5 text-4xl font-semibold">Custom</div><p class="mt-3 min-h-10 text-sm text-muted-foreground">For multi-brand autonomous operations</p><div class="my-7 h-px bg-border"></div><ul class="space-y-4"><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Multi-agent AI architecture</li><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Custom CRM ecosystems</li><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Global-scale infrastructure</li><li class="flex gap-3 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Founder-led transformation</li></ul><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-border bg-surface/70 text-foreground shadow-inset hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent h-9 px-4 py-2 mt-9 w-full">Request private proposal</button></article></div></section><section class="cta-section"><div class="hero-grid opacity-40"></div><div class="relative z-10 mx-auto max-w-4xl px-5 text-center"><div class="eyebrow justify-center">Private client intake · Limited capacity</div><h2 class="mt-7 text-4xl font-semibold leading-tight sm:text-6xl">The next category-defining system could be yours.</h2><p class="mx-auto mt-6 max-w-2xl text-muted-foreground">Talk directly with founder Alok Lovanshi about your brand, ambition, and highest-leverage growth opportunity.</p><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow-glow hover:-translate-y-0.5 hover:bg-primary-bright hover:shadow-glow-strong h-13 px-6 text-sm sm:px-8 mt-9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg> Start VIP Consultation</button></div></section><footer class="border-t border-border/60 bg-surface/60"><div class="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10"><div class="grid gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]"><div><div class="flex items-center gap-3"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles size-4" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg></span><span class="text-sm font-bold uppercase">OmniViral AI</span></div><p class="mt-5 max-w-sm text-sm leading-6 text-muted-foreground">Elite autonomous AI content systems and luxury web infrastructure, founded in Bhopal and engineered for global ambition.</p></div><div><div class="footer-label">Founder</div><div class="mt-4 font-semibold">Alok Lovanshi</div><div class="mt-2 text-sm text-muted-foreground">AI Systems Architect · Creative Director</div></div><div><div class="footer-label">Private contact</div><a class="mt-4 flex items-center gap-2 text-sm hover:text-primary" href="https://wa.me/916265048497" target="_blank" rel="noreferrer">WhatsApp <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link size-3" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a><a class="mt-3 block text-sm text-muted-foreground hover:text-foreground" href="mailto:hello@omniviral.ai">hello@omniviral.ai</a></div></div><div class="mt-12 flex flex-col gap-3 border-t border-border/60 pt-6 text-[10px] uppercase text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><span>© 2026 OmniViral AI. All rights reserved.</span><span>Privacy · Terms · Bhopal, India</span></div></div></footer></main><script>(function(a,f){let l;try{l=JSON.parse(sessionStorage.getItem(a)||"{}")}catch{return}const n=l?.[f||history.state?.__TSR_key];let c=!1;for(const t in n){const e=n[t],o=e?.scrollX,s=e?.scrollY;if(Number.isFinite(o)&&Number.isFinite(s)){if(t==="window")scrollTo(o,s),c=!0;else if(t)try{const r=document.querySelector(t);r&&(r.scrollLeft=o,r.scrollTop=s)}catch{}}}if(c)return;const i=location.hash.slice(1);if(i){const t=history.state?.__hashScrollIntoViewOptions??!0;if(t){const e=document.getElementById(i);e&&e.scrollIntoView(t)}return}scrollTo(0,0)})("tsr-scroll-restoration-v1_3");document.currentScript.remove()</script><!--/$--><script class="$tsr" id="$tsr-stream-barrier">(self.$R=self.$R||{})["tsr"]=[];self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&&this.streamEnded&&(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]};$_TSR.router=($R=>$R[0]={manifest:$R[1]={routes:$R[2]={__root__:$R[3]={preloads:$R[4]=["/assets/index-BY_kYR_c.js"],scripts:$R[5]=[$R[6]={attrs:$R[7]={type:"module",async:!0,src:"/assets/index-BY_kYR_c.js"}}]},"/":$R[8]={preloads:$R[9]=["/assets/routes-DbqWxMA-.js"]}}},matches:$R[10]=[$R[11]={i:"__root__ ",u:1790502950755,s:"success",ssr:!0},$R[12]={i:"  ",u:1790502950755,s:"success",ssr:!0}],lastMatchId:"  "})($R["tsr"]);$_TSR.e();document.currentScript.remove()</script><script type="module" async="" src="https://omniviral-ai.lovable.app/assets/index-BY_kYR_c.js"></script>
+<aside
+	id="lovable-badge"
+	role="complementary"
+	dir="ltr"
+	lang="en"
+	aria-label="Made with Lovable">
+	<a
+		id="lovable-badge-cta" 
+		target="_blank" 
+		href="https://lovable.dev/projects/lovp_7g9pt4wqd99jk9d9h55vz11h8j?utm_source=lovable-badge&utm_campaign=badge-wording-enabled"
+		rel="noopener nofollow"
+		aria-label="Made with Lovable">
+		<span id="lovable-badge-text">Made with</span>
+		<svg xmlns="http://www.w3.org/2000/svg" width="52" height="16" fill="none" viewBox="0 0 52 16">
+  <path fill="#FCFBF8" fill-rule="evenodd" d="M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z" clip-rule="evenodd"/>
+  <path fill="#FCFBF8" d="m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z"/>
+  <path fill="url(#a)" fill-rule="evenodd" d="M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z" clip-rule="evenodd"/>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)" gradientUnits="userSpaceOnUse">
+      <stop offset=".106" stop-color="#FE7B02"/>
+      <stop offset=".394" stop-color="#FE3F21"/>
+      <stop offset=".608" stop-color="#F858BC"/>
+      <stop offset=".929" stop-color="#575ECF"/>
+    </radialGradient>
+  </defs>
+</svg>
 
-        <!-- Pro -->
-        <div class="glass-card pricing-card featured">
-          <div class="featured-badge">MOST POPULAR</div>
-          <div>
-            <h3>Pro Viral Engine</h3>
-            <div class="price">$49 <span>/month</span></div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">For power creators & digital businesses generating 2-3 videos daily.</p>
-            <ul class="feature-list">
-              <li>Unlimited AI Video Scripts</li>
-              <li>Complete Faceless Video Storyboards</li>
-              <li>Viral Hook Controversy Scorer</li>
-              <li>B-Roll & Ambient Audio Matching</li>
-              <li>2,000 Monthly Credits</li>
-              <li>Priority Gemini 2.0 Pro Engine</li>
-            </ul>
-          </div>
-          <button class="btn btn-primary" onclick="subscribePlan('pro')">Upgrade to Pro</button>
-        </div>
 
-        <!-- Agency -->
-        <div class="glass-card pricing-card">
-          <div>
-            <h3>Agency & Swarm</h3>
-            <div class="price">$99 <span>/month</span></div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Full autonomous multi-agent swarm access + DevSecOps recon suite.</p>
-            <ul class="feature-list">
-              <li>Everything in Pro Tier</li>
-              <li>Autonomous 20-Agent Swarm</li>
-              <li>DevSecOps Bug Recon Module</li>
-              <li>White-label Client Delivery</li>
-              <li>6,000 Monthly Credits</li>
-              <li>Dedicated Support</li>
-            </ul>
-          </div>
-          <button class="btn btn-secondary" onclick="subscribePlan('agency')">Upgrade to Agency</button>
-        </div>
-      </div>
-    </section>
+	</a>
+	
+	<span id="lovable-badge-divider" aria-hidden="true"></span>
+	
+	<button 
+		id="lovable-badge-close"
+		aria-label="Dismiss"
+		title="Dismiss"
+		type="button">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+			<path d="M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z"/>
+		</svg>
+	</button>
+</aside>
+<script>
+	// Don't show the lovable-badge if the page is in an iframe or if it's being rendered by puppeteer (screenshot service)
+	if (window.self !== window.top || navigator.userAgent.includes('puppeteer')) {
+		var badge = document.getElementById('lovable-badge');
+		if (badge) {
+			badge.style.display = 'none';
+		}
+	}
 
-    <!-- Footer -->
-    <footer style="border-top: 1px solid var(--border-color); padding: 40px 0; text-align:center; color: var(--text-dim); font-size: 0.9rem;">
-      <p>© 2026 OmniViral AI Systems by Alok Lovanshi. All rights reserved.</p>
-      <p style="margin-top: 6px;">Autonomous AI Video Engine & Cashflow Automation System.</p>
-    </footer>
-  </div>
-
-  <script src="app.js"></script>
-</body>
-</html>
+	// Add click event listener to close button with animation
+	var closeButton = document.getElementById('lovable-badge-close');
+	if (closeButton) {
+		closeButton.addEventListener('click', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			var badge = document.getElementById('lovable-badge');
+			if (badge) {
+				badge.classList.add('closing');
+				setTimeout(function() {
+					if (badge) {
+						badge.style.display = 'none';
+					}
+				}, 240);
+			}
+		});
+	}
+</script>
+</body></html>

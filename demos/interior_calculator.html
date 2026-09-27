@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Link Interiors — Instant 3D Project Quotation & Portfolio Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --card: #121826;
+      --accent: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.25);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 20px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    
+    .demo-banner {
+      background: linear-gradient(90deg, #f59e0b, #ec4899);
+      color: #000;
+      font-weight: 800;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card);
+      padding: 20px 30px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+    .logo { font-size: 1.4rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .logo span { color: var(--accent); }
+    .rating-badge { background: #1e293b; color: #fbbf24; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; }
+
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 25px; }
+    .card h3 { font-size: 1.2rem; margin-bottom: 20px; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+    select, input[type="range"] {
+      width: 100%;
+      padding: 12px;
+      background: #0a0e17;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .budget-display {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--accent);
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    .budget-amount { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #000;
+      font-weight: 800;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+      background: #0a0e17;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .feature-icon { font-size: 1.4rem; }
+    .feature-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+    .feature-desc { font-size: 0.82rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="demo-banner">⚡ LIVE DEMO PREVIEW — Custom Utility Website for Interior Designers & Architects</div>
+
+    <header>
+      <div class="logo">📐 Art Link <span>Interiors</span></div>
+      <div class="rating-badge">★ 4.9 (38+ Google Reviews)</div>
+    </header>
+
+    <div class="hero">
+      <h1>Luxury Home & Office Interior Estimator</h1>
+      <p>Calculate your estimated renovation budget in 30 seconds & request a 3D Layout Consultation in Arera Colony, Bhopal.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Interactive Budget Calculator -->
+      <div class="card">
+        <h3>🧮 Instant Interior Cost Estimator</h3>
+        
+        <div class="form-group">
+          <label>Property Layout Type</label>
+          <select id="layoutType" onchange="calculateCost()">
+            <option value="250000">2 BHK Luxury Apartment</option>
+            <option value="450000" selected>3 BHK Premium Apartment</option>
+            <option value="850000">Independent Villa / Bunglow</option>
+            <option value="350000">Commercial Office Space</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Interior Design Package</label>
+          <select id="packageType" onchange="calculateCost()">
+            <option value="1.0">Essential (Modular Kitchen + Wardrobes)</option>
+            <option value="1.4" selected>Premium (Full False Ceiling, Lighting & Furniture)</option>
+            <option value="2.0">Luxury Royal (Italian Marble, 3D Wallpapers, Smart Home)</option>
+          </select>
+        </div>
+
+        <div class="budget-display">
+          <div style="font-size:0.85rem; color:var(--muted)">Estimated Renovation Investment:</div>
+          <div class="budget-amount" id="costResult">₹ 6,30,000</div>
+        </div>
+
+        <button class="btn-submit" onclick="request3DQuote()">📲 Get Detailed 3D Quote via WhatsApp</button>
+      </div>
+
+      <!-- Work-Easier Benefits -->
+      <div class="card">
+        <h3>💎 Why Interior Designers Sell More With This</h3>
+        
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <div class="feature-title">Pre-Qualifies High-Budget Clients</div>
+            <div class="feature-desc">Filters out low-budget leads automatically before wasting time on site visits.</div>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">✨</div>
+          <div>
+            <div class="feature-title">3D Project Portfolio Showcase</div>
+            <div class="feature-desc">Showcase high-resolution render galleries directly to prospective home buyers.</div>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">📈</div>
+          <div>
+            <div class="feature-title">3x Conversion Rate</div>
+            <div class="feature-desc">Clients who calculate budgets online are 3x more likely to convert into ₹2 Lakh+ contracts.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateCost() {
+      const base = parseFloat(document.getElementById('layoutType').value);
+      const mult = parseFloat(document.getElementById('packageType').value);
+      const total = base * mult;
+      document.getElementById('costResult').innerText = '₹ ' + total.toLocaleString('en-IN');
+    }
+
+    function request3DQuote() {
+      const layout = document.getElementById('layoutType').options[document.getElementById('layoutType').selectedIndex].text;
+      const pkg = document.getElementById('packageType').options[document.getElementById('packageType').selectedIndex].text;
+      const est = document.getElementById('costResult').innerText;
+
+      const text = `Hello Art Link Interiors! I calculated an estimate on your website:\n\n🏠 Property: ${layout}\n✨ Package: ${pkg}\n💰 Estimated Budget: ${est}\n\nI would like to book a 3D Consultation visit!`;
+      window.open(`https://wa.me/916265048497?text=${encodeURIComponent(text)}`, '_blank');
+    }
+  </script>
+</body>
+</html>

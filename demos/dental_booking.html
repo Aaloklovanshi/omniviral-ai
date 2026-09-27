@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shrivastava Dental & Implant Center — 24/7 Appointment Booking Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #131b2e;
+      --accent: #00f2fe;
+      --accent-glow: rgba(0, 242, 254, 0.25);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 20px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    
+    .demo-banner {
+      background: linear-gradient(90deg, #3b82f6, #00f2fe);
+      color: #000;
+      font-weight: 800;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card);
+      padding: 20px 30px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+    .logo { font-size: 1.4rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .logo span { color: var(--accent); }
+    .rating-badge { background: #1e293b; color: #fbbf24; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+    }
+    .card h3 { font-size: 1.2rem; margin-bottom: 20px; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      background: #090d16;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    input:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+      color: #000;
+      font-weight: 800;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+      background: #090d16;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .feature-icon { font-size: 1.4rem; }
+    .feature-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+    .feature-desc { font-size: 0.82rem; color: var(--muted); }
+
+    .roi-box {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--success);
+      padding: 20px;
+      border-radius: 16px;
+      margin-top: 30px;
+      text-align: center;
+    }
+    .roi-title { color: var(--success); font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; }
+    .roi-text { font-size: 0.9rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="demo-banner">⚡ LIVE DEMO PREVIEW — Custom Patient Booking Website for Dentists & Doctors</div>
+
+    <header>
+      <div class="logo">🦷 Shrivastava <span>Dental Care</span></div>
+      <div class="rating-badge">★ 4.9 (65+ Google Reviews)</div>
+    </header>
+
+    <div class="hero">
+      <h1>Book Your Dental Appointment in 60 Seconds</h1>
+      <p>Painless Root Canals, Teeth Whitening & Smile Transformations in Arera Colony, Bhopal.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Interactive Booking Tool -->
+      <div class="card">
+        <h3>📅 24/7 Patient Slot Selector</h3>
+        <form id="bookingForm" onsubmit="handleBooking(event)">
+          <div class="form-group">
+            <label>Patient Full Name</label>
+            <input type="text" id="pName" placeholder="e.g. Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input type="tel" id="pPhone" placeholder="e.g. 98260XXXXX" required>
+          </div>
+          <div class="form-group">
+            <label>Select Treatment</label>
+            <select id="pTreatment">
+              <option>Root Canal Treatment (RCT)</option>
+              <option>Teeth Whitening & Cleaning</option>
+              <option>Dental Implants & Braces</option>
+              <option>General Dental Checkup</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Date & Time</label>
+            <input type="datetime-local" id="pTime" required>
+          </div>
+          <button type="submit" class="btn-submit">📲 Book Slot via WhatsApp</button>
+        </form>
+      </div>
+
+      <!-- Work-Easier Benefits -->
+      <div class="card">
+        <h3>🚀 Why Doctors Love This Website</h3>
+        
+        <div class="feature-item">
+          <div class="feature-icon">📞</div>
+          <div>
+            <div class="feature-title">Zero Reception Phone Hassle</div>
+            <div class="feature-desc">Patients book directly into your WhatsApp slot without clogging reception phone lines.</div>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">🌙</div>
+          <div>
+            <div class="feature-title">Captures After-Hour Patients</div>
+            <div class="feature-desc">Over 40% of patients look for doctors after 9 PM. Capture them while your clinic is closed.</div>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">💎</div>
+          <div>
+            <div class="feature-title">Instant Trust & Google #1 Rank</div>
+            <div class="feature-desc">Elevates clinic authority over competitors who only have basic Google Maps profiles.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <div class="roi-title">💡 Operational ROI Calculator:</div>
+      <div class="roi-text">
+        Just <strong>2 extra Root Canal patients per month (₹10,000 revenue)</strong> pays for this entire website setup <strong>5x over</strong> in the first 30 days! Zero monthly hosting fees.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('pName').value;
+      const phone = document.getElementById('pPhone').value;
+      const treat = document.getElementById('pTreatment').value;
+      const time = document.getElementById('pTime').value;
+
+      const text = `Hello Doctor! I would like to book an appointment.\n\n👤 Patient: ${name}\n📱 Phone: ${phone}\n🦷 Treatment: ${treat}\n⏰ Preferred Slot: ${time}`;
+      window.open(`https://wa.me/916265048497?text=${encodeURIComponent(text)}`, '_blank');
+    }
+  </script>
+</body>
+</html>
