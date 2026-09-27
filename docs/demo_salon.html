@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>METROMEN Luxury Salon & Spa | MP Nagar Bhopal</title>
+  <meta name="description" content="Bhopal's Premier Luxury Unisex Salon & Spa. Experience world-class styling, keratin, facials, and executive grooming in MP Nagar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            gold: {
+              300: '#FDE047',
+              400: '#EAB308',
+              500: '#D4AF37',
+              600: '#CA8A04',
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #090B0E;
+      --card: rgba(18, 22, 29, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --gold-glow: rgba(212, 175, 55, 0.15);
+    }
+    body {
+      background-color: var(--bg);
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .glass-panel {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF6D5 0%, #D4AF37 50%, #AA7C11 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-button {
+      background: linear-gradient(135deg, #E6C260 0%, #C4972A 100%);
+      color: #090B0E;
+      font-weight: 700;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+    }
+    .gold-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+    }
+    .hero-vignette {
+      background: linear-gradient(180deg, rgba(9,11,14,0.3) 0%, rgba(9,11,14,0.85) 75%, #090B0E 100%),
+                  radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.12) 0%, rgba(9,11,14,0.95) 70%);
+    }
+    /* Comparison Slider */
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      user-select: none;
+    }
+    .slider-before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      border-right: 2px solid #D4AF37;
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-500/30 selection:text-amber-200">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-amber-950/60 via-amber-900/40 to-amber-950/60 border-b border-amber-500/20 py-2 text-center text-xs tracking-wider text-amber-200 uppercase font-semibold">
+    ✨ Bhopal's 5.0★ Rated Luxury Unisex Grooming & Spa Hub • Mansarovar Complex, MP Nagar
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-white/5 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-700 flex items-center justify-center text-black font-black text-xl shadow-lg shadow-amber-500/20">
+          M
+        </div>
+        <div>
+          <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1.5">
+            METROMEN <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 font-medium">LUXURY SALON</span>
+          </span>
+          <p class="text-[10px] text-gray-400 uppercase tracking-widest">Unisex Studio & Spa • MP Nagar</p>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+        <a href="#services" class="hover:text-amber-300 transition">Services</a>
+        <a href="#calculator" class="hover:text-amber-300 transition">Price Estimator</a>
+        <a href="#transformations" class="hover:text-amber-300 transition">Transformations</a>
+        <a href="#booking" class="hover:text-amber-300 transition">VIP Booking</a>
+      </nav>
+
+      <a href="#booking" class="gold-button px-5 py-2.5 rounded-xl text-sm flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <span>Book Slot</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] flex items-center justify-center hero-vignette px-6 py-20">
+    <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-amber-500/30 text-amber-300 text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>5.0★ Google Rated (45+ Reviews) • Bhopal's Best Grooming Lounge</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-tight font-serif">
+        Redefining <span class="gold-gradient-text italic">Elegance</span> & Executive Grooming.
+      </h1>
+
+      <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+        Experience bespoke hair styling, Brazilian keratin, Russian manicure, hydra-facials, and signature groom packages in Bhopal’s most sophisticated ambience.
+      </p>
+
+      <!-- CTA Hub -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a href="#booking" class="gold-button w-full sm:w-auto px-8 py-4 rounded-xl text-base flex items-center justify-center gap-3">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span>Select VIP Appointment</span>
+        </a>
+        <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-white glass-panel hover:bg-white/10 transition border border-white/10 flex items-center justify-center gap-2">
+          <span>Calculate Service Cost</span>
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Quick Trust Indicators -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-12 border-t border-white/5">
+        <div class="glass-panel p-4 rounded-2xl text-center">
+          <div class="text-2xl font-bold text-white">5.0 ★</div>
+          <div class="text-xs text-gray-400 mt-1">Google Rating</div>
+        </div>
+        <div class="glass-panel p-4 rounded-2xl text-center">
+          <div class="text-2xl font-bold text-amber-400">12,000+</div>
+          <div class="text-xs text-gray-400 mt-1">Happy Clients</div>
+        </div>
+        <div class="glass-panel p-4 rounded-2xl text-center">
+          <div class="text-2xl font-bold text-white">100%</div>
+          <div class="text-xs text-gray-400 mt-1">Sterilized & Hygienic</div>
+        </div>
+        <div class="glass-panel p-4 rounded-2xl text-center">
+          <div class="text-2xl font-bold text-amber-400">Top Tier</div>
+          <div class="text-xs text-gray-400 mt-1">L'Oréal & Schwarzkopf</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Price & Package Estimator -->
+  <section id="calculator" class="py-24 px-6 max-w-5xl mx-auto">
+    <div class="text-center space-y-4 mb-16">
+      <div class="text-xs uppercase tracking-widest text-amber-400 font-bold">Transparent Salon Pricing</div>
+      <h2 class="text-3xl sm:text-5xl font-bold text-white font-serif">Instant Treatment & Package Estimator</h2>
+      <p class="text-gray-400 text-sm max-w-lg mx-auto">Select your preferred salon services below to instantly calculate your estimated bill and reserve priority slot.</p>
+    </div>
+
+    <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Service Checkboxes -->
+        <div class="space-y-4">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300">Choose Services:</h3>
+          
+          <label class="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/5 hover:border-amber-500/40 cursor-pointer transition">
+            <div class="flex items-center space-x-3">
+              <input type="checkbox" class="service-check accent-amber-500 w-5 h-5 rounded" data-price="499" data-name="Executive Haircut & Beard Sculpt" checked onchange="updateTotal()">
+              <div>
+                <div class="text-sm font-semibold text-white">Executive Haircut & Beard Sculpt</div>
+                <div class="text-xs text-gray-400">Head massage + hot towel finish</div>
+              </div>
+            </div>
+            <span class="text-sm font-bold text-amber-300">₹499</span>
+          </label>
+
+          <label class="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/5 hover:border-amber-500/40 cursor-pointer transition">
+            <div class="flex items-center space-x-3">
+              <input type="checkbox" class="service-check accent-amber-500 w-5 h-5 rounded" data-price="1999" data-name="Keratin / Hair Botox Treatment" onchange="updateTotal()">
+              <div>
+                <div class="text-sm font-semibold text-white">Keratin / Hair Botox Infusion</div>
+                <div class="text-xs text-gray-400">Frizz-free mirror shine (4-6 months)</div>
+              </div>
+            </div>
+            <span class="text-sm font-bold text-amber-300">₹1,999</span>
+          </label>
+
+          <label class="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/5 hover:border-amber-500/40 cursor-pointer transition">
+            <div class="flex items-center space-x-3">
+              <input type="checkbox" class="service-check accent-amber-500 w-5 h-5 rounded" data-price="1499" data-name="Korean Glass Hydra-Facial" onchange="updateTotal()">
+              <div>
+                <div class="text-sm font-semibold text-white">Korean Glass Hydra-Facial</div>
+                <div class="text-xs text-gray-400">Deep pore cleansing & instant glow</div>
+              </div>
+            </div>
+            <span class="text-sm font-bold text-amber-300">₹1,499</span>
+          </label>
+
+          <label class="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/5 hover:border-amber-500/40 cursor-pointer transition">
+            <div class="flex items-center space-x-3">
+              <input type="checkbox" class="service-check accent-amber-500 w-5 h-5 rounded" data-price="3999" data-name="Royal Pre-Bridal / Groom Package" onchange="updateTotal()">
+              <div>
+                <div class="text-sm font-semibold text-white">Royal Pre-Bridal / Groom Makeover</div>
+                <div class="text-xs text-gray-400">Full body polishing + facial + styling</div>
+              </div>
+            </div>
+            <span class="text-sm font-bold text-amber-300">₹3,999</span>
+          </label>
+        </div>
+
+        <!-- Estimate Breakdown Display -->
+        <div class="glass-panel p-6 rounded-2xl border border-amber-500/20 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+              <span class="text-gray-400 text-sm">Estimated Total</span>
+              <span id="total-price" class="text-3xl font-extrabold text-amber-300 font-serif">₹499</span>
+            </div>
+            <div class="text-xs text-gray-400 space-y-1">
+              <p>✓ Zero cancellation charges</p>
+              <p>✓ 100% Genuine Imported Products (L'Oréal Professionnel)</p>
+              <p>✓ Complimentary beverage & consultation included</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <button onclick="bookCalculatedPackage()" class="gold-button w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2">
+              <span>Book Selected Services on WhatsApp</span>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.761.814 2.791.814 3.18 0 5.766-2.587 5.766-5.766 0-3.18-2.586-5.766-5.766-5.766zm9.969 5.766c0 5.514-4.486 10-10 10-1.741 0-3.374-.45-4.807-1.239l-7.193 1.882 1.917-6.995c-.883-1.488-1.39-3.21-1.39-5.068 0-5.514 4.486-10 10-10s10 4.486 10 10z"/></svg>
+            </button>
+            <p class="text-[11px] text-center text-gray-500">Takes only 15 seconds to confirm your preferred slot</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Before / After Transformation -->
+  <section id="transformations" class="py-20 px-6 max-w-4xl mx-auto">
+    <div class="text-center space-y-4 mb-12">
+      <div class="text-xs uppercase tracking-widest text-amber-400 font-bold">Real Client Transformations</div>
+      <h2 class="text-3xl sm:text-5xl font-bold text-white font-serif">Before & After Results</h2>
+      <p class="text-gray-400 text-sm">Drag slider to see real transformation done by METROMEN Master Stylists.</p>
+    </div>
+
+    <div class="slider-container glass-panel border border-white/10 h-80 sm:h-96 relative" id="transformation-slider">
+      <!-- After Image (Background) -->
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80" alt="After Styling" class="w-full h-full object-cover">
+      
+      <!-- Before Image (Overlay clipped) -->
+      <div class="slider-before" id="slider-before">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80" alt="Before Styling" class="w-full h-full object-cover max-w-none">
+      </div>
+
+      <!-- Handle / Slider bar -->
+      <input type="range" min="0" max="100" value="50" class="absolute inset-0 opacity-0 cursor-ew-resize w-full h-full z-20" id="slider-range" oninput="adjustSlider(this.value)">
+
+      <div class="absolute top-4 left-4 bg-black/70 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-gray-300 pointer-events-none">BEFORE</div>
+      <div class="absolute top-4 right-4 bg-black/70 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-amber-300 pointer-events-none">AFTER (METROMEN)</div>
+    </div>
+  </section>
+
+  <!-- VIP WhatsApp Slot Booking Section -->
+  <section id="booking" class="py-20 px-6 max-w-3xl mx-auto">
+    <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-amber-500/30 text-center space-y-8">
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+
+      <div class="space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white font-serif">Reserve Your VIP Chair</h2>
+        <p class="text-gray-300 text-sm max-w-md mx-auto">No waiting at the reception. Select your time slot and get instant WhatsApp confirmation directly with the master stylist.</p>
+      </div>
+
+      <form id="booking-form" onsubmit="handleDirectBooking(event)" class="space-y-4 text-left max-w-md mx-auto">
+        <div>
+          <label class="text-xs uppercase tracking-wider text-gray-400 font-semibold block mb-1">Your Full Name</label>
+          <input type="text" id="cust-name" required placeholder="e.g. Rahul Sharma" class="w-full p-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-amber-400 text-sm">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs uppercase tracking-wider text-gray-400 font-semibold block mb-1">Date</label>
+            <input type="date" id="cust-date" required class="w-full p-3.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-amber-400 text-sm">
+          </div>
+          <div>
+            <label class="text-xs uppercase tracking-wider text-gray-400 font-semibold block mb-1">Preferred Time</label>
+            <select id="cust-time" class="w-full p-3.5 rounded-xl bg-[#12161D] border border-white/10 text-white focus:outline-none focus:border-amber-400 text-sm">
+              <option>11:00 AM</option>
+              <option>01:00 PM</option>
+              <option>03:30 PM</option>
+              <option>05:00 PM</option>
+              <option>07:00 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="gold-button w-full py-4 rounded-xl text-base font-bold flex items-center justify-center gap-2 mt-6">
+          <span>Confirm Slot on WhatsApp</span>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.761.814 2.791.814 3.18 0 5.766-2.587 5.766-5.766 0-3.18-2.586-5.766-5.766-5.766zm9.969 5.766c0 5.514-4.486 10-10 10-1.741 0-3.374-.45-4.807-1.239l-7.193 1.882 1.917-6.995c-.883-1.488-1.39-3.21-1.39-5.068 0-5.514 4.486-10 10-10s10 4.486 10 10z"/></svg>
+        </button>
+      </form>
+
+      <div class="pt-6 border-t border-white/5 text-xs text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span>📍 Mansarovar Complex, No. 6 Locality, MP Nagar, Bhopal</span>
+        <span>📞 Direct Call: +91 8815949846</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer / Agency Badge -->
+  <footer class="py-8 text-center text-xs text-gray-500 border-t border-white/5 space-y-2">
+    <p>© 2026 METROMEN Unisex Salon & Spa. Crafted & Engineered by <a href="https://omniviral-ai.lovable.app" target="_blank" class="text-amber-400 hover:underline">OmniViral AI Digital Studio (Bhopal)</a>.</p>
+  </footer>
+
+  <script>
+    function updateTotal() {
+      const checks = document.querySelectorAll('.service-check:checked');
+      let total = 0;
+      checks.forEach(c => total += parseInt(c.dataset.price));
+      document.getElementById('total-price').innerText = '₹' + total.toLocaleString('en-IN');
+    }
+
+    function adjustSlider(val) {
+      document.getElementById('slider-before').style.width = val + '%';
+    }
+
+    function bookCalculatedPackage() {
+      const checks = document.querySelectorAll('.service-check:checked');
+      let services = [];
+      let total = 0;
+      checks.forEach(c => {
+        services.push(c.dataset.name);
+        total += parseInt(c.dataset.price);
+      });
+      const msg = encodeURIComponent(`Hello METROMEN Salon! I would like to book a VIP session for: ${services.join(', ')} (Estimated: ₹${total}). Please confirm my appointment slot.`);
+      window.open(`https://wa.me/918815949846?text=${msg}`, '_blank');
+    }
+
+    function handleDirectBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('cust-name').value;
+      const date = document.getElementById('cust-date').value;
+      const time = document.getElementById('cust-time').value;
+      const msg = encodeURIComponent(`Hello METROMEN Salon! My name is ${name}. I want to reserve a VIP salon chair on ${date} at ${time}. Please confirm my booking.`);
+      window.open(`https://wa.me/918815949846?text=${msg}`, '_blank');
+    }
+
+    // Set today's date in picker
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('cust-date').min = today;
+    document.getElementById('cust-date').value = today;
+  </script>
+</body>
+</html>
