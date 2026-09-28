@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus N Click - Wedding Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#d4af37;--secondary:#aa8222;--accent:#f97316;--bg:#0a0a0f;--card:rgba(212,175,55,0.03);--text:#e8e8e8;--text-muted:#999}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::selection{background:var(--primary);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#111}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-in{opacity:0;transition:opacity .8s ease}
+.fade-in.visible{opacity:1}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;transition:all .4s ease;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+header.scrolled{background:rgba(10,10,15,.95);box-shadow:0 2px 30px rgba(0,0,0,.5);padding:.7rem 2rem}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+nav{display:flex;gap:1.5rem;align-items:center}
+nav a{color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s;letter-spacing:.5px;text-transform:uppercase}
+nav a:hover{color:var(--primary)}
+.nav-cta{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff!important;padding:.55rem 1.2rem;border-radius:50px;font-weight:600;font-size:.8rem;letter-spacing:.5px}
+.nav-cta:hover{transform:scale(1.05);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:6rem 2rem 4rem}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg, rgba(20,20,20,0.8) 0%, rgba(10,10,15,1) 100%);z-index:0}
+.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 120%,transparent 30%,var(--bg) 70%)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);padding:.45rem 1rem;border-radius:50px;font-size:.8rem;margin-bottom:1.5rem;backdrop-filter:blur(10px)}
+.hero-badge svg{width:16px;height:16px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:1rem;letter-spacing:-1px}
+.hero h1 span{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.1rem;color:var(--text-muted);max-width:600px;margin:0 auto 2rem;line-height:1.7}
+.hero-stats{display:flex;gap:2rem;justify-content:center;margin-top:2.5rem;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat .label{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:.2rem}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;border-radius:50px;font-weight:600;text-decoration:none;font-size:.95rem;transition:all .3s ease;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;box-shadow:0 4px 25px rgba(0,0,0,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(0,0,0,.4)}
+.btn-outline{border:1.5px solid var(--primary);color:var(--primary);background:transparent}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 4px 20px rgba(37,211,102,.25)}
+.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,.35)}
+
+/* Sections */
+section{padding:5rem 2rem;position:relative}
+.container{max-width:1200px;margin:0 auto}
+.section-label{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--primary);margin-bottom:.5rem;padding:.3rem .8rem;background:rgba(255,255,255,.05);border-radius:20px;border:1px solid rgba(255,255,255,.08)}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:.5rem;letter-spacing:-0.5px}
+.section-title span{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-desc{color:var(--text-muted);max-width:600px;line-height:1.7;margin-bottom:3rem}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header .section-desc{margin:0 auto 3rem}
+
+/* Cards */
+.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;transition:all .4s ease;position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+.card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent);opacity:0;transition:opacity .4s}
+.card:hover::before{opacity:1}
+.card-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;background:linear-gradient(135deg,var(--primary),var(--accent));font-size:1.5rem}
+.card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.card p{color:var(--text-muted);font-size:.9rem;line-height:1.6}
+
+/* Grid layouts */
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+
+/* Rating Badge */
+.rating-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,184,0,.1);border:1px solid rgba(255,184,0,.2);padding:.4rem 1rem;border-radius:50px;font-size:.85rem;font-weight:600;color:#FFB800}
+.rating-badge svg{color:#FFB800;fill:#FFB800}
+
+/* Pricing */
+.pricing-card{text-align:center;padding:2.5rem 2rem;position:relative}
+.pricing-card.featured{border-color:var(--primary);background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.02) 100%)}
+.pricing-card.featured::after{content:'POPULAR';position:absolute;top:1rem;right:-2rem;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;font-size:.65rem;font-weight:700;padding:.3rem 2rem;transform:rotate(45deg);letter-spacing:1px}
+.price{font-size:2.5rem;font-weight:900;margin:1rem 0}
+.price span{font-size:.9rem;font-weight:400;color:var(--text-muted)}
+.pricing-features{list-style:none;margin:1.5rem 0;text-align:left}
+.pricing-features li{padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.9rem;color:var(--text-muted);display:flex;align-items:center;gap:.5rem}
+.pricing-features li::before{content:'✓';color:var(--primary);font-weight:700}
+
+/* Testimonials */
+.testimonial{padding:2rem;position:relative}
+.testimonial::before{content:'"';position:absolute;top:1rem;left:1.5rem;font-size:4rem;color:var(--primary);opacity:.3;font-family:Georgia,serif;line-height:1}
+.testimonial p{padding-top:2rem;font-style:italic;line-height:1.7;color:var(--text-muted)}
+.testimonial-author{display:flex;align-items:center;gap:.8rem;margin-top:1rem}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff}
+.testimonial-name{font-weight:600;font-size:.9rem}
+.testimonial-role{font-size:.75rem;color:var(--text-muted)}
+
+/* Form */
+.form-section{background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);border-radius:24px;border:1px solid rgba(255,255,255,.06);padding:3rem;max-width:600px;margin:0 auto}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:.8rem;font-weight:600;margin-bottom:.4rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.8rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:.9rem;font-family:inherit;transition:border-color .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--primary)}
+.form-group textarea{resize:vertical;min-height:100px}
+
+/* Footer */
+footer{background:rgba(0,0,0,.5);border-top:1px solid rgba(255,255,255,.06);padding:3rem 2rem 1.5rem}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+.footer-col h4{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;color:var(--primary)}
+.footer-col p,.footer-col a{font-size:.85rem;color:var(--text-muted);line-height:1.8;text-decoration:none;display:block}
+.footer-col a:hover{color:var(--primary)}
+.footer-social{display:flex;gap:.8rem;margin-top:1rem}
+.footer-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:all .3s;color:var(--text-muted)}
+.footer-social a:hover{background:var(--primary);border-color:var(--primary);color:#fff}
+.footer-social svg{width:16px;height:16px;fill:currentColor}
+.footer-bottom{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06)}
+.footer-bottom p{font-size:.75rem;color:var(--text-muted)}
+.footer-credit{color:var(--primary);font-weight:600;text-decoration:none}
+
+/* WhatsApp Floating */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:999;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 25px rgba(37,211,102,.4);transition:all .3s;animation:pulse 2s infinite;cursor:pointer;text-decoration:none}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 35px rgba(37,211,102,.5)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+
+/* Emergency */
+.emergency{background:linear-gradient(135deg,rgba(239,68,68,.15),rgba(220,38,38,.05));border:1px solid rgba(239,68,68,.2);border-radius:16px;padding:2rem;text-align:center}
+.emergency h3{color:#ef4444;font-size:1.3rem;margin-bottom:.5rem}
+
+/* Mobile */
+@media(max-width:768px){
+  nav{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,15,.98);flex-direction:column;padding:1.5rem;gap:1rem;border-top:1px solid rgba(255,255,255,.06)}
+  nav.active{display:flex}
+  .menu-toggle{display:block}
+  .hero h1{font-size:2.2rem}
+  .hero-stats{gap:1.2rem}
+  section{padding:3.5rem 1.2rem}
+  .form-section{padding:1.5rem}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .pricing-card.featured::after{display:none}
+}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">Focus N Click</a>
+    <nav>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#packages">Pricing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta">Book Date</a>
+    </nav>
+    <button class="menu-toggle">☰</button>
+  </div>
+</header>
+
+<a href="https://wa.me/916265048497" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content fade-up">
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 4.9 Google Rating (Exclusive Studio)
+    </div>
+    <h1>Capturing <span>Timeless</span> Moments</h1>
+    <p>Premium wedding and pre-wedding photography based in Bhopal. We don't just take pictures, we preserve your legacy.</p>
+    <div>
+      <a href="#packages" class="btn btn-primary">View Packages</a>
+      <a href="#portfolio" class="btn btn-outline" style="margin-left:1rem">Our Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" style="padding-top:2rem">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Masterpieces</span>
+      <h2 class="section-title">Our <span>Gallery</span></h2>
+    </div>
+    <div class="grid-3">
+      <div class="card fade-up" style="padding: 0; min-height: 300px; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)), radial-gradient(circle at center, #2a2a2a, #111); display: flex; align-items: flex-end;">
+        <div style="padding: 1.5rem; width: 100%">
+          <h3 style="color:#fff; margin:0">Pre-Wedding</h3>
+          <p style="color:#aaa; font-size:0.8rem">Sanchi Stupa Shoot</p>
+        </div>
+      </div>
+      <div class="card fade-up" style="padding: 0; min-height: 300px; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)), radial-gradient(circle at center, #352a1a, #111); display: flex; align-items: flex-end; transition-delay: 0.1s">
+        <div style="padding: 1.5rem; width: 100%">
+          <h3 style="color:#fff; margin:0">Haldi & Mehendi</h3>
+          <p style="color:#aaa; font-size:0.8rem">Vibrant Colors</p>
+        </div>
+      </div>
+      <div class="card fade-up" style="padding: 0; min-height: 300px; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)), radial-gradient(circle at center, #1a2a35, #111); display: flex; align-items: flex-end; transition-delay: 0.2s">
+        <div style="padding: 1.5rem; width: 100%">
+          <h3 style="color:#fff; margin:0">The Grand Wedding</h3>
+          <p style="color:#aaa; font-size:0.8rem">Jahan Numa Palace</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages" style="background: rgba(255,255,255,0.02)">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Investment</span>
+      <h2 class="section-title">Choose Your <span>Package</span></h2>
+    </div>
+    <div class="grid-3">
+      <div class="card pricing-card fade-up">
+        <h3>Starter</h3>
+        <div class="price">₹4,999<span>/shoot</span></div>
+        <ul class="pricing-features">
+          <li>1 Location (Bhopal local)</li>
+          <li>3 Hours Coverage</li>
+          <li>15 Edited Soft Copies</li>
+          <li>No Cinematic Video</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width: 100%">Select Plan</a>
+      </div>
+      <div class="card pricing-card featured fade-up" style="transition-delay: 0.1s">
+        <h3>Premium</h3>
+        <div class="price">₹8,999<span>/shoot</span></div>
+        <ul class="pricing-features">
+          <li>2 Locations</li>
+          <li>6 Hours Coverage</li>
+          <li>35 Edited Soft Copies</li>
+          <li>Short Teaser Reel</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="width: 100%">Select Plan</a>
+      </div>
+      <div class="card pricing-card fade-up" style="transition-delay: 0.2s">
+        <h3>Luxury</h3>
+        <div class="price">₹14,999<span>/shoot</span></div>
+        <ul class="pricing-features">
+          <li>Any Location (MP)</li>
+          <li>Full Day Coverage</li>
+          <li>All Raw + 60 Edited Copies</li>
+          <li>Cinematic Teaser & Drone</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width: 100%">Select Plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Testimonials</span>
+      <h2 class="section-title">Bride & <span>Groom Love</span></h2>
+    </div>
+    <div class="grid-2">
+      <div class="card testimonial fade-up">
+        <p>They truly captured the magic of our wedding. The cinematic video still makes me cry. Highly highly recommend the Focus N Click team for Bhopal weddings!</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <div class="testimonial-name">Anushka & Rohit</div>
+            <div class="testimonial-role">Married Dec 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="form-section fade-up">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 2rem">Check <span>Availability</span></h2>
+      <form onsubmit="event.preventDefault(); window.open('https://wa.me/916265048497?text=Hi,%20I%20am%20enquiring%20about%20a%20photoshoot', '_blank');">
+        <div class="form-group">
+          <label>Event Date</label>
+          <input type="date" required>
+        </div>
+        <div class="form-group">
+          <label>Event Type</label>
+          <select>
+            <option>Wedding</option>
+            <option>Pre-Wedding</option>
+            <option>Maternity</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-whatsapp" style="width: 100%; justify-content: center; margin-top: 1rem">Chat on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Focus N Click</h4>
+      <p>Bhopal's premier wedding photography and cinematic production house.</p>
+      
+<div class="footer-social">
+<a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+<a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+<a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+</div>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <p>10 No. Market, E-4 Arera Colony,<br>Bhopal, MP 462016</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Focus N Click. <a href="#" class="footer-credit">Powered by OmniViral Digital</a></p>
+  </div>
+</footer>
+
+<script>
+// Scroll animations
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-up,.fade-in').forEach(el=>observer.observe(el));
+// Header scroll
+window.addEventListener('scroll',()=>{document.querySelector('header').classList.toggle('scrolled',window.scrollY>50)});
+// Mobile menu
+document.querySelector('.menu-toggle')?.addEventListener('click',()=>{document.querySelector('nav').classList.toggle('active')});
+// Close menu on link click
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('nav').classList.remove('active')}));
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+</script>
+
+</body>
+</html>

@@ -30,7 +30,7 @@ LOCAL_BACKUP_DIR.mkdir(exist_ok=True)
 GLOBAL_EXCLUDE_DIRS = {
     ".venv", "venv", "__pycache__", ".git", "node_modules", 
     ".next", ".turbo", "dist", "build", "coverage", ".nyc_output",
-    "cache/images", "cache/lsp", "runtimes", "bootstrap-cache",
+    "cache", "tools", "browser-profile", "installs", "runtimes", "bootstrap-cache",
     "hermes-agent"  # Exclude raw 3.7GB repo clone, include all actual configs/chats/profiles
 }
 GLOBAL_EXCLUDE_EXTS = {".pyc", ".pyo", ".pyd", ".tmp", ".lock", ".etag"}
@@ -130,7 +130,7 @@ def create_master_archive(drive_target_dir):
         print("  -> [1/4] Archiving OmniViral AI (Backend, DB, Frontend, Agents, Digital Products)...")
         if OMNIVIRAL_DIR.exists():
             for root, dirs, files in os.walk(OMNIVIRAL_DIR):
-                dirs[:] = [d for d in dirs if d not in GLOBAL_EXCLUDE_DIRS and not d.startswith(".") and d != "backups"]
+                dirs[:] = [d for d in dirs if d not in GLOBAL_EXCLUDE_DIRS and not d.startswith(".git") and d != "backups"]
                 for file in files:
                     file_path = Path(root) / file
                     if file_path.suffix in GLOBAL_EXCLUDE_EXTS or "backups" in file_path.parts:
@@ -151,7 +151,7 @@ def create_master_archive(drive_target_dir):
                 src_dir = HERMES_DIR / d_name
                 if src_dir.exists():
                     for root, dirs, files in os.walk(src_dir):
-                        dirs[:] = [d for d in dirs if d not in GLOBAL_EXCLUDE_DIRS and d not in {"node_modules", "__pycache__", "cache", "tmp"}]
+                        dirs[:] = [d for d in dirs if d not in GLOBAL_EXCLUDE_DIRS and d not in {"node_modules", "__pycache__", "cache", "tmp", "lsp", ".hub"}]
                         for file in files:
                             file_path = Path(root) / file
                             if file_path.suffix in GLOBAL_EXCLUDE_EXTS:
