@@ -31,7 +31,7 @@ GLOBAL_EXCLUDE_DIRS = {
     ".venv", "venv", "__pycache__", ".git", "node_modules", 
     ".next", ".turbo", "dist", "build", "coverage", ".nyc_output",
     "cache", "tools", "browser-profile", "installs", "runtimes", "bootstrap-cache",
-    "hermes-agent"  # Exclude raw 3.7GB repo clone, include all actual configs/chats/profiles
+    "hermes-agent", "backups"
 }
 GLOBAL_EXCLUDE_EXTS = {".pyc", ".pyo", ".pyd", ".tmp", ".lock", ".etag"}
 
@@ -225,78 +225,38 @@ def sync_to_google_drive(local_zip_path, drive_target_dir):
     archives_dir.mkdir(parents=True, exist_ok=True)
     live_sync_dir.mkdir(parents=True, exist_ok=True)
 
-    # 1. Copy zip archives to Drive
+    # 1. Copy zip archives to Drive (Primary Backup Artifact)
     drive_zip_dest = archives_dir / local_zip_path.name
     drive_latest_dest = archives_dir / "latest_master_backup.zip"
     shutil.copy2(local_zip_path, drive_zip_dest)
     shutil.copy2(local_zip_path, drive_latest_dest)
     print(f"  -> Drive Archive Saved: {drive_zip_dest}")
 
-    # 2. Update Live Mirror Folder in Drive for instant direct browsing
+    # 2. Sync core databases and configs to Live Mirror for quick access
     omni_live = live_sync_dir / "omniviral_system"
     hermes_live = live_sync_dir / "hermes_system"
-    omniroute_data_live = live_sync_dir / "omniroute_data"
-    omniroute_code_live = live_sync_dir / "omniroute_code"
+    omni_live.mkdir(parents=True, exist_ok=True)
+    hermes_live.mkdir(parents=True, exist_ok=True)
 
-    # Mirror OmniViral core
+    # Copy key OmniViral files and DB
     if OMNIVIRAL_DIR.exists():
-        for folder in ["backend", "frontend", "docs", "agents", "digital_products", "data", "marketing", "scripts"]:
-            src = OMNIVIRAL_DIR / folder
-            dst = omni_live / folder
-            if src.exists():
-                shutil.copytree(src, dst, dirs_exist_ok=True, ignore=shutil.ignore_patterns("*.pyc", "__pycache__", "*.tmp"))
-
-        for f in ["README.md", "start_server.py", "start_all.bat", "start_agents.bat"]:
+        for f in ["README.md", "start_server.py", "start_all.bat"]:
             src = OMNIVIRAL_DIR / f
             if src.exists():
-                omni_live.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, omni_live / f)
+        db_file = OMNIVIRAL_DIR / "data" / "omniviral.db"
+        if db_file.exists():
+            (omni_live / "data").mkdir(parents=True, exist_ok=True)
+            shutil.copy2(db_file, omni_live / "data" / "omniviral.db")
 
-    # Mirror Hermes core (profiles, sessions, skills, memories, configs)
+    # Copy key Hermes files (profiles configs, state DBs)
     if HERMES_DIR.exists():
-        for folder in HERMES_INCLUDE_DIRS:
-            src = HERMES_DIR / folder
-            dst = hermes_live / folder
-            if src.exists():
-                try:
-                    shutil.copytree(src, dst, dirs_exist_ok=True, ignore=shutil.ignore_patterns("*.pyc", "__pycache__", "*.lock", "*.tmp", "node_modules", "state-snapshots"))
-                except Exception as e:
-                    print(f"⚠️ Live sync copy warning for {src}: {e}")
-
-        for f in HERMES_INCLUDE_FILES:
+        for f in ["config.yaml", "SOUL.md", "state.db", "kanban.db", "projects.db"]:
             src = HERMES_DIR / f
             if src.exists():
-                hermes_live.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, hermes_live / f)
 
-    # Mirror OmniRoute Data (~/.omniroute)
-    if OMNIROUTE_DATA_DIR.exists():
-        shutil.copytree(
-            OMNIROUTE_DATA_DIR,
-            omniroute_data_live,
-            dirs_exist_ok=True,
-            ignore=shutil.ignore_patterns("*.pyc", "__pycache__", "*.tmp", "*.lock")
-        )
-
-    # Mirror OmniRoute Core Code
-    if OMNIROUTE_CODE_DIR.exists():
-        for folder in ["src", "open-sse", "packages", "config", "scripts", "bin", "electron", "docs"]:
-            src = OMNIROUTE_CODE_DIR / folder
-            dst = omniroute_code_live / folder
-            if src.exists():
-                shutil.copytree(
-                    src,
-                    dst,
-                    dirs_exist_ok=True,
-                    ignore=shutil.ignore_patterns("node_modules", ".next", ".turbo", "dist", "build", "*.pyc", "__pycache__")
-                )
-        for f in ["package.json", "tsconfig.json", "next.config.mjs", "README.md", "AGENTS.md", "CLAUDE.md"]:
-            src = OMNIROUTE_CODE_DIR / f
-            if src.exists():
-                omniroute_code_live.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(src, omniroute_code_live / f)
-
-    print(f"  -> Live Unzipped Tree Synced: {live_sync_dir}")
+    print(f"  -> Drive Live Mirror Synced: {live_sync_dir}")
     return str(drive_zip_dest), str(live_sync_dir)
 
 def sync_git_cloud():

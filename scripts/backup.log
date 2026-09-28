@@ -14,4 +14,36 @@ Traceback (most recent call last):
     return codecs.charmap_encode(input,self.errors,encoding_table)[0]
            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e6' in position 0: character maps to <undefined>
-^C^C
+^C^C======================================================================
+📦 CREATING COMPREHENSIVE MASTER ARCHIVE: master_backup_20260928_210001.zip
+👤 Target Drive Account: freeediting35@gmail.com
+======================================================================
+  -> [1/4] Archiving OmniViral AI (Backend, DB, Frontend, Agents, Digital Products)...
+  -> [2/4] Archiving Hermes Agent (All Profiles, Chat History, State DBs, Memories, Skills)...
+  -> [3/4] Archiving OmniRoute Data (~/.omniroute: storage.sqlite, .env, oauth, configs)...
+  -> [4/4] Archiving OmniRoute Codebase (Source, routes, services, configs, scripts)...
+✅ Master Archive Ready: 32187 files (1220.72 MB raw -> 347.21 MB compressed)
+☁️ Syncing Master Backup to Google Drive...
+  -> Drive Archive Saved: G:\My Drive\Hermes_OmniViral_Master_Backup\Archives\master_backup_20260928_210001.zip
+  -> Live Unzipped Tree Synced: G:\My Drive\Hermes_OmniViral_Master_Backup\Live_Sync
+🚀 GitHub Master Sync: OK
+🧹 Pruned old archive: master_backup_20260928_161917.zip
+🧹 Pruned old archive: master_backup_20260927_210900.zip
+🧹 Pruned old archive: master_backup_20260927_210116.zip
+🧹 Pruned old archive: master_backup_20260927_210002.zip
+🧹 Pruned old archive: master_backup_20260927_020508.zip
+🧹 Pruned old archive: master_backup_20260928_161917.zip
+🧹 Pruned old archive: master_backup_20260927_210900.zip
+🧹 Pruned old archive: master_backup_20260927_210116.zip
+🧹 Pruned old archive: master_backup_20260927_020508.zip
+🧹 Pruned old archive: master_backup_20260927_002456.zip
+🧹 Pruned old archive: master_backup_20260927_001902.zip
+🧹 Pruned old archive: master_backup_20260927_001722.zip
+🧹 Pruned old archive: master_backup_20260925_171847.zip
+🧹 Pruned old archive: master_backup_20260925_170654.zip
+🧹 Pruned old archive: master_backup_20260925_152408.zip
+📋 Manifest saved to Drive: G:\My Drive\Hermes_OmniViral_Master_Backup\backup_manifest.json
+======================================================================
+🎉 FULL MASTER BACKUP COMPLETED & VERIFIED IN GOOGLE DRIVE!
+📁 Drive Folder: G:\My Drive\Hermes_OmniViral_Master_Backup
+======================================================================
