@@ -83,7 +83,8 @@ HERMES_INCLUDE_FILES = [
     "processes.json",
     "models_dev_cache.json",
     "provider_models_cache.json",
-    ".env"
+    ".env",
+    "agent_brain.sqlite"
 ]
 
 def get_drive_base():
