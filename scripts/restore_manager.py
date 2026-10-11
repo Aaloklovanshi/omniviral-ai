@@ -11,7 +11,8 @@ OMNIROUTE_DATA_DIR = Path(r"C:\Users\aalok\.omniroute").resolve()
 OMNIROUTE_CODE_DIR = Path(r"C:\Users\aalok\Documents\Codex\2026-09-23\install-omniroute-from-github\OmniRoute").resolve()
 
 LOCAL_BACKUP = OMNIVIRAL_DIR / "backups" / "latest_master_backup.zip"
-DRIVE_BACKUP = Path("G:/My Drive/Hermes_OmniViral_Master_Backup/Archives/latest_master_backup.zip")
+DRIVE_BACKUP_OMNI = Path("G:/My Drive/OmniViral_Backups/Archives/latest_master_backup.zip")
+DRIVE_BACKUP_MASTER = Path("G:/My Drive/Hermes_OmniViral_Master_Backup/Archives/latest_master_backup.zip")
 
 def restore(backup_zip=None, component="all"):
     """
@@ -19,8 +20,10 @@ def restore(backup_zip=None, component="all"):
     component: 'all', 'hermes', 'omniroute', 'omniviral'
     """
     if not backup_zip:
-        if DRIVE_BACKUP.exists():
-            backup_zip = DRIVE_BACKUP
+        if DRIVE_BACKUP_OMNI.exists():
+            backup_zip = DRIVE_BACKUP_OMNI
+        elif DRIVE_BACKUP_MASTER.exists():
+            backup_zip = DRIVE_BACKUP_MASTER
         elif LOCAL_BACKUP.exists():
             backup_zip = LOCAL_BACKUP
         else:

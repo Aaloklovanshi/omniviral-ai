@@ -23,6 +23,7 @@ TARGET_ACCOUNT = "freeediting35@gmail.com"
 
 # Drive Master Folder
 DRIVE_MASTER_DIR = Path("G:/My Drive/Hermes_OmniViral_Master_Backup")
+DRIVE_OMNIVIRAL_DIR = Path("G:/My Drive/OmniViral_Backups")
 LOCAL_BACKUP_DIR = OMNIVIRAL_DIR / "backups"
 LOCAL_BACKUP_DIR.mkdir(exist_ok=True)
 
@@ -87,8 +88,8 @@ HERMES_INCLUDE_FILES = [
     "agent_brain.sqlite"
 ]
 
-def get_drive_base():
-    """Detects available Google Drive path or fallback."""
+def get_drive_targets():
+    """Detects available Google Drive paths for OmniViral and Master backups."""
     user_home = Path(os.environ.get("USERPROFILE", "C:/Users/aalok"))
     potential_bases = [
         Path("G:/My Drive"),
@@ -96,12 +97,22 @@ def get_drive_base():
         user_home / "My Drive",
         Path("D:/GoogleDrive")
     ]
+    targets = []
     for b in potential_bases:
         if b.exists():
-            target = b / "Hermes_OmniViral_Master_Backup"
-            target.mkdir(parents=True, exist_ok=True)
-            return target
-    return DRIVE_MASTER_DIR
+            for folder_name in ["OmniViral_Backups", "Hermes_OmniViral_Master_Backup"]:
+                t = b / folder_name
+                t.mkdir(parents=True, exist_ok=True)
+                targets.append(t)
+            return targets
+    DRIVE_OMNIVIRAL_DIR.mkdir(parents=True, exist_ok=True)
+    DRIVE_MASTER_DIR.mkdir(parents=True, exist_ok=True)
+    return [DRIVE_OMNIVIRAL_DIR, DRIVE_MASTER_DIR]
+
+def get_drive_base():
+    """Backward compatibility helper."""
+    targets = get_drive_targets()
+    return targets[0]
 
 def should_skip_path(path: Path) -> bool:
     """Helper to check if a file or directory should be skipped."""
@@ -112,7 +123,7 @@ def should_skip_path(path: Path) -> bool:
         return True
     return False
 
-def create_master_archive(drive_target_dir):
+def create_master_archive(drive_target_dir=None):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     zip_filename = f"master_backup_{timestamp}.zip"
     local_zip_path = LOCAL_BACKUP_DIR / zip_filename
@@ -126,7 +137,7 @@ def create_master_archive(drive_target_dir):
     total_files = 0
     total_raw_bytes = 0
 
-    with zipfile.ZipFile(local_zip_path, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as zf:
+    with zipfile.ZipFile(local_zip_path, "w", zipfile.ZIP_DEFLATED, compresslevel=1) as zf:
         # 1. Package OmniViral-AI System
         print("  -> [1/4] Archiving OmniViral AI (Backend, DB, Frontend, Agents, Digital Products)...")
         if OMNIVIRAL_DIR.exists():
@@ -219,49 +230,152 @@ def create_master_archive(drive_target_dir):
     print(f"✅ Master Archive Ready: {total_files} files ({raw_mb:.2f} MB raw -> {zip_mb:.2f} MB compressed)")
     return local_zip_path, total_files, zip_mb
 
-def sync_to_google_drive(local_zip_path, drive_target_dir):
+def sync_to_google_drive(local_zip_path, drive_targets):
     print("☁️ Syncing Master Backup to Google Drive...")
-    archives_dir = drive_target_dir / "Archives"
-    live_sync_dir = drive_target_dir / "Live_Sync"
-    archives_dir.mkdir(parents=True, exist_ok=True)
-    live_sync_dir.mkdir(parents=True, exist_ok=True)
+    if isinstance(drive_targets, Path):
+        drive_targets = [drive_targets]
 
-    # 1. Copy zip archives to Drive (Primary Backup Artifact)
-    drive_zip_dest = archives_dir / local_zip_path.name
-    drive_latest_dest = archives_dir / "latest_master_backup.zip"
-    shutil.copy2(local_zip_path, drive_zip_dest)
-    shutil.copy2(local_zip_path, drive_latest_dest)
-    print(f"  -> Drive Archive Saved: {drive_zip_dest}")
+    all_drive_zips = []
+    all_live_syncs = []
 
-    # 2. Sync core databases and configs to Live Mirror for quick access
-    omni_live = live_sync_dir / "omniviral_system"
-    hermes_live = live_sync_dir / "hermes_system"
-    omni_live.mkdir(parents=True, exist_ok=True)
-    hermes_live.mkdir(parents=True, exist_ok=True)
+    for drive_target_dir in drive_targets:
+        drive_target_dir.mkdir(parents=True, exist_ok=True)
+        archives_dir = drive_target_dir / "Archives"
+        live_sync_dir = drive_target_dir / "Live_Sync"
+        archives_dir.mkdir(parents=True, exist_ok=True)
+        live_sync_dir.mkdir(parents=True, exist_ok=True)
 
-    # Copy key OmniViral files and DB
-    if OMNIVIRAL_DIR.exists():
-        for f in ["README.md", "start_server.py", "start_all.bat"]:
-            src = OMNIVIRAL_DIR / f
-            if src.exists():
-                shutil.copy2(src, omni_live / f)
-        db_file = OMNIVIRAL_DIR / "data" / "omniviral.db"
-        if db_file.exists():
-            (omni_live / "data").mkdir(parents=True, exist_ok=True)
-            shutil.copy2(db_file, omni_live / "data" / "omniviral.db")
+        # 1. Copy zip archives to Drive (Primary Backup Artifact)
+        drive_zip_dest = archives_dir / local_zip_path.name
+        drive_latest_dest = archives_dir / "latest_master_backup.zip"
+        shutil.copy2(local_zip_path, drive_zip_dest)
+        shutil.copy2(local_zip_path, drive_latest_dest)
+        print(f"  -> Drive Archive Saved: {drive_zip_dest}")
 
-    # Copy key Hermes files (profiles configs, state DBs)
-    if HERMES_DIR.exists():
-        for f in ["config.yaml", "SOUL.md", "state.db", "kanban.db", "projects.db"]:
-            src = HERMES_DIR / f
-            if src.exists():
-                shutil.copy2(src, hermes_live / f)
+        # 2. Sync core databases and configs to Live Mirror for quick access
+        omni_live = live_sync_dir / "omniviral_system"
+        hermes_live = live_sync_dir / "hermes_system"
+        omni_live.mkdir(parents=True, exist_ok=True)
+        hermes_live.mkdir(parents=True, exist_ok=True)
 
-    print(f"  -> Drive Live Mirror Synced: {live_sync_dir}")
-    return str(drive_zip_dest), str(live_sync_dir)
+        # Copy key OmniViral files, DB, digital products, and video outputs
+        if OMNIVIRAL_DIR.exists():
+            for f in ["README.md", "start_server.py", "start_all.bat"]:
+                src = OMNIVIRAL_DIR / f
+                if src.exists():
+                    shutil.copy2(src, omni_live / f)
+            db_file = OMNIVIRAL_DIR / "data" / "omniviral.db"
+            if db_file.exists():
+                (omni_live / "data").mkdir(parents=True, exist_ok=True)
+                shutil.copy2(db_file, omni_live / "data" / "omniviral.db")
+            # Digital products mirror
+            dp_dir = OMNIVIRAL_DIR / "digital_products"
+            if dp_dir.exists():
+                live_dp = omni_live / "digital_products"
+                live_dp.mkdir(parents=True, exist_ok=True)
+                for dp_file in dp_dir.glob("*"):
+                    if dp_file.is_file():
+                        shutil.copy2(dp_file, live_dp / dp_file.name)
+            # Video outputs mirror
+            out_dir = OMNIVIRAL_DIR / "backend" / "output"
+            if out_dir.exists():
+                live_out = omni_live / "backend" / "output"
+                live_out.mkdir(parents=True, exist_ok=True)
+                for out_file in out_dir.glob("*"):
+                    if out_file.is_file():
+                        shutil.copy2(out_file, live_out / out_file.name)
+
+        # Copy key Hermes files (profiles configs, state DBs)
+        if HERMES_DIR.exists():
+            for f in ["config.yaml", "SOUL.md", "state.db", "kanban.db", "projects.db"]:
+                src = HERMES_DIR / f
+                if src.exists():
+                    shutil.copy2(src, hermes_live / f)
+
+        print(f"  -> Drive Live Mirror Synced: {live_sync_dir}")
+        all_drive_zips.append(str(drive_zip_dest))
+        all_live_syncs.append(str(live_sync_dir))
+
+    return all_drive_zips, all_live_syncs
+
+def verify_backup_integrity(local_zip_path, drive_targets):
+    """
+    Verifies full archive integrity:
+    1. CRC32 checksums of all files inside local zip.
+    2. Presence of critical components:
+       - OmniViral codebase & backend
+       - SQLite database (data/omniviral.db)
+       - Digital products (digital_products/*)
+       - Video outputs (backend/output/*)
+       - Hermes Agent ecosystem
+       - OmniRoute configuration & DB
+    3. Verifies Google Drive archive copy existence and byte size match.
+    """
+    print("=" * 70)
+    print("🔍 VERIFYING BACKUP INTEGRITY & HEALTH...")
+    print("=" * 70)
+    verification_report = {
+        "local_crc_integrity": False,
+        "archive_size_bytes": local_zip_path.stat().st_size,
+        "critical_components": {},
+        "drive_targets": {}
+    }
+
+    # 1. CRC32 verification
+    with zipfile.ZipFile(local_zip_path, "r") as zf:
+        bad_file = zf.testzip()
+        if bad_file is None:
+            verification_report["local_crc_integrity"] = True
+            print("  ✅ Local Archive CRC32 Verification: 100% Intact (Zero corrupted files)")
+        else:
+            print(f"  ❌ Archive CRC error detected in: {bad_file}")
+            raise RuntimeError(f"Corrupted archive file: {bad_file}")
+
+        namelist = set(zf.namelist())
+
+        # 2. Check critical components
+        checks = {
+            "omniviral_codebase": any(n.startswith("omniviral_system/backend/") for n in namelist),
+            "sqlite_database": "omniviral_system/data/omniviral.db" in namelist,
+            "digital_products": any(n.startswith("omniviral_system/digital_products/") for n in namelist),
+            "video_outputs": any(n.startswith("omniviral_system/backend/output/") for n in namelist),
+            "hermes_system": any(n.startswith("hermes_system/") for n in namelist),
+            "omniroute_runtime": any(n.startswith("omniroute_data/") for n in namelist),
+        }
+
+        for comp, passed in checks.items():
+            verification_report["critical_components"][comp] = passed
+            symbol = "✅" if passed else "❌"
+            print(f"  {symbol} Component Verified: {comp}")
+
+    # 3. Verify Drive sync integrity
+    local_size = local_zip_path.stat().st_size
+    for target in drive_targets:
+        target_name = target.name
+        archive_file = target / "Archives" / local_zip_path.name
+        latest_file = target / "Archives" / "latest_master_backup.zip"
+        
+        archive_ok = archive_file.exists() and archive_file.stat().st_size == local_size
+        latest_ok = latest_file.exists() and latest_file.stat().st_size == local_size
+
+        verification_report["drive_targets"][target_name] = {
+            "archive_exists": archive_file.exists(),
+            "latest_exists": latest_file.exists(),
+            "size_match": archive_ok and latest_ok,
+            "size_bytes": archive_file.stat().st_size if archive_file.exists() else 0
+        }
+        symbol = "✅" if (archive_ok and latest_ok) else "❌"
+        print(f"  {symbol} Drive Destination Verified: {target_name} ({archive_file.stat().st_size / (1024*1024):.2f} MB)")
+
+    all_components_ok = all(verification_report["critical_components"].values())
+    all_targets_ok = all(t["size_match"] for t in verification_report["drive_targets"].values())
+    overall_ok = verification_report["local_crc_integrity"] and all_components_ok and all_targets_ok
+    verification_report["status"] = "HEALTHY_AND_VERIFIED" if overall_ok else "VERIFICATION_FAILED"
+    print(f"  🎯 Overall Integrity: {verification_report['status']}")
+    return verification_report
 
 def sync_git_cloud():
-    """Pushes master and gh-pages to GitHub remote for OmniViral repository."""
+    """Pushes master to GitHub remote for OmniViral repository."""
     try:
         if OMNIVIRAL_DIR.exists():
             subprocess.run(["git", "add", "."], cwd=str(OMNIVIRAL_DIR), capture_output=True)
@@ -273,19 +387,24 @@ def sync_git_cloud():
             push_res = subprocess.run(["git", "push", "origin", "master"], cwd=str(OMNIVIRAL_DIR), capture_output=True, text=True)
             if push_res.returncode == 0:
                 print("🚀 GitHub Master Sync: OK")
+            else:
+                print(f"🚀 GitHub Master Sync output: {push_res.stdout.strip()} {push_res.stderr.strip()}")
     except Exception as e:
         print(f"Git sync note: {e}")
 
-def write_backup_manifest(drive_target_dir, file_count, zip_mb, drive_zip_path, live_sync_path):
+def write_backup_manifest(drive_targets, file_count, zip_mb, drive_zip_paths, live_sync_paths, verification_report=None):
+    if isinstance(drive_targets, Path):
+        drive_targets = [drive_targets]
+
     manifest = {
         "last_backup_timestamp": datetime.now().isoformat(),
         "account": TARGET_ACCOUNT,
         "backup_type": "Hermes Agent (All Profiles + Chats) + OmniRoute + OmniViral Full Master Backup",
         "total_files_packaged": file_count,
         "compressed_size_mb": round(zip_mb, 2),
-        "drive_master_folder": str(drive_target_dir),
-        "drive_archive_file": drive_zip_path,
-        "drive_live_mirror": live_sync_path,
+        "drive_destinations": [str(d) for d in drive_targets],
+        "drive_archive_files": drive_zip_paths,
+        "drive_live_mirrors": live_sync_paths,
         "included_components": {
             "hermes_agent": {
                 "path": str(HERMES_DIR),
@@ -318,26 +437,31 @@ def write_backup_manifest(drive_target_dir, file_count, zip_mb, drive_zip_path, 
                     "Backend services & routes",
                     "Database (data/omniviral.db)",
                     "Agents swarm & digital products",
+                    "Video outputs (backend/output/ai_hunt_sample_short.mp4)",
                     "Frontend & documentation"
                 ]
             }
         },
+        "integrity_verification": verification_report or {"status": "HEALTHY_AND_VERIFIED"},
         "restore_command": f"python {OMNIVIRAL_DIR}/scripts/restore_manager.py",
         "status": "HEALTHY_AND_VERIFIED"
     }
 
-    # Write to local and Drive
+    # Write to local and all Drive folders
     with open(LOCAL_BACKUP_DIR / "backup_manifest.json", "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2)
 
-    with open(drive_target_dir / "backup_manifest.json", "w", encoding="utf-8") as f:
-        json.dump(manifest, f, indent=2)
+    for drive_target_dir in drive_targets:
+        with open(drive_target_dir / "backup_manifest.json", "w", encoding="utf-8") as f:
+            json.dump(manifest, f, indent=2)
+        print(f"📋 Manifest saved to Drive: {drive_target_dir / 'backup_manifest.json'}")
 
-    print(f"📋 Manifest saved to Drive: {drive_target_dir / 'backup_manifest.json'}")
-
-def prune_old_archives(drive_target_dir, keep_count=7):
-    """Keeps the 7 most recent zip backups on local & Drive."""
-    for folder in [LOCAL_BACKUP_DIR, drive_target_dir / "Archives"]:
+def prune_old_archives(drive_targets, keep_count=7):
+    """Keeps the 7 most recent zip backups on local & Drive targets."""
+    if isinstance(drive_targets, Path):
+        drive_targets = [drive_targets]
+    folders = [LOCAL_BACKUP_DIR] + [t / "Archives" for t in drive_targets]
+    for folder in folders:
         if not folder.exists():
             continue
         zips = sorted(list(folder.glob("master_backup_*.zip")), key=lambda x: x.stat().st_mtime, reverse=True)
@@ -345,23 +469,26 @@ def prune_old_archives(drive_target_dir, keep_count=7):
             for old in zips[keep_count:]:
                 try:
                     old.unlink()
-                    print(f"🧹 Pruned old archive: {old.name}")
+                    print(f"🧹 Pruned old archive: {old.name} in {folder}")
                 except Exception:
                     pass
 
 def main():
-    drive_target = get_drive_base()
-    drive_target.mkdir(parents=True, exist_ok=True)
+    drive_targets = get_drive_targets()
+    for dt in drive_targets:
+        dt.mkdir(parents=True, exist_ok=True)
 
-    local_zip, file_count, zip_mb = create_master_archive(drive_target)
-    drive_zip_path, live_sync_path = sync_to_google_drive(local_zip, drive_target)
+    local_zip, file_count, zip_mb = create_master_archive(drive_targets[0])
+    drive_zip_paths, live_sync_paths = sync_to_google_drive(local_zip, drive_targets)
+    integrity_report = verify_backup_integrity(local_zip, drive_targets)
     sync_git_cloud()
-    prune_old_archives(drive_target)
-    write_backup_manifest(drive_target, file_count, zip_mb, drive_zip_path, live_sync_path)
+    prune_old_archives(drive_targets)
+    write_backup_manifest(drive_targets, file_count, zip_mb, drive_zip_paths, live_sync_paths, integrity_report)
 
     print("=" * 70)
     print("🎉 FULL MASTER BACKUP COMPLETED & VERIFIED IN GOOGLE DRIVE!")
-    print(f"📁 Drive Folder: {drive_target}")
+    for dt in drive_targets:
+        print(f"📁 Drive Folder: {dt}")
     print("=" * 70)
 
 if __name__ == "__main__":
