@@ -16,6 +16,8 @@ from pathlib import Path
 # ==========================================
 OMNIVIRAL_DIR = Path("C:/Users/aalok/omniviral-ai").resolve()
 HERMES_DIR = Path(r"C:\Users\aalok\AppData\Local\hermes").resolve()
+HERMES_DOT_DIR = Path(r"C:\Users\aalok\.hermes").resolve()
+WORKSPACE_DIR = Path(r"C:\Users\aalok\hermes-workspace").resolve()
 OMNIROUTE_DATA_DIR = Path(r"C:\Users\aalok\.omniroute").resolve()
 OMNIROUTE_CODE_DIR = Path(r"C:\Users\aalok\Documents\Codex\2026-09-23\install-omniroute-from-github\OmniRoute").resolve()
 
@@ -206,7 +208,7 @@ def create_master_archive(drive_target_dir=None):
                         pass
 
         # 4. Package OmniRoute Codebase & Architecture
-        print("  -> [4/4] Archiving OmniRoute Codebase (Source, routes, services, configs, scripts)...")
+        print("  -> [4/6] Archiving OmniRoute Codebase (Source, routes, services, configs, scripts)...")
         if OMNIROUTE_CODE_DIR.exists():
             for root, dirs, files in os.walk(OMNIROUTE_CODE_DIR):
                 dirs[:] = [d for d in dirs if d not in GLOBAL_EXCLUDE_DIRS and not d.startswith(".git") and d not in {"node_modules", ".next", ".turbo", "dist", "build", "coverage"}]
@@ -215,6 +217,40 @@ def create_master_archive(drive_target_dir=None):
                     if file_path.suffix in GLOBAL_EXCLUDE_EXTS:
                         continue
                     rel_path = Path("omniroute_code") / file_path.relative_to(OMNIROUTE_CODE_DIR)
+                    try:
+                        zf.write(file_path, arcname=str(rel_path))
+                        total_files += 1
+                        total_raw_bytes += file_path.stat().st_size
+                    except Exception:
+                        pass
+
+        # 5. Package Hermes Workspace (Databases, Active State, Swarm Scripts)
+        print("  -> [5/6] Archiving Hermes Workspace (swarm_ledger.db, agent_brain.sqlite, chat_ledger.db, active_state.md)...")
+        if WORKSPACE_DIR.exists():
+            for root, dirs, files in os.walk(WORKSPACE_DIR):
+                dirs[:] = [d for d in dirs if d not in GLOBAL_EXCLUDE_DIRS and not d.startswith(".git")]
+                for file in files:
+                    file_path = Path(root) / file
+                    if file_path.suffix in GLOBAL_EXCLUDE_EXTS:
+                        continue
+                    rel_path = Path("hermes_workspace") / file_path.relative_to(WORKSPACE_DIR)
+                    try:
+                        zf.write(file_path, arcname=str(rel_path))
+                        total_files += 1
+                        total_raw_bytes += file_path.stat().st_size
+                    except Exception:
+                        pass
+
+        # 6. Package Dot-Hermes Base Config (.hermes)
+        print("  -> [6/6] Archiving Root .hermes Config (config.yaml, mcp.json, base skills)...")
+        if HERMES_DOT_DIR.exists():
+            for root, dirs, files in os.walk(HERMES_DOT_DIR):
+                dirs[:] = [d for d in dirs if d not in GLOBAL_EXCLUDE_DIRS and not d.startswith(".git")]
+                for file in files:
+                    file_path = Path(root) / file
+                    if file_path.suffix in GLOBAL_EXCLUDE_EXTS:
+                        continue
+                    rel_path = Path("dot_hermes") / file_path.relative_to(HERMES_DOT_DIR)
                     try:
                         zf.write(file_path, arcname=str(rel_path))
                         total_files += 1
@@ -292,6 +328,24 @@ def sync_to_google_drive(local_zip_path, drive_targets):
                 if src.exists():
                     shutil.copy2(src, hermes_live / f)
 
+        # Copy key Hermes Workspace files (all SQLite DBs & active state)
+        if WORKSPACE_DIR.exists():
+            ws_live = live_sync_dir / "hermes_workspace"
+            ws_live.mkdir(parents=True, exist_ok=True)
+            for f in ["swarm_ledger.db", "agent_brain.sqlite", "chat_ledger.db", "active_state.md", "agent_sql_logger.py", "cron_catchup_boot.py", "hourly_swarm_report.py"]:
+                src = WORKSPACE_DIR / f
+                if src.exists():
+                    shutil.copy2(src, ws_live / f)
+
+        # Copy Dot-Hermes config
+        if HERMES_DOT_DIR.exists():
+            dot_live = live_sync_dir / "dot_hermes"
+            dot_live.mkdir(parents=True, exist_ok=True)
+            for f in ["config.yaml", "mcp.json"]:
+                src = HERMES_DOT_DIR / f
+                if src.exists():
+                    shutil.copy2(src, dot_live / f)
+
         print(f"  -> Drive Live Mirror Synced: {live_sync_dir}")
         all_drive_zips.append(str(drive_zip_dest))
         all_live_syncs.append(str(live_sync_dir))
@@ -341,6 +395,8 @@ def verify_backup_integrity(local_zip_path, drive_targets):
             "video_outputs": any(n.startswith("omniviral_system/backend/output/") for n in namelist),
             "hermes_system": any(n.startswith("hermes_system/") for n in namelist),
             "omniroute_runtime": any(n.startswith("omniroute_data/") for n in namelist),
+            "hermes_workspace": any(n.startswith("hermes_workspace/") for n in namelist),
+            "dot_hermes": any(n.startswith("dot_hermes/") for n in namelist),
         }
 
         for comp, passed in checks.items():
