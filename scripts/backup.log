@@ -171,3 +171,29 @@ Access is denied.
 📁 Drive Folder: G:\My Drive\OmniViral_Backups
 📁 Drive Folder: G:\My Drive\Hermes_OmniViral_Master_Backup
 ======================================================================
+======================================================================
+📦 CREATING COMPREHENSIVE MASTER ARCHIVE: master_backup_20261015_210003.zip
+👤 Target Drive Account: freeediting35@gmail.com
+======================================================================
+  -> [1/4] Archiving OmniViral AI (Backend, DB, Frontend, Agents, Digital Products)...
+  -> [2/4] Archiving Hermes Agent (All Profiles, Chat History, State DBs, Memories, Skills)...
+  -> [3/4] Archiving OmniRoute Data (~/.omniroute: storage.sqlite, .env, oauth, configs)...
+  -> [4/6] Archiving OmniRoute Codebase (Source, routes, services, configs, scripts)...
+  -> [5/6] Archiving Hermes Workspace (swarm_ledger.db, agent_brain.sqlite, chat_ledger.db, active_state.md)...
+  -> [6/6] Archiving Root .hermes Config (config.yaml, mcp.json, base skills)...
+✅ Master Archive Ready: 81170 files (6530.36 MB raw -> 4548.74 MB compressed)
+☁️ Syncing Master Backup to Google Drive...
+Traceback (most recent call last):
+  File "C:\Users\aalok\omniviral-ai\scripts\backup_manager.py", line 551, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\aalok\omniviral-ai\scripts\backup_manager.py", line 538, in main
+    drive_zip_paths, live_sync_paths = sync_to_google_drive(local_zip, drive_targets)
+                                       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aalok\omniviral-ai\scripts\backup_manager.py", line 288, in sync_to_google_drive
+    shutil.copy2(local_zip_path, drive_latest_dest)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aalok\AppData\Local\hermes\tools\python-3.14.7+20260901-win32-x64\Lib\shutil.py", line 514, in copy2
+    _winapi.CopyFile2(src_, dst_, flags)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 1450] Insufficient system resources exist to complete the requested service

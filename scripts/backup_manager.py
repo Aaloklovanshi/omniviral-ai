@@ -284,8 +284,19 @@ def sync_to_google_drive(local_zip_path, drive_targets):
         # 1. Copy zip archives to Drive (Primary Backup Artifact)
         drive_zip_dest = archives_dir / local_zip_path.name
         drive_latest_dest = archives_dir / "latest_master_backup.zip"
-        shutil.copy2(local_zip_path, drive_zip_dest)
-        shutil.copy2(local_zip_path, drive_latest_dest)
+        
+        # Robust chunked copy to avoid WinError 1450 on Google Drive virtual filesystem
+        def _stream_copy(src, dst, chunk_size=32 * 1024 * 1024):
+            with open(src, "rb") as fsrc:
+                with open(dst, "wb") as fdst:
+                    while True:
+                        buf = fsrc.read(chunk_size)
+                        if not buf:
+                            break
+                        fdst.write(buf)
+
+        _stream_copy(local_zip_path, drive_zip_dest)
+        _stream_copy(local_zip_path, drive_latest_dest)
         print(f"  -> Drive Archive Saved: {drive_zip_dest}")
 
         # 2. Sync core databases and configs to Live Mirror for quick access
