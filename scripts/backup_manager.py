@@ -337,7 +337,10 @@ def sync_to_google_drive(local_zip_path, drive_targets):
             for f in ["config.yaml", "SOUL.md", "state.db", "kanban.db", "projects.db"]:
                 src = HERMES_DIR / f
                 if src.exists():
-                    shutil.copy2(src, hermes_live / f)
+                    try:
+                        shutil.copy2(src, hermes_live / f)
+                    except Exception as e:
+                        print(f"  [Notice] Live sync skip locked file {f}: {e}")
 
         # Copy key Hermes Workspace files (all SQLite DBs & active state)
         if WORKSPACE_DIR.exists():
