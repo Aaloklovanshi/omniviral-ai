@@ -223,3 +223,52 @@ Traceback (most recent call last):
     with open(dst, "wb") as fdst:
          ~~~~^^^^^^^^^^^
 OSError: [Errno 22] Invalid argument: 'G:\\My Drive\\OmniViral_Backups\\Archives\\latest_master_backup.zip'
+======================================================================
+📦 CREATING COMPREHENSIVE MASTER ARCHIVE: master_backup_20261018_210002.zip
+👤 Target Drive Account: freeediting35@gmail.com
+======================================================================
+  -> [1/4] Archiving OmniViral AI (Backend, DB, Frontend, Agents, Digital Products)...
+  -> [2/4] Archiving Hermes Agent (All Profiles, Chat History, State DBs, Memories, Skills)...
+  -> [3/4] Archiving OmniRoute Data (~/.omniroute: storage.sqlite, .env, oauth, configs)...
+  -> [4/6] Archiving OmniRoute Codebase (Source, routes, services, configs, scripts)...
+  -> [5/6] Archiving Hermes Workspace (swarm_ledger.db, agent_brain.sqlite, chat_ledger.db, active_state.md)...
+  -> [6/6] Archiving Root .hermes Config (config.yaml, mcp.json, base skills)...
+✅ Master Archive Ready: 82355 files (6442.32 MB raw -> 4562.90 MB compressed)
+☁️ Syncing Master Backup to Google Drive...
+  -> Drive Archive Saved: G:\My Drive\OmniViral_Backups\Archives\master_backup_20261018_210002.zip
+  -> Drive Live Mirror Synced: G:\My Drive\OmniViral_Backups\Live_Sync
+  -> Drive Archive Saved: G:\My Drive\Hermes_OmniViral_Master_Backup\Archives\master_backup_20261018_210002.zip
+  -> Drive Live Mirror Synced: G:\My Drive\Hermes_OmniViral_Master_Backup\Live_Sync
+======================================================================
+🔍 VERIFYING BACKUP INTEGRITY & HEALTH...
+======================================================================
+  ✅ Local Archive CRC32 Verification: 100% Intact (Zero corrupted files)
+  ✅ Component Verified: omniviral_codebase
+  ✅ Component Verified: sqlite_database
+  ✅ Component Verified: digital_products
+  ✅ Component Verified: video_outputs
+  ✅ Component Verified: hermes_system
+  ✅ Component Verified: omniroute_runtime
+  ✅ Component Verified: hermes_workspace
+  ✅ Component Verified: dot_hermes
+  ✅ Drive Destination Verified: OmniViral_Backups (4562.90 MB)
+  ✅ Drive Destination Verified: Hermes_OmniViral_Master_Backup (4562.90 MB)
+  🎯 Overall Integrity: HEALTHY_AND_VERIFIED
+🚀 GitHub Master Sync: OK
+🧹 Pruned old archive: master_backup_20261017_164305.zip in C:\Users\aalok\omniviral-ai\backups
+🧹 Pruned old archive: master_backup_20261017_162551.zip in C:\Users\aalok\omniviral-ai\backups
+🧹 Pruned old archive: master_backup_20261017_162503.zip in C:\Users\aalok\omniviral-ai\backups
+🧹 Pruned old archive: master_backup_20261017_161408.zip in C:\Users\aalok\omniviral-ai\backups
+🧹 Pruned old archive: master_backup_20261017_160348.zip in C:\Users\aalok\omniviral-ai\backups
+🧹 Pruned old archive: master_backup_20261015_210003.zip in C:\Users\aalok\omniviral-ai\backups
+🧹 Pruned old archive: master_backup_20261014_210115.zip in C:\Users\aalok\omniviral-ai\backups
+🧹 Pruned old archive: master_backup_20261012_210037.zip in G:\My Drive\OmniViral_Backups\Archives
+🧹 Pruned old archive: master_backup_20261012_210003.zip in G:\My Drive\OmniViral_Backups\Archives
+🧹 Pruned old archive: master_backup_20261011_210002.zip in G:\My Drive\Hermes_OmniViral_Master_Backup\Archives
+📋 Manifest saved to Drive: G:\My Drive\OmniViral_Backups\backup_manifest.json
+📋 Manifest saved to Drive: G:\My Drive\Hermes_OmniViral_Master_Backup\backup_manifest.json
+======================================================================
+🎉 FULL MASTER BACKUP COMPLETED & VERIFIED IN GOOGLE DRIVE!
+📁 Drive Folder: G:\My Drive\OmniViral_Backups
+📁 Drive Folder: G:\My Drive\Hermes_OmniViral_Master_Backup
+======================================================================
